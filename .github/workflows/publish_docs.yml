@@ -32,10 +32,10 @@ jobs:
       - id: pages
         uses: actions/configure-pages@v5
       - run: pip install -r requirements.txt
-      - run: cd docs && mkdocs build -d site
+      - run: mkdocs build -d site
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./docs/site
+          path: ./site
   deploy:
     environment:
       name: github-pages
