@@ -16,7 +16,7 @@ make install
 make serve
 ```
 
-To rebuild python dependencies after amending `requirements/docs.in`:
+To rebuild python dependencies after amending `requirements.in`:
 
 ```
 make deps
