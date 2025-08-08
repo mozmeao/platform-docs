@@ -1,7 +1,11 @@
-# Welcome to Bedrock's documentation!
+# Welcome to the documentation for Bedrock and Springfield
 
-**bedrock** is the project behind www.mozilla.org. It is as shiny, awesome, and open-source as always. Perhaps even a little more.
+**bedrock** is the project behind <www.mozilla.org>.
+**springfield** is the sibling project behind <www.firefox.com>
 
-bedrock is a web application based on [Django](http://www.djangoproject.com/), a [Python](https://www.python.org) web application framework.
+Both are web applications based on [Django](http://www.djangoproject.com/), a [Python](https://www.python.org) web application framework.
 
-Patches are welcome! Feel free to fork and contribute to this project on [Github](https://github.com/mozilla/bedrock).
+Patches are welcome! Feel free to fork and contribute to this project on Github:
+
+* [Bedrock](https://github.com/mozilla/bedrock)
+* [Springfield](https://github.com/mozmeao/springfield)
