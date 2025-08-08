@@ -13,6 +13,6 @@ export UV_CUSTOM_COMPILE_COMMAND="$ make compile-requirements"
 pip install -U uv
 
 # Drop the compiled reqs files, to help us pick up automatic subdep updates, too
-rm -f requirements/*.txt
+rm -f requirements.txt
 
-uv pip compile --generate-hashes --no-strip-extras --python-version 3.13 requirements/docs.in -o requirements/docs.txt
+uv pip compile --generate-hashes --no-strip-extras --python-version 3.13 requirements.in -o requirements.txt

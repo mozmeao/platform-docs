@@ -14,7 +14,6 @@ help:
 	@echo "  deps       to rebuild Python dependencies for MkDocs"
 	@echo "  install    to install Python dependencies for MkDocs"
 	@echo "  serve      to run MkDocs locally, live-rebuilding content as it changes"
-	@echo "  preflight 	to install Python dependencies for documentation building"
 
 clean:
 	rm -rf $(BUILDDIR)/*
@@ -24,10 +23,7 @@ deps:
 
 install:
 	pip install -U uv
-	uv pip install -r requirements/docs.txt
-
-preflight:
-	pip install -r ../docs.txt
+	uv pip install -r requirements.txt
 
 serve:
 	mkdocs serve --open

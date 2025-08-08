@@ -31,7 +31,7 @@ jobs:
           cache: pip
       - id: pages
         uses: actions/configure-pages@v5
-      - run: pip install -r requirements/docs.txt
+      - run: pip install -r requirements.txt
       - run: cd docs && mkdocs build -d site
       - uses: actions/upload-pages-artifact@v3
         with:
