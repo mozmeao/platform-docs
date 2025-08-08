@@ -1,12 +1,17 @@
 # Installing Bedrock {: #install }
 
+_This section is written with Bedrock as an example, but applies - with renamed paths - to Springfield, too._
+
 ## Installation Methods
 
-There are two primary methods of installing bedrock: Docker and Local. Whichever you choose, you'll start by getting the source.
+There are two primary methods of installing Bedrock and Springfield: Docker and Local. Whichever you choose, you'll start by getting the source.
 
-The codebase lives at <https://github.com/mozilla/bedrock/>
+The codebases live at <https://github.com/mozilla/bedrock/> and <https://github.com/mozmeao/springfield/>
 
-Only Mozilla staff have write access to that repository; community contributors do not, so should instead make a fork of the repo to work from. You will still be able to make pull requests from your fork into `mozilla/bedrock`.
+Only Mozilla staff have write access to that repository; community contributors do not, so should instead make a fork of the repo to work from. You will still be able to make pull requests from your fork into `mozilla/bedrock` and `mozmeao/springfield`.
+
+!!! note
+    The rest of this page talks about installing Bedrock, specifically, but the operations apply the same to Springfield.
 
 Get the source code:
 
@@ -21,7 +26,7 @@ $ git clone https://github.com/YOUR_GITHUB_USERNAME_HERE/bedrock.git
 Once the codebase is cloned, switch into it:
 
 ``` bash
-$ cd bedrock
+cd bedrock
 ```
 
 After these basic steps you can choose your install method below.
@@ -44,12 +49,12 @@ Docker is the easiest and recommended way, but local installation directly onto 
 
 This is the simplest way to get started developing for bedrock. If you're on Linux or Mac (and possibly Windows 10 with the Linux subsystem) you can run a script that will pull our production and development docker images and start them:
 
-    $ make clean run
+    make clean run
 
 !!! note
     You can start the server any other time with:
 
-        $ make run
+        make run
 
 You should see a number of things happening, but when it's done it will output something saying that the server is running at [localhost:8000](http://localhost:8000/). Go to that URL in a browser and you should see the mozilla.org home page. In this mode the site will refresh itself when you make changes to any template or media file. Simply open your editor of choice and modify things and you should see those changes reflected in your browser.
 
@@ -59,24 +64,24 @@ You should see a number of things happening, but when it's done it will output s
 If you don't have or want to use Make you can call the docker and compose commands directly
 
 ``` bash
-$ docker compose pull
+docker compose pull
 ```
 
 ``` bash
-$ [[ ! -f .env ]] && cp .env-dist .env
+[[ ! -f .env ]] && cp .env-dist .env
 ```
 
 Then starting it all is simply
 
 ``` bash
-$ docker compose up app assets
+docker compose up app assets
 ```
 
 All of this is handled by the `Makefile` script and called by Make if you follow the above directions. You **DO NOT** need to do both.
 
 These directions pull and use the pre-built images that our deployment process has pushed to the [Docker Hub](https://hub.docker.com/u/mozorg/). If you need to add or change any dependencies for Python or Node then you'll need to build new images for local testing. You can do this by updating the requirements files and/or package.json file then simply running:
 
-    $ make build
+    make build
 
 !!! note
     **For Apple Silicon / M1 users**
@@ -100,19 +105,19 @@ The following assumes you are on MacOS, using `zsh` as your shell and [Homebrew]
 
 **Install Python 3.13.x with pyenv**
 
-1.  Install `pyenv` itself :
+1. Install `pyenv` itself :
 
-        $ brew install pyenv
+        brew install pyenv
 
 2\. Configure your shell to init `pyenv` on start - this is noted in the project's [own docs](https://github.com/pyenv/pyenv), in more detail, but omits that setting ``PYENV_ROOT`` and adding it to the path is needed:
 
-    $ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-    $ echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-    $ echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+    echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 
 3\. Restart your login session for the changes to profile files to take effect - if you're not using `zsh`, the `pyenv` docs have other routes :
 
-    $ zsh -l
+    zsh -l
 
 4.  Install the latest Python 3.13.x (e.g. 3.13.3), then test it's there:
 
@@ -133,39 +138,39 @@ The following assumes you are on MacOS, using `zsh` as your shell and [Homebrew]
 
 **Install a plugin to manage virtualenvs via pyenv and create a virtualenv for Bedrock's dependencies**
 
-1.  Install `pyenv-virtualenv` :
+1. Install `pyenv-virtualenv` :
 
-        $ brew install pyenv-virtualenv
+        brew install pyenv-virtualenv
 
 2\. Configure your shell to init `pyenv-virtualenv` on start - again, this is noted in the `pyenv-virtualenv` project's [own documentation](https://github.com/pyenv/pyenv-virtualenv), in more detail. The following will slot in a command that will work as long as you have pyenv-virtualenv installed:
 
-    $ echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
+    echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
 
 3.  Restart your login session for the changes to profile files to take effect :
 
-        $ zsh -l
+        zsh -l
 
 4.  Make a virtualenv we can use - in this example we'll call it `bedrock` but use whatever you want :
 
-        $ pyenv virtualenv 3.13.3 bedrock
+        pyenv virtualenv 3.13.3 bedrock
 
 **Use the virtualenv**
 
-1.  Switch to the virtualenv - this is the command you will use any time you need this virtualenv :
+1. Switch to the virtualenv - this is the command you will use any time you need this virtualenv :
 
-        $ pyenv activate bedrock
+        pyenv activate bedrock
 
 2\. If you'd like to auto activate the virtualenv when you cd into the bedrock directory, and deactivate it when you exit the directory, you can do so with:
 
-    $ echo 'bedrock' > .python-version
+    echo 'bedrock' > .python-version
 
 3.  Securely upgrade pip :
 
-        $ pip install --upgrade pip
+        pip install --upgrade pip
 
 4.  Install / update Python dependencies :
 
-        $ make install-local-python-deps
+        make install-local-python-deps
 
 !!! note
     If you are on OSX and some of the compiled dependencies fails to compile, try explicitly setting the arch flags and try again. The following are relevant to Intel Macs only. If you're on Apple Silicon, 3.13.3 should 'just work':
@@ -184,11 +189,11 @@ The following assumes you are on MacOS, using `zsh` as your shell and [Homebrew]
 
 **Download a fresh copy of the sqlite database that Bedrock uses locally** This contains product-details, security-advisories, credits, release notes, localizations, legal-docs etc. We also download the latest translations of site content in many languages:
 
-    $ bin/bootstrap.sh
+    bin/bootstrap.sh
 
 **Install the node dependencies to run the site**. This will only work if you already have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed:
 
-    $ npm install
+    npm install
 
 !!! note
     Bedrock uses npm to ensure that Node.js packages that get installed are the exact ones we meant (similar to pip hash checking mode for python). Refer to the [npm documentation](https://docs.npmjs.com/) for adding or upgrading Node.js dependencies.
@@ -200,7 +205,6 @@ The following assumes you are on MacOS, using `zsh` as your shell and [Homebrew]
 
     We also have an optional git hook that will alert you if `make preflight` needs to be run. You can install that with `make install-custom-git-hooks`.
 
-
 ## Run the tests {: #run-python-tests }
 
 Now that we have everything installed, let's make sure all of our tests pass. This will be important during development so that you can easily know when you've broken something with a change.
@@ -209,27 +213,27 @@ Now that we have everything installed, let's make sure all of our tests pass. Th
 
 We manage our local docker environment with docker compose and Make. All you need to do here is run:
 
-    $ make test
+    make test
 
 If you don't have Make you can simply run `docker compose run test`.
 
 If you'd like to run only a subset of the tests or only one of the test commands you can accomplish that with a command like the following:
 
-    $ docker compose run test pytest bedrock/firefox
+    docker compose run test pytest bedrock/firefox
 
 This example will run only the unit tests for the `firefox` app in bedrock. You can substitute `pytest bedrock/firefox` with most any shell command you'd like and it will run in the Docker container and show you the output. You can also just run `bash` to get an interactive shell in the container which you can then use to run any commands you'd like and inspect the file system:
 
-    $ docker compose run test bash
+    docker compose run test bash
 
 ### Local
 
 From the local install instructions above you should still have your virtualenv activated, so running the tests is as simple as:
 
-    $ pytest lib bedrock
+    pytest lib bedrock
 
 To test a single app, specify the app by name in the command above. e.g.:
 
-    $ pytest bedrock/firefox
+    pytest bedrock/firefox
 
 ## Run a local server
 
@@ -240,17 +244,17 @@ To test a single app, specify the app by name in the command above. e.g.:
 
 You can simply run the `make run` script mentioned above, or use docker compose directly:
 
-    $ docker compose up app assets
+    docker compose up app assets
 
 ### Local
 
 To make the server run, make sure your virtualenv is activated with `pyenv activate bedrock`, and then run the server:
 
-    $ npm start
+    npm start
 
 Wait for the server to start up and then browse to <http://localhost:8000>
 
-Congratulations, you should now have your own copy of www.mozilla.org running locally!
+Congratulations, you should now have your own copy of <www.mozilla.org> running locally!
 
 ### Prod Mode
 
@@ -259,7 +263,7 @@ There are certain things about the site that behave differently when running loc
 First you should ensure that your `.env` file is setup the way you need. This usually means adding `DEBUG=False` and `DEV=False`, though you may want `DEV=True` if you want the site to act more like www-dev.allizom.org in that all feature switches are `On` and all locales are active for every page. After that you can run the following:
 
 ``` bash
-$ make run-prod
+make run-prod
 ```
 
 This will run the latest bedrock image using your local bedrock files and templates, but not your local static assets. If you need an updated image just run `make pull`.
@@ -267,7 +271,7 @@ This will run the latest bedrock image using your local bedrock files and templa
 If you need to include the changes you've made to your local static files (images, css, js, etc.) then you have to build the image first:
 
 ``` bash
-$ make build-prod run-prod
+make build-prod run-prod
 ```
 
 ### Documentation
@@ -279,11 +283,13 @@ If you see a typo or similarly small change, you can use the "Edit in GitHub" li
 If you want to make a bigger change or [find a Documentation issue on the repo](https://github.com/mozilla/bedrock/labels/Documentation), it is best to edit and preview locally before submitting a pull request. Run the commands from your root folder. They will build documentation and start a live server to auto-update any changes you make to a documentation file.
 
 #### Docker
+
 ``` bash
 make docs
 ```
 
 #### Local
+
 ``` bash
 # docs-setup installs the docs requirements
 # only need to run this the first time
@@ -295,7 +301,7 @@ make livedocs
 
 Localization (or L10n) files were fetched by the ``bootstrap.sh`` command your ran earlier and are included in the docker images. If you need to update them or switch to a different repo or branch after changing settings you can run the following command:
 
-    $ ./manage.py l10n_update
+    ./manage.py l10n_update
 
 You can read more details about how to localize content [here](l10n.md).
 

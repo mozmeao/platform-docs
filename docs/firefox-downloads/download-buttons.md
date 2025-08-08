@@ -12,7 +12,7 @@ Web browser vendors are also starting to freeze and limit the types information 
 
 # Helpers
 
-There are two Firefox download button helpers in bedrock to choose from. The first is a lightweight button that links directly to the `/firefox/download/thanks/` page. Its sole purpose is to facilitate downloading the main release version of Firefox.
+There are two Firefox download button helpers in Springfeld (and any remaining pages on Bedrock) to choose from. The first is a lightweight button that links directly to the `/firefox/download/thanks/` page. Its sole purpose is to facilitate downloading the main release version of Firefox.
 
 ``` jinja
 {{ download_firefox_thanks() }}
@@ -38,5 +38,4 @@ Much of the logic in the `{{ download_firefox() }}` helper is OLD, and could be 
 
 ## Documentation
 
-See [helpers.py](https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templatetags/helpers.py) for documentation and supported parameters for both buttons.
-
+See [helpers.py](https://github.com/mozmeao/springfield/blob/main/springfield/firefox/templatetags/helpers.py) for documentation and supported parameters for both buttons.

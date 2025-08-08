@@ -23,26 +23,26 @@ It is important for website visitors to be able to download Firefox on a very br
 
 - **Windows 11 and above**
 
-    -   All evergreen browsers
-        -   Firefox
-        -   Firefox ESR
-        -   Chrome
-        -   Edge
-        -   Brave
-        -   Opera
+  - All evergreen browsers
+    - Firefox
+    - Firefox ESR
+    - Chrome
+    - Edge
+    - Brave
+    - Opera
 
 - **Windows 10**
 
-    -   All evergreen browsers
+  - All evergreen browsers
 
 - **macOS 10.15 and above**
 
-    -   All evergreen browsers
-    -   Safari 15.6
+  - All evergreen browsers
+  - Safari 15.6
 
 - **Linux**
 
-    -   All evergreen browsers
+  - All evergreen browsers
 
 **Degraded support:**
 
@@ -50,23 +50,22 @@ Website visitors on slightly older browsers fall under degraded support, which m
 
 - **Windows 10**
 
-    -   Internet Explorer 11
+  - Internet Explorer 11
 
 - **Windows 8.1 and below**
 
-    -   Firefox 115 ESR
-    -   Chrome 109
-    -   Internet Explorer 10
+  - Firefox 115 ESR
+  - Chrome 109
+  - Internet Explorer 10
 
 - **macOS 10.14 and below**
 
-    -   Firefox 115 ESR
-    -   Chrome 116
-    -   Safari 12.1
+  - Firefox 115 ESR
+  - Chrome 116
+  - Safari 12.1
 
 !!! note
     As of Firefox 116 (released August 1st 2023), support for Firefox has been ended on Windows 8.1 and below, as well as on macOS 10.14 and below. Website visitors on these outdated operating systems now fall under degraded support, and we offer them to download Firefox ESR instead.
-
 
 **Basic support:**
 
@@ -74,8 +73,8 @@ Website visitors on very old versions of Internet Explorer will get only a very 
 
 - **Windows 7**
 
-    -   Internet Explorer 9
-    -   Internet Explorer 8
+  - Internet Explorer 9
+  - Internet Explorer 8
 
 **Unsupported:**
 
@@ -83,18 +82,17 @@ Even older versions of Internet Explorer are now unsupported.
 
 - **Windows XP / Vista**
 
-    -   Internet Explorer 7
-    -   Internet Explorer 6
+  - Internet Explorer 7
+  - Internet Explorer 6
 
 !!! note
     Firefox ended support for Windows XP and Vista in 2017 with Firefox 53. Since then, we have continued to serve those users Firefox ESR 52 instead. However, since then support for downloading has been discontinued. The SSL certificates on download.mozilla.org no longer support TLS 1.0.
-
 
 ### Privacy & security products
 
 Browser support for our privacy and security products (such as VPN, Relay, Monitor etc) is thankfully a simpler story. Since all these product use a Firefox account for authentication, we can simply follow the [Firefox Ecosystem Platform](https://mozilla.github.io/ecosystem-platform/reference/browser-support) browser support documentation.
 
-The most notable thing here for bedrock is that Internet Explorer 11 does not need to be supported.
+The most notable thing here is that Internet Explorer 11 does not need to be supported.
 
 ## Delivering basic support
 
@@ -116,7 +114,6 @@ On other legacy browsers where conditional comments are not supported, developer
 
 !!! note
     The following feature detection helpers will return true for all browsers that get enhanced support, but will also return true for IE11 currently, even though that has now moved to degraded support. The reason for this is that whilst many of our newer products don't support IE at all (e.g. Mozilla VPN, Mozilla Monitor, Firefox Relay), we do still need to provide support so that IE users can easily download Firefox. We can decide to update the feature detect in the future, at a time when we think makes sense.
-
 
 ### Feature detection using CSS
 

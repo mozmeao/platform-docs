@@ -11,7 +11,7 @@ Experiments from this platform will split traffic before users arrive on
 the page (meaning no client-side JS delay).
 
 !!! note
-    Bedrock code will still determine what templates to show based on locales
+    Application code will still determine what templates to show based on locales
     and the url parameters added by Nimbus.
 
 There are generally 3 user groups to consider:
@@ -26,7 +26,7 @@ The Firefox team will set up the experiment and provide the URL params:
 
 - **variant**: identifies control and treatment variants within each experiment. Nimbus variant must match pre-defined value (i.e. `v1`, `v2`, `v3`, `v4`).
 
-Bedrock automatically sets `nimbus_branch` and `nimbus_variant` variables
+The application automatically sets `nimbus_branch` and `nimbus_variant` variables
 for What’s New pages to use in `firefox/views.py` logic.
 
 Even if `control branch` and `not in experiment` users are served the same
@@ -46,14 +46,14 @@ Traffic Cop sends users to experiments and then we use Google Analytics (GA) to 
 
 ### Coding the variants
 
-Traffic cop supports two methods of a/b testing: executing different on page javascript or redirecting to the same URL with a query string appended. We mostly use the redirect method in bedrock. This makes testing easier. See the [Traffic Cop documentation](https://github.com/mozmeao/trafficcop/) for examples.
+Traffic cop supports two methods of a/b testing: executing different on page javascript or redirecting to the same URL with a query string appended. We mostly use the redirect method in Bedrock and Springfield. This makes testing easier. See the [Traffic Cop documentation](https://github.com/mozmeao/trafficcop/) for examples.
 
 Create a [variation view](coding.md#variation-views) for the a/b test.
 
 The view can handle the URL redirect in one of two ways:
 
-1.  the same page, with some different content based on the ``variation`` variable
-2.  a totally different page
+1. the same page, with some different content based on the ``variation`` variable
+2. a totally different page
 
 ### Content variation
 
@@ -122,7 +122,6 @@ function setVariationCookie(exp) {
 !!! note
     If you are measuring installs as part of your experiment be sure to configure [custom stub attribution](attribution/0002-firefox-desktop.md#measuring-campaigns-and-experiments) as well.
 
-
 Send the experiment view events to GA with the event name `experiment_view`. The `id` of all variants should be the same and all `variant` values should be unique.
 
 Make sure any buttons and interaction which are being compared as part of the test will report into `GA (Google Analytics)`{.interpreted-text role="abbr"}.
@@ -155,9 +154,9 @@ Write some tests for your a/b test. This could be simple or complex depending on
 
 Some things to consider checking:
 
--   Requests for the default (non variant) page call the correct template.
--   Requests for a variant page call the correct template.
--   Locales excluded from the test call the correct (default) template.
+- Requests for the default (non variant) page call the correct template.
+- Requests for a variant page call the correct template.
+- Locales excluded from the test call the correct (default) template.
 
 ## Avoiding experiment collisions
 

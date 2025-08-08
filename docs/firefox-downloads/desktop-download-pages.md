@@ -18,13 +18,13 @@ When a user requests `/` the [DownloadView](https://github.com/mozmeao/springfie
 It then responds with the first template that matches:
 
 - `firefox/download/home.ftl` file is active and `xv` is not basic or legacy
-    - *firefox/new/desktop/firefox-new-refresh.html*
+  - *firefox/new/desktop/firefox-new-refresh.html*
 - `firefox/download/desktop` file is active and `xv` is not basic
-    - *firefox/new/desktop/download.html*
+  - *firefox/new/desktop/download.html*
 - no ftl files are active or `xv` is basic
-    - *firefox/new/basic/base_download.html*
+  - *firefox/new/basic/base_download.html*
 
-These templates all use the basic `download_firefox_thanks` helper and serve release Firefox in the language of the current page for the platform (aka operating system) that bedrock has auto-detected.
+These templates all use the basic `download_firefox_thanks` helper and serve release Firefox in the language of the current page for the platform (aka operating system) that has been auto-detected.
 
 ## /windows, /mac, /linux (the platform pages)
 
@@ -43,7 +43,6 @@ Firefox is available in more languages than the website is. The /all pages were 
 This app is in desperate need of a UX re-think. The templates it uses are in */templates/firefox/all/*
 
 An older copy of /all is also served as a [fall back page for the entire site](https://github.com/mozmeao/www-error-page) in some conditions.
-
 
 # By Template
 
@@ -76,5 +75,3 @@ Created in 2025 to reflect the changing Firefox brand this template focuses on o
 Rather than adding an experiment directly to one of the existing templates we typically duplicate or extend the template and add it to the view.
 
 For details on configuring an a/b test see [A/B testing](../abtest.md).
-
-

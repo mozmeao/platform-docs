@@ -85,7 +85,7 @@ nav:
   - Home: index.md
   - Install: install.md
   - Localization: l10n.md
-  - Developing on Bedrock: coding.md
+  - Developing on Bedrock or Springfield: coding.md
   - Browser Support: browser-support.md
   - How to Contribute: contribute.md
   - Continuous Integration & Deployment: pipeline.md

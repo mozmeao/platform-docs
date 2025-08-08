@@ -6,7 +6,7 @@ render_macros: true
 
 Privacy notices and their applicable translations are markdown files managed by the legal team in the [legal-docs](https://github.com/mozilla/legal-docs) repository.
 
-When the markdown files are imported into bedrock they are parsed using the default python markdown library and [BeautifulSoup](https://beautiful-soup-4.readthedocs.io/en/latest/). BeautifulSoup allows content selection and manipulation using [CSS selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors).
+When the markdown files are imported into Bedrock they are parsed using the default python markdown library and [BeautifulSoup](https://beautiful-soup-4.readthedocs.io/en/latest/). BeautifulSoup allows content selection and manipulation using [CSS selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors).
 
 For example the code:
 
@@ -24,9 +24,9 @@ If you would like to see the structure of the html you're working with, you can 
 
 There are three templates:
 
--   base-notice
--   base-notice-headings
--   base-notice-paragraphs
+- base-notice
+- base-notice-headings
+- base-notice-paragraphs
 
 ### base-notice
 

@@ -1,13 +1,13 @@
 # Continuous Integration & Deployment {: #pipeline }
 
-Bedrock runs a series of automated tests as part of continuous integration workflow and deployment pipeline. You can learn more about each of the individual test suites by reading their respective pieces of documentation:
+Bedrock and Springfield run a series of automated tests as part of continuous integration workflow and deployment pipeline. You can learn more about each of the individual test suites by reading their respective pieces of documentation:
 
 - Python unit tests (see [Run the tests](install.md#run-python-tests)).
 - JavaScript unit tests (see [Front-end testing](testing.md)).
 - Redirect tests (see [Testing redirects](redirects.md#testing-redirects)).
 - Functional tests (see [Front-end testing](testing.md)).
 
-## Deployed site URLs
+## Deployed site URLs for Bedrock
 
 ### Dev
 
@@ -30,14 +30,38 @@ Bedrock runs a series of automated tests as part of continuous integration workf
 - *Bedrock Git branch:* prod, deployed on git push with date-tag
 - *Firefox download URL:* <https://download.mozilla.org/>
 
+## Deployed site URLs for Springfield
+
+### Dev
+
+- *URL:* <https://www-dev.springfield.moz.works/>
+- *Springfield locales:* dev repo
+- *Springfield Git branch:* main, deployed on git push
+- *Firefox download URL:* <https://bouncer-bouncer.stage.mozaws.net/>
+
+### Staging
+
+- *URL:* <https://www.springfield.moz.works/>
+- *Springfield locales:* prod repo
+- *Springfield Git branch:* stage, deployed on git push
+- *Firefox download URL:* <https://download.mozilla.org/>
+
+### Production
+
+- *URL:* <https://www.firefox.com/>
+- *Springfield locales:* prod repo
+- *Springfield Git branch:* prod, deployed on git push with date-tag
+- *Firefox download URL:* <https://download.mozilla.org/>
+
 !!! note
-    By default, the Demo servers on GCP point to the Bouncer Dev service at <https://dev.bouncer.nonprod.webservices.mozgcp.net/> To change this, you will have adjust GCP Secrets - see the [demo sites](https://bedrock.readthedocs.io/en/latest/contribute.html#demo-sites) docs
+    By default, the Demo servers on Google Cloud Platform for Bedrock and Springfield point to the Bouncer Dev service at <https://dev.bouncer.nonprod.webservices.mozgcp.net/> To change this, you will have adjust GCP Secrets - see the [demo sites](https://bedrock.readthedocs.io/en/latest/contribute.html#demo-sites) docs
 
 You can check the currently deployed git commit by checking /revision.txt on any of these URLs.
 
 ## Tests in the lifecycle of a change
 
-Below is an overview of the tests during the lifecycle of a change to bedrock:
+Below is an overview of the tests during the lifecycle of a change.
+This section is written with Bedrock as an example, but applies - with renamed paths - to Springfield, too.
 
 ### Local development
 
@@ -76,6 +100,8 @@ Whenever a change is pushed to the stage branch, a production docker image is bu
 
 ### Push to prod branch (tagged) {: #tagged-commit }
 
+*This section is written with Bedrock as an example, but applies - with renamed paths - to Springfield, too.*
+
 When a tagged commit is pushed to the `prod` branch, a production container image (private, see above) is built, and a set of public images is also built and pushed to [Docker Hub](https://hub.docker.com/r/mozmeao/bedrock/tags) if needed (usually this will have already happened as a result of a push to the `main` or `stage` branch). The production image is deployed to each [production](https://www.mozilla.org) deployment.
 
 **Push to prod cheat sheet**
@@ -95,26 +121,45 @@ When a tagged commit is pushed to the `prod` branch, a production container imag
     By default the `tag-release.sh` script will push to the `origin` git remote. If you'd like for it to push to a different remote name you can either pass in a `-r` or `--remote` argument, or set the `MOZ_GIT_REMOTE` environment variable. So the following are equivalent:
 
     ``` bash
+    # for Bedrock / www.mozilla.org
     bin/tag-release.sh --push -r mozilla
     ```
 
     ``` bash
+    # for Bedrock / www.mozilla.org
     MOZ_GIT_REMOTE=mozilla bin/tag-release.sh --push
     ```
 
     And if you'd like to just tag and not push the tag anywhere, you may omit the `--push` parameter.
 
+
+    For Springfield, the repo's organization is `mozmeao` not `mozilla`:
+
+    ``` bash
+    # for Springfield / www.firefox.com
+    bin/tag-release.sh --push -r mozmeao
+    ```
+
+    ``` bash
+    # for Springfield / www.firefox.com
+    MOZ_GIT_REMOTE=mozmeao bin/tag-release.sh --push
+    ```
+
 ## What Is Currently Deployed?
 
 You can look at the git log of the `main` branch to find the last commit with a date-tag on it (e.g. `2022-05-05`): this commit will be the last one that was deployed to production. You can also use the following links to compare Dev (`main`), with Stage and/or Prod:
 
-- [Compare Stage (`stage`) to Dev (`main`)](https://github.com/mozilla/bedrock/compare/stage...main)
-- [Compare Prod (`prod`) to Dev (`main`)](https://github.com/mozilla/bedrock/compare/prod...main)
-- [Compare Prod (`prod`) to Stage (`stage`)](https://github.com/mozilla/bedrock/compare/prod...stage)
+### Bedrock
 
-## Instance Configuration & Switches
+- [Bedrock: Compare Stage (`stage`) to Dev (`main`)](https://github.com/mozilla/bedrock/compare/stage...main)
+- [Bedrock: Compare Prod (`prod`) to Dev (`main`)](https://github.com/mozilla/bedrock/compare/prod...main)
+- [Bedrock: Compare Prod (`prod`) to Stage (`stage`)](https://github.com/mozilla/bedrock/compare/prod...stage)
 
-We have a [separate repo](https://github.com/mozmeao/www-config) for configuring our primary instances (dev, stage, and prod). The [docs for updating configurations](https://mozmeao.github.io/www-config/) in that repo are on their own page, but there is a way to tell what version of the configuration is in use on any particular instance of bedrock. You can go to the `/healthz-cron/` URL on an instance ([see prod](https://www.mozilla.org/healthz-cron/) for example) to see the current commit of all of the external Git repos in use by the site and how long ago they were updated. The info on that page also includes the latest version of the database in use, the git revision of the bedrock code, and how long ago the database was updated. If you recently made a change to one of these repos and are curious if the changes have made it to production, this is the URL you should check.
+###  Springfield
+
+- [Springfield: Compare Stage (`stage`) to Dev (`main`)](https://github.com/mozmeao/springfield/compare/stage...main)
+- [Springfield: Compare Prod (`prod`) to Dev (`main`)](https://github.com/mozmeao/springfield/compare/prod...main)
+- [Springfield: Compare Prod (`prod`) to Stage (`stage`)](https://github.com/mozmeao/springfield/compare/prod...stage)
 
 ## Updating Selenium
 

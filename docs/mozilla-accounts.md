@@ -7,12 +7,10 @@ render_macros: true
 !!! note
     Since a rebranding in October 2023, we now refer to "Mozilla accounts" in our web pages instead of "Firefox accounts". This rebranding is so far superficial, and sign up flows still go to `accounts.firefox.com`. Because of this, our internal code and helpers still use `FxA` or `fxa` as a common abbreviation. However the language used around them should now be "Mozilla accounts" going forward.
 
-
-Marketing pages often promote the creation of a [Mozilla account](https://accounts.firefox.com) as a common *call to action* (CTA). This is typically accomplished using either a sign-up form, or a prominent link/button. Other products such as [Mozilla VPN](https://www.mozilla.org/products/vpn/) use similar account auth flows to manage subscriptions. To accomplish these tasks, bedrock templates can take advantage of a series of Python helpers which can be used to standardize product referrals, and make supporting these auth flows easier.
+Marketing pages often promote the creation of a [Mozilla account](https://accounts.firefox.com) as a common *call to action* (CTA). This is typically accomplished using either a sign-up form, or a prominent link/button. Other products such as [Mozilla VPN](https://www.mozilla.org/products/vpn/) use similar account auth flows to manage subscriptions. To accomplish these tasks, Bedrock templates can take advantage of a series of Python helpers which can be used to standardize product referrals, and make supporting these auth flows easier.
 
 !!! note
     See the attribution docs ([Mozilla accounts attribution](attribution/0004-mozilla-accounts.md)) for more a detailed description of the analytics functions these helpers provide.
-
 
 ## Mozilla account sign-up form
 
@@ -77,13 +75,12 @@ The sign-up form macro accepts the following parameters (* indicates a required 
 
 Invoking the macro will automatically include a set of default `UTM (Urchin Tracking Module)`{.interpreted-text role="abbr"} parameters as hidden form input fields:
 
--   `utm_source` is automatically assigned the value of the `entrypoint` parameter.
--   `utm_campaign` is automatically set as the value of `fxa-embedded-form`. This can be prefixed with a custom value by passing a `utm_campaign` value to the macro. For example, `utm_campaign='trailhead'` would result in a value of `trailhead-fxa-embedded-form`.
--   `utm_medium` is automatically set as the value of `referral`.
+- `utm_source` is automatically assigned the value of the `entrypoint` parameter.
+- `utm_campaign` is automatically set as the value of `fxa-embedded-form`. This can be prefixed with a custom value by passing a `utm_campaign` value to the macro. For example, `utm_campaign='trailhead'` would result in a value of `trailhead-fxa-embedded-form`.
+- `utm_medium` is automatically set as the value of `referral`.
 
 !!! note
     When signing into a Mozilla account using this form on a Firefox Desktop browser, it will also activate the [Sync](https://support.mozilla.org/kb/how-do-i-set-sync-my-computer) feature.
-
 
 ## Mozilla account links
 
@@ -100,7 +97,6 @@ Use the `fxa_button` helper to create a `CTA (Call To Action)`{.interpreted-text
 
 !!! note
     When signing into a Mozilla account using this link on a Firefox Desktop browser, it will also activate the [Sync](https://support.mozilla.org/kb/how-do-i-set-sync-my-computer) feature.
-
 
 For more information on the available parameters, read the "Common Parameters" section further below.
 
@@ -132,7 +128,6 @@ The `fxa_button` and `monitor_fxa_button` helpers all support the same standard 
 
 !!! note
     The `fxa_button` helper also supports an additional `action` parameter, which accepts the values `signup`, `signin`, and `email` for configuring the type of authentication flow.
-
 
 ## Mozilla `VPN (Virtual Private Network)`{.interpreted-text role="abbr"} Links {: #vpn-helpers }
 
