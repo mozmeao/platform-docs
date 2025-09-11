@@ -90,6 +90,7 @@ nav:
   - How to Contribute: contribute.md
   - Continuous Integration & Deployment: pipeline.md
   - Front-end testing: testing.md
+  - Demo servers: demos.md
   - Task Queue: task-queue.md
   - Managing redirects: redirects.md
   - Newsletters: newsletters.md
