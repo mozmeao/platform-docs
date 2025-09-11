@@ -83,7 +83,7 @@ If you need to add a secret value, this currently needs to be added at the GCP l
 
 Generally, as with code that hits `main`, there should be no issues with migration clashes or DB state when rolling out code to demos. However, it's possible that two different branches (A and B), will both have Django migrations with the same number and no merge migration, because the branches are not aware of each other. In this situation, it will not be possible to deploy Branch B to a demo where Branch A was already deployed.
 
-We have support for a sledgehammer option to fully reset the database for the demo service that's being pushed to. To do this, the `HEAD` commit of your branch must contain the string `[reset-db]`, including the `[` `]`. When Cloud Build detects this, instead of just running migrations, it will reset the DB and refill it with the *default* data - which does not contain the previous state, nor (as of Sept 2025) and CMS data exported from Production. Use with care, when there is no alternative. The better approach is to avoid migration clashes via communication and collaboration.
+We have support for a sledgehammer option to fully reset the database for the demo service that's being pushed to. To do this, the `HEAD` commit of your branch must contain the string `[reset-db]`, including the `[` `]`. When Cloud Build detects this, instead of just running migrations, it will reset the DB and refill it with the *default* data - which does not contain the previous state, nor (as of Sept 2025) any CMS data exported from Production. Use with care, when there is no alternative. The better approach is to avoid migration clashes via communication and collaboration.
 
 # DEPRECATED: Heroku Demo Servers
 
