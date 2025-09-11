@@ -7,7 +7,7 @@ Our demos are run on Google Cloud Platform, using Cloud Run, plus a persistent p
 
 You need write access to `mozilla/bedrock` or `mozmeao/springfield` to use the demo servers, because you need to force-push your changes to a specific branch.
 
-There are nine servers available for Bedrock (mozilla.org) and six for Springfield (<www.firefox.com>)
+There are nine servers available for Bedrock (mozilla.org) and six for Springfield (www.firefox.com)
 
 Here is how you push the latest commit from your WIP branch to Bedrock's "Demo 1" server, assuming your `mozilla/bedrock` remote is called `mozilla`, rather than the default `origin`:
 
