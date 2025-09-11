@@ -14,7 +14,7 @@ Here is how you push the latest commit from your WIP branch to Bedrock's "Demo 1
 ```
 git push -f mozilla HEAD:mozorg-demo-1
 
-# Orif your remote is just called origin
+# Or if your remote is just called origin
 git push -f origin HEAD:mozorg-demo-1
 
 # Or to push a specific branch
