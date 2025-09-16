@@ -96,7 +96,6 @@ There are a couple of utility functions for use in the `to` argument of `redirec
 ``` python
 from bedrock.redirects.util import redirect, ua_redirector
 
-
 redirectpatterns = [
     redirect(
         r"^rubble/barny/$",
