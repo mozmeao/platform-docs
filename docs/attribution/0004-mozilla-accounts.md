@@ -57,9 +57,9 @@ The cookie can be set simply by adding the class name `js-fxa-product-referral-l
 
 For example, a referral with `data-referral-id="navigation"` would result in the following utm parameters being set on sign up links in the product landing page:
 
-> -   `utm_source=www.mozilla.org`.
-> -   `utm_campaign=navigation`.
-> -   `utm_medium=referral`.
+-   `utm_source=www.mozilla.org`.
+-   `utm_campaign=navigation`.
+-   `utm_medium=referral`.
 
 ### Mozilla VPN referral link helper
 

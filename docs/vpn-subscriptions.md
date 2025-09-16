@@ -45,81 +45,60 @@ The majority of config changes need to happen in `bedrock/settings/base.py`:
 
     Example pricing plan config for \$USD / English containing both 12-month and monthly plans:
 
-    > ``` python
-    > ```
-    >
-    > VPN_PLAN_ID_MATRIX = {
-    >
-    > :
-    >
-    >     "usd": {
-    >
-    >     :
-    >
-    >         "en": {
-    >
-    >         :
-    >
-    >             "12-month": {
-    >
-    >             :
-    >
-    >                 "id": (
-    >
-    >                 :   "price_1J0Y1iKb9q6OnNsLXwdOFgDr" if DEV else "price_1Iw85dJNcmPzuWtRyhMDdtM7"
-    >
-    >                 ), "price": "US\$4.99", "total": "US\$59.88", "saving": 50, "analytics": { "brand": "vpn", "plan": "vpn", "currency": "USD", "discount": "60.00", "price": "59.88", "period": "yearly", },
-    >
-    >             }, "monthly": { "id": ( "price_1J0owvKb9q6OnNsLExNhEDXm" if DEV else "price_1Iw7qSJNcmPzuWtRMUZpOwLm" ), "price": "US\$9.99", "total": None, "saving": None, "analytics": { "brand": "vpn", "plan": "vpn", "currency": "USD", "discount": "0", "price": "9.99", "period": "monthly", }, },
-    >
-    >         }
-    >
-    >     }, \# repeat for other currency / language configs.
-    >
-    > }
-    >
-    > See the *Begin Checkout* section of the `analytics docs<analytics>`{.interpreted-text role="ref"} for more a detailed description of what should be in the analytics objects.
+    ``` python
+    VPN_PLAN_ID_MATRIX = {
+        "usd": {
+            "en": {
+                "12-month": {
+                    "id": "price_1J0Y1iKb9q6OnNsLXwdOFgDr" if DEV else "price_1Iw85dJNcmPzuWtRyhMDdtM7",
+                    "price": "4.99",
+                    "total": "59.88",
+                    "currency": "USD",
+                    "saving": 50,
+                    "analytics": {"brand": "vpn", "plan": "vpn", "currency": "USD", "discount": "60.00", "price": "59.88", "period": "yearly"},
+                },
+                "monthly": {
+                    "id": "price_1J0owvKb9q6OnNsLExNhEDXm" if DEV else "price_1Iw7qSJNcmPzuWtRMUZpOwLm",
+                    "price": "9.99",
+                    "total": None,
+                    "currency": "USD",
+                    "saving": None,
+                    "analytics": {"brand": "vpn", "plan": "vpn", "currency": "USD", "discount": "0", "price": "9.99", "period": "monthly"},
+                },
+            }
+        }, # repeat for other currency / language configs.
+    }
+    ```
+
+    See the *Begin Checkout* section of the `analytics docs<analytics>`{.interpreted-text role="ref"} for more a detailed description of what should be in the analytics objects.
 
 2.  Map each new country code to one or more applicable pricing plans in `VPN_VARIABLE_PRICING`.
 
     Example that maps the `US` country code to the pricing plan config above:
 
-    > ``` python
-    > ```
-    >
-    > VPN_VARIABLE_PRICING = {
-    >
-    > :
-    >
-    >     "US": {
-    >
-    >     :   "default": VPN_PLAN_ID_MATRIX["usd"]["en"],
-    >
-    >     }, \# repeat for other country codes.
-    >
-    > }
+    ``` python
+    VPN_VARIABLE_PRICING = {
+        "US": {
+            "default": VPN_PLAN_ID_MATRIX["usd"]["en"],
+        }, # repeat for other country codes.
+    }
+    ```
 
 3.  Once every new country has a mapping to a pricing plan, add each new country code to the list of supported countries in `VPN_COUNTRY_CODES`. Because new countries need to be added behind a feature switch, you may want to create a new variable temporarily for this until launched, such as `VPN_COUNTRY_CODES_WAVE_VI`. You can then add these to `VPN_COUNTRY_CODES` in `products/views.py` using a simple function like so:
 
-    > ``` python
-    > ```
-    >
-    > def vpn_available(request):
-    >
-    > :   country = get_country_from_request(request) country_list = settings.VPN_COUNTRY_CODES
-    >
-    >     if switch("vpn-wave-vi"):
-    >
-    >     :   country_list = settings.VPN_COUNTRY_CODES + settings.VPN_COUNTRY_CODES_WAVE_VI
-    >
-    >     return country in country_list
-    >
-    > The function could then be used in the landing page view like so:
-    >
-    > ``` python
-    > ```
-    >
-    > vpn_available_in_country = (vpn_available(request),)
+    ``` python
+    def vpn_available(request):
+        country = get_country_from_request(request)
+        country_list = settings.VPN_COUNTRY_CODES + settings.VPN_MOBILE_SUB_COUNTRY_CODES
+
+        return country in country_list
+    ```
+
+    The function could then be used in the landing page view like so:
+
+    ```python
+    vpn_available_in_country = vpn_available(request)
+    ```
 
 4.  If you now test the landing page locally, you should hopefully see the newly added pricing for each new country (add the `?geo=[INSERT_COUNTRY_CODE]` param to the page URL to mock each country). If all is well, this is the perfect time to add new [unit tests](https://github.com/mozilla/bedrock/blob/main/bedrock/products/tests/test_helper_misc.py) for each new country. This will help give you confidence that the right plan ID is displayed for each new country / language option.
 
