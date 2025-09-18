@@ -1,7 +1,8 @@
 # Welcome to the documentation for Bedrock and Springfield
 
-**bedrock** is the project behind <www.mozilla.org>.
-**springfield** is the sibling project behind <www.firefox.com>
+`bedrock` is the project behind [www.mozilla.org](https://www.mozilla.org).
+
+`springfield` is the sibling project behind [www.firefox.com](https://www.firefox.com).
 
 Both are web applications based on [Django](http://www.djangoproject.com/), a [Python](https://www.python.org) web application framework.
 
