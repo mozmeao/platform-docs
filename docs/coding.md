@@ -691,7 +691,7 @@ class CanadaIsSpecialView(GeoTemplateView):
 
 ### Testing Geo Views
 
-For testing purposes while you're developing or on any deployment that is not accessed via the production domain (<www.mozilla.org>) you can append your URL with a `geo` query param (e.g. `/firefox/?geo=DE`) and that will take precedence over the country from the request header. Remember to use a valid [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) as param value.
+For testing purposes while you're developing or on any deployment that is not accessed via the production domain ([www.mozilla.org](https://www.mozilla.org)) you can append your URL with a `geo` query param (e.g. `/firefox/?geo=DE`) and that will take precedence over the country from the request header. Remember to use a valid [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) as param value.
 
 ### Other Geo Stuff
 

@@ -254,7 +254,7 @@ To make the server run, make sure your virtualenv is activated with `pyenv activ
 
 Wait for the server to start up and then browse to <http://localhost:8000>
 
-Congratulations, you should now have your own copy of <www.mozilla.org> running locally!
+Congratulations, you should now have your own copy of [www.mozilla.org](https://www.mozilla.org) running locally!
 
 ### Prod Mode
 

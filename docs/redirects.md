@@ -129,7 +129,7 @@ redirectpatterns = [
 
 ## Testing redirects
 
-A suite of tests exists for redirects, which is intended as a reference of the redirects we expect to work on <www.mozilla.org>. This will become a base for implementing these redirects in the bedrock app and allow us to test them before release.
+A suite of tests exists for redirects, which is intended as a reference of the redirects we expect to work on [www.mozilla.org](https://www.mozilla.org). This will become a base for implementing these redirects in the bedrock app and allow us to test them before release.
 
 ### Installation
 
@@ -145,7 +145,7 @@ pip install -r requirements/dev.txt
 
 ### Running the tests
 
-If you wish to run the full set of tests, which requires a deployed instance of the site (e.g. <www.mozilla.org>) you can set the `--base-url` command line option:
+If you wish to run the full set of tests, which requires a deployed instance of the site (e.g. [www.mozilla.org](https://www.mozilla.org)) you can set the `--base-url` command line option:
 
 ``` bash
 pytest --base-url https://www.mozilla.org tests/redirects/

@@ -10,9 +10,9 @@ This page is currently a skeleton for documentation to be added as the work evol
 
 ## High-level summary
 
-Wagtail CMS will be used to make either entire pages or portions of pages (let's call them 'surfaces') content-editable on <www.mozilla.org>. It is not a free-for-all add-any-page-you-like approach, but rather a careful rollout of surfaces with appropriate guard rails that helps ensure the integrity, quality and security of <www.mozilla.org>.
+Wagtail CMS will be used to make either entire pages or portions of pages (let's call them 'surfaces') content-editable on [www.mozilla.org](https://www.mozilla.org). It is not a free-for-all add-any-page-you-like approach, but rather a careful rollout of surfaces with appropriate guard rails that helps ensure the integrity, quality and security of [www.mozilla.org](https://www.mozilla.org).
 
-Surfaces will be authored via a closed 'Editing' deployment and when those changes are published they will become visible on the main <www.mozilla.org> 'Web' deployment.
+Surfaces will be authored via a closed 'Editing' deployment and when those changes are published they will become visible on the main [www.mozilla.org](https://www.mozilla.org) 'Web' deployment.
 
 If you are new to Wagtail, it is recommended that you read the official docs and/or complete an online course to get a better understanding of how Wagtail works.
 
