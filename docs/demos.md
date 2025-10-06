@@ -7,7 +7,7 @@ Our demos are run on Google Cloud Platform, using Cloud Run, plus a persistent p
 
 You need write access to `mozilla/bedrock` or `mozmeao/springfield` to use the demo servers, because you need to force-push your changes to a specific branch.
 
-There are nine servers available for Bedrock (mozilla.org) and six for Springfield (www.firefox.com)
+There are nine servers available for Bedrock (mozilla.org) and six for Springfield (<www.firefox.com>)
 
 Here is how you push the latest commit from your WIP branch to Bedrock's "Demo 1" server, assuming your `mozilla/bedrock` remote is called `mozilla`, rather than the default `origin`:
 
@@ -84,6 +84,10 @@ If you need to add a secret value, this currently needs to be added at the GCP l
 Generally, as with code that hits `main`, there should be no issues with migration clashes or DB state when rolling out code to demos. However, it's possible that two different branches (A and B), will both have Django migrations with the same number and no merge migration, because the branches are not aware of each other. In this situation, it will not be possible to deploy Branch B to a demo where Branch A was already deployed.
 
 We have support for a sledgehammer option to fully reset the database for the demo service that's being pushed to. To do this, the `HEAD` commit of your branch must contain the string `[reset-db]`, including the `[` `]`. When Cloud Build detects this, instead of just running migrations, it will reset the DB and refill it with the *default* data - which does not contain the previous state, nor (as of Sept 2025) any CMS data exported from Production. Use with care, when there is no alternative. The better approach is to avoid migration clashes via communication and collaboration.
+
+## Private demos
+
+We now support publishing demos from our [private repos](private-repos.md) for those rare occasions where we have to work in privacy. Pushes via a private repo also enable password protection via basic auth. See [Working with a private repo](private-repos.md#working-with-a-private-repo) for how to use that behaviour.
 
 # DEPRECATED: Heroku Demo Servers
 
