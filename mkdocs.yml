@@ -91,6 +91,7 @@ nav:
   - Continuous Integration & Deployment: pipeline.md
   - Front-end testing: testing.md
   - Demo servers: demos.md
+  - Private work: private-repos.md
   - Task Queue: task-queue.md
   - Managing redirects: redirects.md
   - Newsletters: newsletters.md
