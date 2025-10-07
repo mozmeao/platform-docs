@@ -25,13 +25,13 @@ The repos are not forks, they are distinct repos which are manually synced with 
     git switch -c 12345--PRIVATE--slug-like-title
     ```
 
-3. Once the work is done, push it up to the PRIVATE repo if you want to PR it
+3. Once the work is done, push it up to the PRIVATE repo's remote if you want to PR it
 
     ```bash
     git push bedrock-private-repo
     ```
 
-4. You may want to push the code to a [demo server](demos.md) in order to get signoff. We now support automatic password protection on our demos, IF if they are triggered via bedrock-private or springfield-private. As an example, to push to www-demo8.allizom.org with password protection on, ensure you've got everything committed locally you want to deploy and that you're on the relevant branch, then:
+4. You may want to push the code to a [demo server](demos.md) in order to get signoff. We now support automatic password protection on our demos, IF if they are triggered via the `bedrock-private` or `springfield-private` remote repos. As an example, to push to `www-demo8.allizom.org` with password protection on, ensure you've got everything committed locally you want to deploy and that you're on the relevant branch, then:
 
     ```bash
     git push -f bedrock-private-repo HEAD:mozorg-demo8
@@ -39,6 +39,6 @@ The repos are not forks, they are distinct repos which are manually synced with 
 
     (That this is the standard pattern for pushing to demo servers, except it specifies a different remote from the default one.)
 
-    Once the site has deployed, you'll be challenged for a basic-auth username and password. You can find these in our password vault (search for 'private demo server') or ask a colleague to send it to you in a secure manner.
+    Once the site has deployed, when you first visit it, you'll be challenged for a basic-auth username and password. You can find these in our password vault (search for 'private demo server') or ask a colleague to send it to you in a secure manner.
 
-5. When the PR is approved, DO NOT merge it to `main` on the private repo. Instead, wait for the work to be approved and cleared for public consumption. Then, push it as branch to the pubic repo as you would normally do, make a PR and reference the one in the private repo and get it merged and released as usual.
+5. When the PR is approved, DO NOT merge it to `main` on the private repo. Instead, wait for the work to be approved and cleared for public consumption. Then, push it as branch to the _public_ repo as you would normally do, make a PR and reference the one in the private repo and get it merged and released as usual.
