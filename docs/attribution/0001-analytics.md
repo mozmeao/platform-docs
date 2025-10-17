@@ -2,7 +2,7 @@
 render_macros: true
 ---
 
-# Mozorg analytics {: #analytics }
+# Website Analytics {: #analytics }
 
 ## Google Analytics
 
@@ -65,19 +65,17 @@ CTA ("Call to Action") click is intented to track the one or two main actions th
 
 The attribute `data-cta-text` must be present to trigger the event. All links to accounts.mozilla.com must also use `data-cta-type`.
 
-| Data Attribute      | Expected Value                                                                                                                                                                                                                     |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `data-cta-text` *  | Text or name of the link (e.g. `Sign Up`, `Start Here`, `Get Relay`, `See your report`, `Read the Manifesto`).                                                                                                                     |
-|                     |                                                                                                                                                                                                                                    |
-|                     | -   This does not need to exactly match the text displayed to the user                                                                                                                                                             |
-|                     | -   Defining this is useful to group the link clicks across locales                                                                                                                                                                |
-|                     | -   -   this attribute is required                                                                                                                                                                                                 |
-| `data-cta-position` | Location of CTA on the page (e.g. `primary`, `secondary`, `banner`, `pricing`)                                                                                                                                                     |
-| `data-cta-type`     | fxa-servicename (e.g. `fxa-sync`, `fxa-monitor`, `fxa-vpn`, `monitor`, `relay`)                                                                                                                                          |
-|                     |                                                                                                                                                                                                                                    |
-|                     | -   This is to group CTAs by their destination                                                                                                                                                                                     |
-|                     | -   Do not use this to identify the element (ie. link, button)                                                                                                                                                                     |
-| `data-cta-name`     | A identifier for this cta that is unique across the entire site. (e.g. `fx20-primarycta`, `wnp118-sfaq-so-special-features`). This is to help with reporting since it is difficult to filter on more than one parameter at a time. |
+| Data Attribute      | Expected Value |
+| ------------------- | -------------- |
+| `data-cta-text` *  | Text or name of the link (e.g. `Sign Up`, `Start Here`, `Get Relay`, `See your report`, `Read the Manifesto`). |
+|   | -   This does not need to exactly match the text displayed to the user |
+|   | -   Defining this is useful to group the link clicks across locales |
+|   | -   * this attribute is required |
+| `data-cta-position` | Location of CTA on the page (e.g. `primary`, `secondary`, `banner`, `pricing`) |
+| `data-cta-type`     | fxa-servicename (e.g. `fxa-sync`, `fxa-monitor`, `fxa-vpn`, `monitor`, `relay`) |
+|                     | -  This is to group CTAs by their destination |
+|                     | * Do not use this to identify the element (ie. link, button) |
+| `data-cta-uid`     | A identifier for this cta that is unique across the entire site. (e.g. `fx20-primarycta`, `wnp118-sfaq-so-special-features`). This is to help with reporting since it is difficult to filter on more than one parameter at a time. |
 
 ``` html
 <a href="https://monitor.firefox.com/" data-cta-text="Check for breaches" data-cta-type="fxa-monitor">Check for breaches</a>
@@ -95,7 +93,7 @@ The attribute `data-link-text` must be present to trigger the event.
 
 | Data Attribute       | Expected Value                                                                                                               |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `data-link-text` *  | Text or name of the link (e.g. `Monitor`, `Features`, `Instagram (mozilla)`, `Mozilla VPN`). - * this attribute is required |
+| `data-link-text` *  | Text or name of the link (e.g. `Monitor`, `Features`, `Instagram (mozilla)`, `Mozilla VPN`). <br> * this attribute is required |
 | `data-link-position` | Location of CTA on the page (e.g. `topnav`, `subnav`, `body`, `features`)                                                    |
 
 ``` html
@@ -114,19 +112,13 @@ Link click is also commonly used for navigation menus. If you wish to indicate t
 
 #### Data Layer Events
 
-The data layer is a JS object we can push events to and GTM will read from it.
+The [data layer](https://developers.google.com/tag-platform/tag-manager/datalayer) is a JS object we can push events to and GTM will read from it.
 
 ``` js
 window.dataLayer.push({'event': 'event_name'});
 ```
 
-We push a mix of recommended events and custom events to the data layer. When creating a new custom event please follow the Implementation Principles outlined above. Remember, both GTM and GA must be configured to recieve new events.
-
-<https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtag#begin_checkout>
-
-<https://mozilla-hub.atlassian.net/wiki/spaces/EN/pages/430866463/GA4+Custom+Events>
-
-<https://developers.google.com/tag-platform/tag-manager/datalayer>
+We push a mix of recommended events and [custom events](https://mozilla-hub.atlassian.net/wiki/spaces/EN/pages/430866463/GA4+Custom+Events) to the data layer. When creating a new custom event please follow the Implementation Principles outlined above. Remember, both GTM and GA must be configured to receive new events.
 
 Events that bedrock will send to GTM include:
 
@@ -296,17 +288,11 @@ We are using the custom event `widget_action` to track the behaviour of javascri
 
 | widget_action                                               | cta_click                                                |
 | ----------------------------------------------------------- | -------------------------------------------------------- |
-| The action is specific or unique.                           | The action is \"click\".                                 |
-|                                                             |                                                          |
-| *(Only the language switcher changes* *the page language.)* |                                                          |
+| The action is specific or unique.<br>*(Only the language switcher changes* *the page language.)* | The action is \"click\". |
 | The user does not leave the page.                           | It sends the user somewhere else.                        |
 | It requires Javascript to work.                             | No JS required.                                          |
-| It can perform several actions.                             | It does one action.                                      |
-|                                                             |                                                          |
-| *(A modal can be opened and closed.)*                       |                                                          |
-| There could be several on the page doing different things.  | There could be several on the page doing the same thing. |
-|                                                             |                                                          |
-| *(An accordion list of FAQs)*                               | *(A download button in the header and footer.)*          |
+| It can perform several actions. <br>*(A modal can be opened and closed.)* | It does one action. |
+| There could be several on the page doing different things.<br> *(An accordion list of FAQs)*   | There could be several on the page doing the same thing.<br> *(A download button in the header and footer.)* |
 
 Properties for use with ``widget_action`` (not all widgets will use all options):
 
