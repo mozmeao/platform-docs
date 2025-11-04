@@ -1,6 +1,4 @@
 
-# Demo sites
-
 For code to reach our Dev instances, it must be merged to `main`. However, if you need to show changes to stakeholders before that's possible, you can use a demo server.
 
 Our demos are run on Google Cloud Platform, using Cloud Run, plus a persistent postgres DB, so that data is not lost.

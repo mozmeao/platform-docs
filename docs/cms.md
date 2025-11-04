@@ -48,11 +48,10 @@ Useful resources:
 ## Fetching the latest CMS data for local work
 
 !!! note
-**TL;DR version:**
+    **TL;DR version:**
 
-1. Get the DB with `make preflight`
-2. If you need the images that the DB expects to exist, use `python manage.py download_media_to_local`
-::::
+    1. Get the DB with `make preflight`
+    2. If you need the images that the DB expects to exist, use `python manage.py download_media_to_local`
 
 The CMS content exists in hosted cloud database and a trimmed-down version of this data is exported to a sqlite DB for use in local development and other processes. The exported database contains all the same content, but deliberately omits sensitive info like user accounts, unpublished drafts and outmoded versions of pages.
 
@@ -60,14 +59,12 @@ The DB export is generated twice a day and is put into the same public cloud buc
 
 The DB will contain a table that knows the relative paths of the images uploaded to the CMS, but not the actual images. Those are in a cloud storage bucket, and if you want your local machine to have them available after you download the DB that expects them to be present, you can run `python manage.py download_media_to_local` which will sync down any images you don't already have.
 
-!!! note
 By default, `make preflight` and `./bin/run-db-download.py` will download a database file based on `bedrock-dev` or `springfield-dev`. If you want to download from stage or prod, which are also available in sanitised form, you need to specify which environment you want by prefixing the command with `AWS_DB_S3_BUCKET=bedrock-db-stage`,  `AWS_DB_S3_BUCKET=bedrock-db-prod`.
 `AWS_DB_S3_BUCKET=springfield-db-stage` or  `AWS_DB_S3_BUCKET=springfield-db-prod`.
 
 e.g. `AWS_DB_S3_BUCKET=bedrock-db-stage make preflight`
 
 `python manage.py download_media_to_local --environment=stage`
-::::
 
 ## Editing current content surfaces
 
@@ -373,11 +370,10 @@ If you have a DB from Stage you can pass the `--environment=stage` option to get
 
 ## L10N and Translation Management
 
-:::: important
+ important
 !!! title "Important"
 
 Localization via Wagtail is something we are ramping up on, so please do not assume the following notes are final, or that the workflows are currently all rock-solid. We're learning as we go.
-::::
 
 ### Page-tree concept
 
@@ -398,11 +394,10 @@ While the list of available overall locales is defined in code in `settings.base
 
 When you go to `Settings > Locales` in the Wagtail fly-out menu, you will see which locales are currenly enabled. You can add new ones via the `+` icon.
 
-:::: warning
+ warning
 !!! title "Warning"
 
 When you add/edit a Locale in this part of the admin, you will see an option to enable syncronisation between locales. **Do not enable this**. If it is enabled, for every new page added in `en-US`, it will auto-create page aliases in every other enabled locale and these will deliver the `en-US` content under locale-specific paths, which is not what we want.
-::::
 
 ### Localization process
 
