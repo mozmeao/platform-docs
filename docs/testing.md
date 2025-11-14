@@ -47,14 +47,10 @@ cd /path/to/your/downloaded/files/
 mv chromedriver /usr/local/bin/
 ```
 
-If you're on MacOS, download `chromedriver` directly using Homebrew/Cask, which automatically places it in your system path:
+If you're on MacOS, download `chromedriver` directly using Homebrew, which automatically places it in your system path:
 
 ``` bash
-brew tap homebrew/cask
-```
-
-``` bash
-brew cask install chromedriver
+brew install chromedriver
 ```
 
 ## Running Jasmine tests
