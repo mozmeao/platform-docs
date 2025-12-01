@@ -4,9 +4,14 @@ render_macros: true
 
 # Newsletters
 
-Bedrock includes support for signing up for and managing subscriptions and preferences for Mozilla newsletters.
+Bedrock includes support for signing up for and managing subscriptions and preferences for Mozilla newsletters. 
 
-Many pages have a form to sign-up for the default newsletter, "Mozilla Foundation". Other pages have more specific sign up forms, such as the contribute page, or Mozilla VPN wait-list page.
+In Bedrock, the site-wide footer form includes sign-up for "Mozilla Foundation" newsletter. Other pages have more specific sign up forms, such as the contribute page, or Mozilla VPN wait-list page.
+
+!!! note
+    Although you can still sign-up on `www.mozilla.org`, Mozilla Foundation now manages subscribe and unsubscribe actions for their newsletters on their own website. There is a note in Bedrock's newsletter preference center directing users to this functionality.
+
+Springfield includes support for signing up for Firefox newsletters. Managing subscriptions and preferences will still be handled on `www.mozilla.org`.
 
 ## Features
 
