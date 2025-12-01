@@ -4,9 +4,14 @@ render_macros: true
 
 # Newsletters
 
-Bedrock includes support for signing up for and managing subscriptions and preferences for Mozilla newsletters.
+Bedrock includes support for signing up for and managing subscriptions and preferences for Mozilla newsletters. 
 
-Many pages have a form to sign-up for the default newsletters, "Mozilla Foundation" and "Firefox & You". Other pages have more specific sign up forms, such as the contribute page, or Mozilla VPN wait-list page.
+In Bedrock, the site-wide footer form includes sign-up for "Mozilla Foundation" newsletter. Other pages have more specific sign up forms, such as the contribute page, or Mozilla VPN wait-list page.
+
+!!! note
+    Although you can still sign-up on `www.mozilla.org`, Mozilla Foundation now manages subscribe and unsubscribe actions for their newsletters on their own website. There is a note in Bedrock's newsletter preference center directing users to this functionality.
+
+Springfield includes support for signing up for Firefox newsletters. Managing subscriptions and preferences will still be handled on `www.mozilla.org`.
 
 ## Features
 
@@ -33,6 +38,12 @@ Newsletters have a variety of characteristics. Some of these are implemented in 
 -   Drip campaigns - some newsletters implement so-called drip campaigns, in which a series of canned messages are dribbled out to the user over a period of time. E.g. 1 week after subscribing, they might get message 1; a week later, message 2, and so on until all the canned messages have been sent.
 
     Because drip campaigns depend on the sign-up date of the user, we're careful not to accidentally change the sign-up date, which could happen if we sent redundant subscription commands to our backend.
+
+## Bedrock and AWS
+
+Mozilla Foundation uses an AWS endpoint for newsletter sign-ups on `www.mozilla.org`. These newsletters have been removed from Basket and are no longer available to manage in Bedrock's newsletter preference centre.
+
+Available languages used to be pulled from Basket but are now managed with [custom config](https://github.com/mozilla/bedrock/blob/e82d7a9a38e2e9755f60710592c859ce060f0306/bedrock/settings/base.py#L898) in Bedrock settings.
 
 ## Bedrock and Basket
 
@@ -80,12 +91,15 @@ This will render a sign-up for "Firefox & You". You can pass parameters to the m
 {% endblock %}
 ```
 
-The ``newsletters`` parameter, the first positional argument, can be either a list of newsletter IDs or a comma separated list of newsletters IDs:
+The ``newsletters`` parameter, the first positional argument, can be either a list of newsletter IDs  or a string of comma-separated newsletter IDs:
 
 ``` jinja
 {% block email_form %}
-    {{ email_newsletter_form('mozilla-foundation, mozilla-and-you') }}
+    {{ email_newsletter_form('mozilla-and-you, nothing-personal-college-interest-waitlist') }}
 {% endblock %}
 ```
 
 Pages can control whether country or language fields are included by passing `include_language=[True|False]` and/or `include_country=[True|False]`.
+
+!!! note
+    `'mozilla-foundation'` newsletters cannot be used in a list of newsletter IDs as we do not currently support parallel requests to AWS and Basket.
