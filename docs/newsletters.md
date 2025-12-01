@@ -91,7 +91,7 @@ This will render a sign-up for "Firefox & You". You can pass parameters to the m
 {% endblock %}
 ```
 
-The ``newsletters`` parameter, the first positional argument, can be either a single newsletter ID or a comma separated list of newsletters IDs:
+The ``newsletters`` parameter, the first positional argument, can be either a list of newsletter IDs  or a string of comma-separated newsletter IDs:
 
 ``` jinja
 {% block email_form %}
