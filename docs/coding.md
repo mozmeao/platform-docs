@@ -26,7 +26,7 @@ make check-requirements
 
 For Node packages we use [NPM](https://docs.npmjs.com/cli/v8/commands/npm-install), which should already be installed alongside [Node.js](https://nodejs.org/).
 
-### Front-end Dependencies
+### Mozilla Front-end Dependencies
 
 Our team maintains a few dependencies that we serve on Bedrock and Springfield's front-ends.
 
@@ -36,6 +36,14 @@ Our team maintains a few dependencies that we serve on Bedrock and Springfield's
 - [@mozmeao/trafficcop](https://www.npmjs.com/package/@mozmeao/trafficcop): Used for A/B testing page variants
 
 Because they are all published on NPM, install the packages and keep up-to-date with the latest version of each dependency by running an `npm install`. For further documentation on installing NPM packages, [check out the official documentation](https://docs.npmjs.com/cli/v6/commands/npm-install).
+
+### Third-party Front-end Dependencies
+
+Before adding a new npm module as a front-end production dependency, verify it meets these criteria:
+
+- **License**: Must have a compatible open source license (MPL, MIT, BSD, etc.). Check the package's `package.json` or repository documentation.
+- **Dependencies**: May not have more than 1 dependency. Check by reviewing the `dependencies` field in `package.json` or running `npm list --depth=1 <package-name>`.
+- **File Size**: Evaluate the minified and gzipped size to ensure it's appropriate for the functionality we're using. Use tools like [Bundlephobia](https://bundlephobia.com/) to check package size and impact on bundle performance.
 
 ## Asset Management and Bundling
 
