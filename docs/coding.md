@@ -185,44 +185,56 @@ These pages are specific to Firefox browsers, and only appear when a user update
 
 Version number is digits only.
 
-| Whatsnew URL: <https://www.mozilla.org/en-US/firefox/99.0/whatsnew/>
-| Template path: <https://github.com/mozilla/bedrock/tree/main/bedrock/firefox/templates/firefox/whatsnew>
+Whatsnew URL: <https://www.firefox.com/en-US/whatsnew/145>
 
-| Firstrun URL: <https://www.mozilla.org/en-US/firefox/99.0/firstrun/>
-| Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/firstrun/firstrun.html>
+- Template path: <https://github.com/mozmeao/springfield/blob/main/springfield/cms/templates/cms/whats_new_page.html>
+
+!!! note
+    Before moving to CMS-powered whatsnew pages on Springfield with v145, Bedrock whatsnew URLs followed a different pattern: <https://www.mozilla.org/en-US/firefox/99.0/whatsnew/>
+
 
 #### Firefox Nightly
 
 Version number is digits and **a1**.
 
-| Whatsnew URL: <https://www.mozilla.org/en-US/firefox/99.0a1/whatsnew/>
-| Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/nightly/whatsnew.html>
+Whatsnew URL: <https://www.firefox.com/en-US/whatsnew/140.0a1>
 
-| Firstrun URL: <https://www.mozilla.org/en-US/firefox/nightly/firstrun/>
-| Template path: <https://github.com/mozilla/bedrock/tree/main/bedrock/firefox/templates/firefox/nightly>
+- Template path: <https://github.com/mozmeao/springfield/tree/main/springfield/firefox/templates/firefox/whatsnew/nightly>
+
+Firstrun URL: <https://www.mozilla.org/en-US/firefox/nightly/firstrun/>
+
+- Template path: <https://github.com/mozilla/bedrock/tree/main/bedrock/firefox/templates/firefox/nightly>
+
+!!! note
+    Bedrock Nightly whatsnew URLs followed a different pattern: <https://www.mozilla.org/en-US/firefox/99.0a1/whatsnew/>
 
 #### Firefox Developer
 
 Version number is digits and **a2**.
 
-| Whatsnew URL: <https://www.mozilla.org/en-US/firefox/99.0a2/whatsnew/>
-| Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/developer/whatsnew.html>
+Whatsnew URL: <https://www.firefox.com/en-US/whatsnew/140.0a2>
 
-| Firstrun URL: <https://www.mozilla.org/en-US/firefox/99.0a2/firstrun/>
-| Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/developer/firstrun.html>
+- Template path: <https://github.com/mozmeao/springfield/tree/main/springfield/firefox/templates/firefox/whatsnew/developer>
+
+Firstrun URL: <https://www.mozilla.org/en-US/firefox/99.0a2/firstrun/>
+
+- Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/developer/firstrun.html>
+
+!!! note
+    Bedrock Developer whatsnew URLs followed a different pattern: <https://www.mozilla.org/en-US/firefox/99.0a2/whatsnew/>
 
 ### Release Notes
 
-Release note templates live here: <https://github.com/mozilla/bedrock/tree/main/bedrock/firefox/templates/firefox/releases>
+Release note templates live here: <https://github.com/mozmeao/springfield/tree/main/springfield/firefox/templates/firefox/releases>
 
 !!! note
     Release note content is pulled in from an external data source.
 
-- Firefox release: <https://www.mozilla.org/en-US/firefox/99.0.1/releasenotes/>
-- Firefox Developer and Beta: <https://www.mozilla.org/en-US/firefox/100.0beta/releasenotes/>
-- Firefox Nightly: <https://www.mozilla.org/en-US/firefox/101.0a1/releasenotes/>
-- Firefox Android: <https://www.mozilla.org/en-US/firefox/android/99.0/releasenotes/>
-- Firefox iOS: <https://www.mozilla.org/en-US/firefox/ios/99.0/releasenotes/>
+- Firefox release: <https://www.firefox.com/en-US/firefox/145.0/releasenotes/>
+- Firefox Developer and Beta: <https://www.firefox.com/en-US/firefox/145.0beta/releasenotes/>
+- Firefox Nightly: <https://www.firefox.com/en-US/firefox/145.0a1/releasenotes/>
+- Firefox Android: <https://www.firefox.com/en-US/firefox/android/145.0/releasenotes/>
+- Firefox iOS: <https://www.firefox.com/en-US/firefox/ios/145.0/releasenotes/>
 
 ## Optimizing Images
 
