@@ -160,56 +160,75 @@ The variable `latest_version` will be available in the template.
 
 ### General Structure
 
-Bedrock and Springfield follow the Django app structure and most templates are easy to find by matching URL path segments to folders and files within the correct app. Here's an example for Bedrock:
+Bedrock and Springfield follow the Django app structure and most templates can be found by matching URL path segments to folders and files within the correct app.
 
-| URL: `https://www.mozilla.org/en-US/firefox/features/private-browsing/`
-| Template path: `bedrock/bedrock/firefox/templates/firefox/features/private-browsing.html`
+Ignore the scheme, domain and locale (`/en-US`). The next path segment is usually the app name.
 
-To get from URL to template path:
+#### bedrock (mozilla.org)
 
-- Ignore the scheme, domain and the locale path segment `/en-US`. The next path segment is the app name `/firefox`.
-- From the root folder of bedrock, find the app's template folder at `bedrock/{app}/templates/{app}`
-- Match remaining URL path segments (`/features/private-browsing`) to the template folder's structure (`/features/private-browsing.html`)
+| URL: `https://www.mozilla.org/en-US/privacy/`
+| Template path: `bedrock/privacy/templates/privacy/index.html`
 
-!!! note
-    `mozorg` is the app name for the home page and child pages related to Mozilla Corporation (i.e. About, Contact, Diversity).
+If you don't find it where you expect check in the `mozorg` app. The home page and child pages related to Mozilla Corporation (i.e. About, Contact, Diversity) end up in here.
+
+| URL: `https://www.mozilla.org/en-US/about/manifesto/`
+| Template path: `bedrock/mozorg/templates/mozorg/about/manifesto.html`
+
+#### springfield (firefox.com)
+
+When Firefox content migrated to Springfield, most URLs moved up a level by removing the `/firefox/` prefix. For example, `mozilla.org/firefox/features/private-browsing/` became `firefox.com/features/private-browsing/`, but the internal template path still uses the `firefox` app structure.
+
+| URL: `https://www.firefox.com/en-US/features/private-browsing/`
+| Template path: `/springfield/firefox/templates/firefox/features/private-browsing.html`
+
 
 ### Whatsnew and Firstrun
 
 These pages are specific to Firefox browsers, and only appear when a user updates or installs and runs a Firefox browser for the first time. The URL and template depend on what Firefox browser and version are in use.
 
-!!! note
-    There may be extra logic in the app's `views.py` file to change the template based on locale or geographic location as well.
+There may be extra logic in the app's `views.py` file to change the template based on locale or geographic location as well.
 
-#### Firefox release
+!!! note
+    Pages supporting the Firefox product are intended to move to springfield in the long run. That migration is only partially complete leaving things in a bit of a mess currently. (2025-12-15)
+
+#### Firefox release, 145 and up are in the Wagtail CMS for [some common languages](https://github.com/mozilla/bedrock/blob/e91c6f28e719a16672191600a362466c1eca26b9/bedrock/firefox/redirects.py#L81).
+
+Version number is major version only.
+
+- Whatsnew URL: <https://www.firefox.com/en-US/whatsnew/145/> 
+- Template path: <https://github.com/mozmeao/springfield/blob/main/springfield/cms/templates/cms/whats_new_page.html>
+
+#### Firefox release, 144 and down, or [campaigns targeted at unmigrated locales](https://github.com/mozilla/bedrock/blob/e91c6f28e719a16672191600a362466c1eca26b9/bedrock/firefox/views.py#L475)
 
 Version number is digits only.
 
-| Whatsnew URL: <https://www.mozilla.org/en-US/firefox/99.0/whatsnew/>
-| Template path: <https://github.com/mozilla/bedrock/tree/main/bedrock/firefox/templates/firefox/whatsnew>
+- Whatsnew URL: <https://www.mozilla.org/en-US/firefox/144.0/whatsnew/>
+- Template path: <https://github.com/mozilla/bedrock/tree/main/bedrock/firefox/templates/firefox/whatsnew>
 
-| Firstrun URL: <https://www.mozilla.org/en-US/firefox/99.0/firstrun/>
-| Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/firstrun/firstrun.html>
+_First run may no longer be in use for release._
+
+- Firstrun URL: <https://www.mozilla.org/en-US/firefox/144.0/firstrun/>
+- Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/firstrun/firstrun.html>
 
 #### Firefox Nightly
 
 Version number is digits and **a1**.
 
-| Whatsnew URL: <https://www.mozilla.org/en-US/firefox/99.0a1/whatsnew/>
-| Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/nightly/whatsnew.html>
+- Whatsnew URL: <https://www.mozilla.org/en-US/firefox/144.0a1/whatsnew/>
+- Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/nightly/whatsnew.html>
 
-| Firstrun URL: <https://www.mozilla.org/en-US/firefox/nightly/firstrun/>
-| Template path: <https://github.com/mozilla/bedrock/tree/main/bedrock/firefox/templates/firefox/nightly>
+- Firstrun URL: <https://www.mozilla.org/en-US/firefox/nightly/firstrun/>
+- Template path: <https://github.com/mozilla/bedrock/tree/main/bedrock/firefox/templates/firefox/nightly>
 
 #### Firefox Developer
 
 Version number is digits and **a2**.
 
-| Whatsnew URL: <https://www.mozilla.org/en-US/firefox/99.0a2/whatsnew/>
-| Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/developer/whatsnew.html>
+- Whatsnew URL: <https://www.mozilla.org/en-US/firefox/144.0a2/whatsnew/>
+- Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/developer/whatsnew.html>
 
-| Firstrun URL: <https://www.mozilla.org/en-US/firefox/99.0a2/firstrun/>
-| Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/developer/firstrun.html>
+- Firstrun URL: <https://www.mozilla.org/en-US/firefox/144.0a2/firstrun/>
+- Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/developer/firstrun.html>
 
 ### Release Notes
 
