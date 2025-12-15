@@ -21,8 +21,10 @@ To develop or test using Mozilla.UITour locally you need to create some custom p
 Note that `browser.uitour.testingOrigins` can be a comma separated list of domains, e.g.
 
 ```
-'http://127.0.0.1:8000, <https://www-demo2.allizom.org>'
+'http://localhost:8000, https://www-demo1.allizom.org, https://www-demo1.springfield.moz.works'
 ```
+
+[Here is a gist with local, demo, dev, stage, and prod domains.](https://gist.github.com/stephaniehobson/d01dd056060849c6d356799ec10a11f8)
 
 !!! important
     Prior to Firefox 36, the testing preference was called `browser.uitour.whitelist.add.testing` (Bug 1081772). This old preference does not accept a comma separated list of domains, and you must also exclude the domain protocol e.g. `https://`. A browser restart is also required after adding an allowed domain.
