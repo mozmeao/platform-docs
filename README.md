@@ -10,6 +10,15 @@ The documentation is rendered using [MkDocs](https://www.mkdocs.org/), and the [
 
 To run the documentation site:
 
+First, create and activate a virtual environment (using pyenv):
+
+```
+pyenv virtualenv 3.13.3 docs
+pyenv activate docs
+```
+
+Then install dependencies and run the server:
+
 ```
 make install
 
