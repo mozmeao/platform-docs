@@ -122,31 +122,34 @@ When a tagged commit is pushed to the `prod` branch, a production container imag
 !!! note
     By default the `tag-release.sh` script will push to the `origin` git remote. If you'd like for it to push to a different remote name you can either pass in a `-r` or `--remote` argument, or set the `MOZ_GIT_REMOTE` environment variable. So the following are equivalent:
 
-    ``` bash
-    # for Bedrock / www.mozilla.org
-    bin/tag-release.sh --push -r mozilla
-    ```
+    === "Bedrock"
 
-    ``` bash
-    # for Bedrock / www.mozilla.org
-    MOZ_GIT_REMOTE=mozilla bin/tag-release.sh --push
-    ```
+        ``` bash
+        # for Bedrock / www.mozilla.org
+        bin/tag-release.sh --push -r mozilla
+        ```
+
+        ``` bash
+        # for Bedrock / www.mozilla.org
+        MOZ_GIT_REMOTE=mozilla bin/tag-release.sh --push
+        ```
+
+    === "Springfield"
+
+        ``` bash
+        # for Springfield / www.firefox.com
+        bin/tag-release.sh --push -r mozmeao
+        ```
+
+        ``` bash
+        # for Springfield / www.firefox.com
+        MOZ_GIT_REMOTE=mozmeao bin/tag-release.sh --push
+        ```
 
     And if you'd like to just tag and not push the tag anywhere, you may omit the `--push` parameter.
 
 
-    For Springfield, the repo's organization is `mozmeao` not `mozilla`:
-
-    ``` bash
-    # for Springfield / www.firefox.com
-    bin/tag-release.sh --push -r mozmeao
-    ```
-
-    ``` bash
-    # for Springfield / www.firefox.com
-    MOZ_GIT_REMOTE=mozmeao bin/tag-release.sh --push
-    ```
-
+    
 ## What Is Currently Deployed?
 
 You can look at the git log of the `main` branch to find the last commit with a date-tag on it (e.g. `2022-05-05`): this commit will be the last one that was deployed to production. You can also use the following links to compare Dev (`main`), with Stage and/or Prod:
