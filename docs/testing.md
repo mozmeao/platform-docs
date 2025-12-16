@@ -63,9 +63,18 @@ make preflight
 
 Next, make sure you activate your virtual env.
 
-``` bash
-pyenv activate bedrock  # or pyenv activate springfield
-```
+=== "Bedrock"
+
+    ``` bash
+    pyenv activate bedrock
+    ```
+
+=== "Springfield"
+
+    ``` bash
+    pyenv activate springfield
+    ```
+
 
 You can then run the full suite of Jasmine tests with the following command:
 

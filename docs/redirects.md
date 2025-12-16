@@ -129,15 +129,23 @@ redirectpatterns = [
 
 ## Testing redirects
 
-A suite of tests exists for redirects, which is intended as a reference of the redirects we expect to work on [www.mozilla.org](https://www.mozilla.org). This will become a base for implementing these redirects in the bedrock app and allow us to test them before release.
+A suite of tests exists for redirects, which is intended as a reference of the redirects we expect to work on the site. This will become a base for implementing these redirects in the app and allow us to test them before release.
 
 ### Installation
 
-First follow the `installation instructions for bedrock<install>`{.interpreted-text role="ref"}, which will guide you through installing pip and setting up a virtual environment for the tests. The additional requirements can then be installed by using the following commands:
+First follow the [installation instructions](/platform-docs/install/), which will guide you through installing pip and setting up a virtual environment for the tests. The additional requirements can then be installed by using the following commands:
 
-``` bash
-source venv/bin/activate
-```
+=== "Bedrock"
+
+    ``` bash
+    source venv/bin/activate bedrock
+    ```
+
+=== "Springfield"
+
+    ``` bash
+    source venv/bin/activate springfield
+    ```
 
 ``` bash
 pip install -r requirements/dev.txt
@@ -145,10 +153,21 @@ pip install -r requirements/dev.txt
 
 ### Running the tests
 
-If you wish to run the full set of tests, which requires a deployed instance of the site (e.g. [www.mozilla.org](https://www.mozilla.org)) you can set the `--base-url` command line option:
+Running the full set of tests requires a deployed instance of the site. Direct the tests to
+the site with the `--base-url` command line option:
 
-``` bash
-pytest --base-url https://www.mozilla.org tests/redirects/
-```
+
+=== "Bedrock"
+
+    ``` bash
+    pytest --base-url https://www.mozilla.org tests/redirects/
+    ```
+
+=== "Springfield"
+
+    ``` bash
+    pytest --base-url https://www.firefox.com tests/redirects/
+    ```
+
 
 By default, tests will run one at a time. If you intend to run the suite against a remote instance of the site (e.g. production) it will run a lot quicker by running the tests in parallel. To do this, you can add `-n auto` to the command line. Replace `auto` with an integer if you want to set the maximum number of concurrent processes.
