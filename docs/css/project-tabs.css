@@ -34,16 +34,25 @@
   border: .075rem solid currentColor;
   border-radius: 0 .2rem .2rem .2rem;
   padding: .5em;
+  transition: border-color 500ms ease-out;
 }
 
 label[data-project="bedrock"]:hover,
-.tabbed-set > input[id^='bedrock']:checked ~ .tabbed-labels label[data-project="bedrock"]{
+.tabbed-set > input[id^='bedrock']:checked ~ .tabbed-labels label[data-project="bedrock"] {
     background-color: var(--color-moz-green-light);
+}
+
+.tabbed-set > input[id^='bedrock']:checked ~ .tabbed-content {
+    border-color: var(--color-moz-green-mid);
 }
 
 label[data-project="springfield"]:hover,
 .tabbed-set > input[id^='springfield']:checked ~ .tabbed-labels label[data-project="springfield"] {
     background-color: var(--color-fx-purple-light);
+}
+
+.tabbed-set > input[id^='springfield']:checked ~ .tabbed-content {
+    border-color: var(--color-fx-purple-mid);
 }
 
 /**
