@@ -4,7 +4,9 @@ We have a redirects app in both Bedrock and Springfield that makes it easier to 
 
 ## Add a redirect
 
-_This section is written with Bedrock as an example, but applies - with renamed paths - to Springfield, too._
+!!! both "Mind the path"
+    This section is written with Bedrock as an example, but applies - with renamed paths - to Springfield, too.
+
 
 You should add redirects in the app that makes the most sense. For example, if the source URL is `/firefox/...` then the `bedrock.firefox` app is the best place. Redirects are added to a `redirects.py` file within the app. If the app you want to add redirects to doesn't have such a file, you can create one and it will automatically be discovered and used by bedrock as long as said app is in the `INSTALLED_APPS` setting (see `bedrock/mozorg/redirects.py` as an example).
 
