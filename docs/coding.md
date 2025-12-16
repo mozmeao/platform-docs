@@ -191,10 +191,11 @@ There may be extra logic in the app's `views.py` file to change the template bas
 !!! note
     Pages supporting the Firefox product are intended to move to springfield in the long run. That migration is only partially complete leaving things in a bit of a mess currently. (2025-12-15)
 
-#### Firefox release, 145 and up are in the Wagtail CMS for [some common languages](https://github.com/mozilla/bedrock/blob/e91c6f28e719a16672191600a362466c1eca26b9/bedrock/firefox/redirects.py#L81).
+#### Firefox release, 145 and up for [some common languages](https://github.com/mozilla/bedrock/blob/e91c6f28e719a16672191600a362466c1eca26b9/bedrock/firefox/redirects.py#L81).
 
 Version number is major version only.
 
+- Content is in the Wagtail CMS on springfield
 - Whatsnew URL: <https://www.firefox.com/en-US/whatsnew/145/> 
 - Template path: <https://github.com/mozmeao/springfield/blob/main/springfield/cms/templates/cms/whats_new_page.html>
 
@@ -205,7 +206,7 @@ Version number is digits only.
 - Whatsnew URL: <https://www.mozilla.org/en-US/firefox/144.0/whatsnew/>
 - Template path: <https://github.com/mozilla/bedrock/tree/main/bedrock/firefox/templates/firefox/whatsnew>
 
-_First run may no longer be in use for release._
+<!-- -->
 
 - Firstrun URL: <https://www.mozilla.org/en-US/firefox/144.0/firstrun/>
 - Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/firstrun/firstrun.html>
@@ -217,6 +218,8 @@ Version number is digits and **a1**.
 - Whatsnew URL: <https://www.mozilla.org/en-US/firefox/144.0a1/whatsnew/>
 - Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/nightly/whatsnew.html>
 
+<!-- -->
+
 - Firstrun URL: <https://www.mozilla.org/en-US/firefox/nightly/firstrun/>
 - Template path: <https://github.com/mozilla/bedrock/tree/main/bedrock/firefox/templates/firefox/nightly>
 
@@ -226,6 +229,8 @@ Version number is digits and **a2**.
 
 - Whatsnew URL: <https://www.mozilla.org/en-US/firefox/144.0a2/whatsnew/>
 - Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/developer/whatsnew.html>
+
+<!-- -->
 
 - Firstrun URL: <https://www.mozilla.org/en-US/firefox/144.0a2/firstrun/>
 - Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/developer/firstrun.html>
@@ -505,18 +510,17 @@ picture(
 
 This is a good question. The answer depends entirely on the image in question. A good rule of thumb is as follows:
 
--
+- Is the image a vector format (e.g. `.svg`)?
 
-    Is the image a vector format (e.g. `.svg`)?
+     -  If yes, then for most cases you can simply use `static()`.
 
-    :   -   If yes, then for most cases you can simply use `static()`.
+- Is the image a raster format (e.g. `.png` or `.jpg`)?
 
--
+    - Is the same image displayed on both large and small viewports? 
+    - Does the image need to scale as the browser resizes? 
+    - If yes to both, then use `resp_img()` with both `srcset` and `sizes`.
 
-    Is the image a raster format (e.g. `.png` or `.jpg`)?
-
-    :   -   Is the same image displayed on both large and small viewports? Does the image need to scale as the browser resizes? If yes to both, then use `resp_img()` with both `srcset` and `sizes`.
-        -   Is the image fixed in size (non-responsive)? Do you need to serve a high resolution version? If yes to both, then use `resp_img()` with just `srcset`.
+-   Is the image fixed in size (non-responsive)? Do you need to serve a high resolution version? If yes to both, then use `resp_img()` with just `srcset`.
 
 - Does the source image need to change depending on a media query (e.g serve a different image on both desktop and mobile)? If yes, then use `picture()` with `media` and `srcset`.
 

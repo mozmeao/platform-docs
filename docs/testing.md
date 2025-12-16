@@ -208,7 +208,7 @@ A list of all the Axe rules that are checked by the tests can be viewed in the [
 !!! note
     The majority of Selenium tests have now been migrated to Playwright. We still use Selenium for a small suite of IE focused smoke tests, but most new integration tests should be written using Playwright.
 
-Before running the Selenium tests, please make sure to follow the `installation docs<install>`{.interpreted-text role="ref"}, including the database sync that is needed to pull in external data such as event/blog feeds etc. These are required for some of the tests to pass.
+Before running the Selenium tests, please make sure to follow the [installation docs](/platform-docs/install/), including the database sync that is needed to pull in external data such as event/blog feeds etc. These are required for some of the tests to pass.
 
 To run the full Selenium integration test suite against your local instance:
 

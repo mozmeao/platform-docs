@@ -98,7 +98,7 @@ The most notable thing here is that Internet Explorer 11 does not need to be sup
 
 On IE browsers that support [conditional comments](https://wikipedia.org/wiki/Conditional_comment) (IE9 and below), basic support consists of no page-specific CSS or JS. Instead, we deliver well formed semantic HTML, and a universal CSS stylesheet that gets applied to all pages. We do not serve these older browsers any JS, with the exception of the following scripts:
 
-- Google Analytics / `GTM (Google Tag Manager)`{.interpreted-text role="abbr"} snippet (IE9).
+- Google Analytics / GTM (Google Tag Manager) snippet (IE9).
 - HTML5shiv for parsing modern HTML semantic elements.
 - Stub Attribution script (IE8 / IE9).
 
@@ -165,3 +165,5 @@ Some pages of the website provide critical functionality to older browsers. In p
 
 !!! note
     An enhanced experience can be defined as a step above basic support. This can be achieved by delivering extra page-specific CSS to legacy browsers, or allowing them to degrade gracefully. It does not mean everything needs to [look the same in every browser](https://www.peachpit.com/articles/article.aspx?p=1394622).
+
+*[GTM]: Google Tag Manager 
