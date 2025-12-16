@@ -62,8 +62,10 @@ You can check the currently deployed git commit by checking /revision.txt on any
 
 ## Tests in the lifecycle of a change
 
+!!! both "Mind the path"
+    This section is written with Bedrock as an example, but applies - with renamed paths - to Springfield, too.
+
 Below is an overview of the tests during the lifecycle of a change.
-This section is written with Bedrock as an example, but applies - with renamed paths - to Springfield, too.
 
 ### Local development
 
@@ -102,7 +104,9 @@ Whenever a change is pushed to the stage branch, a production docker image is bu
 
 ### Push to prod branch (tagged) {: #tagged-commit }
 
-*This section is written with Bedrock as an example, but applies - with renamed paths - to Springfield, too.*
+!!! both "Mind the path"
+    This section is written with Bedrock as an example, but applies - with renamed paths - to Springfield, too.
+
 
 When a tagged commit is pushed to the `prod` branch, a production container image (private, see above) is built, and a set of public images is also built and pushed to [Docker Hub](https://hub.docker.com/r/mozmeao/bedrock/tags) if needed (usually this will have already happened as a result of a push to the `main` or `stage` branch). The production image is deployed to each [production](https://www.mozilla.org) deployment.
 

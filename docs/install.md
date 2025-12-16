@@ -1,8 +1,3 @@
-# Installing Bedrock {: #install }
-
-!!! both "Mind the path"
-    This section is written with Bedrock as an example, but applies - with renamed paths - to Springfield, too.
-
 ## Installation Methods
 
 There are two primary methods of installing Bedrock and Springfield: Docker and Local. Whichever you choose, you'll start by getting the source.
@@ -11,35 +6,50 @@ The codebases live at <https://github.com/mozilla/bedrock/> and <https://github.
 
 Only Mozilla staff have write access to that repository; community contributors do not, so should instead make a fork of the repo to work from. You will still be able to make pull requests from your fork into `mozilla/bedrock` and `mozmeao/springfield`.
 
-!!! note
-    The rest of this page talks about installing Bedrock, specifically, but the operations apply the same to Springfield.
-
 Get the source code:
 
-``` bash
-# If you're a Mozilla staff member with write access to the repo
-$ git clone https://github.com/mozilla/bedrock.git
+=== "Bedrock"
+    ``` bash
+    # If you're a Mozilla staff member with write access to the repo
+    $ git clone https://github.com/mozilla/bedrock.git
 
-# Or if you lack write access to the repo
-$ git clone https://github.com/YOUR_GITHUB_USERNAME_HERE/bedrock.git
-```
+    # Or if you lack write access to the repo
+    $ git clone https://github.com/YOUR_GITHUB_USERNAME_HERE/bedrock.git
+    ```
+
+=== "Springfield"
+    ``` bash
+    # If you're a Mozilla staff member with write access to the repo
+    $ git clone https://github.com/mozmeao/springfield.git
+
+    # Or if you lack write access to the repo
+    $ git clone https://github.com/YOUR_GITHUB_USERNAME_HERE/springfield.git
+    ```
 
 Once the codebase is cloned, switch into it:
 
-``` bash
-cd bedrock
-```
+=== "Bedrock"
+
+    ``` bash
+    cd bedrock
+    ```
+
+=== "Springfield"
+
+    ``` bash
+    cd springfield
+    ```
 
 After these basic steps you can choose your install method below.
 
 Docker is the easiest and recommended way, but local installation directly onto your machine is also possible and may be preferred, particularly if you're doing frontend work, which is currently slower when using Docker.
 
 !!! note
-    You should also install our git pre-commit hooks. These are checks that automatically run before a git commit is allowed. You don't have to do this in order to get bedrock running locally, but it's recommended to do before you start making contributions.
+    You should also install our git pre-commit hooks. These are checks that automatically run before a git commit is allowed. You don't have to do this in order to get the site running locally, but it's recommended to do before you start making contributions.
 
-    The Bedrock project uses the [pre-commit](https://pre-commit.com/) framework that makes managing git hooks easier across all contributors by ensuring everyone has the same ones set up.
+    The projects uses the [pre-commit](https://pre-commit.com/) framework that makes managing git hooks easier across all contributors by ensuring everyone has the same ones set up.
 
-    Install the framework by running `pip install pre-commit`, then - ensuring you are in your `bedrock` directory -run `pre-commit install` in your terminal, followed by `pre-commit install-hooks`. This will set up the hooks that are specified in `bedrock/.precommit.yaml`
+    Install the framework by running `pip install pre-commit`, then - ensuring you are in your project directory -run `pre-commit install` in your terminal, followed by `pre-commit install-hooks`. This will set up the hooks that are specified in `.precommit.yaml`
 
     After that setup, whenever you try to make a commit, the 'hooks' will check/lint your Python, JS, and CSS files beforehand and report on problems that need to be fixed before the commit can be made. This will save you time waiting for the tests to run in our CI before noticing a linting error.
 
@@ -48,7 +58,7 @@ Docker is the easiest and recommended way, but local installation directly onto 
 !!! note
     This method assumes you have [Docker installed for your platform](https://www.docker.com/). If not please do that now or skip to the `Local Installation` section.
 
-This is the simplest way to get started developing for bedrock. If you're on Linux or Mac (and possibly Windows 10 with the Linux subsystem) you can run a script that will pull our production and development docker images and start them:
+This is the simplest way to get started developing. If you're on Linux or Mac (and possibly Windows 10 with the Linux subsystem) you can run a script that will pull our production and development docker images and start them:
 
     make clean run
 
@@ -100,7 +110,7 @@ If you make a change to `media/static-bundles.json`, you'll need to restart Dock
 
 These instructions assume you have Python, pip, and NodeJS installed. If you don't have ``pip`` installed (you probably do) you can install it with the instructions in [the pip docs](https://pip.pypa.io/en/stable/installing/).
 
-Bedrock currently uses Python 3.13.x. The recommended way to install and use that version is with [pyenv](https://github.com/pyenv/pyenv) and to create a virtualenv using [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv) that will isolate Bedrock's dependencies from other things installed on the system.
+These sites currently ues Python 3.13.x. The recommended way to install and use that version is with [pyenv](https://github.com/pyenv/pyenv) and to create a virtualenv using [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv) that will isolate the dependencies from other things installed on the system.
 
 The following assumes you are on MacOS, using `zsh` as your shell and [Homebrew](https://brew.sh/) as your package manager. If you are not, there are installation instructions for a variety of platforms and shells in the READMEs for the two pyenv projects.
 
@@ -137,7 +147,7 @@ The following assumes you are on MacOS, using `zsh` as your shell and [Homebrew]
         $ python --version
         Python 3.13.3
 
-**Install a plugin to manage virtualenvs via pyenv and create a virtualenv for Bedrock's dependencies**
+**Install a plugin to manage virtualenvs via pyenv and create a virtualenv for dependencies**
 
 1. Install `pyenv-virtualenv` :
 
@@ -151,19 +161,40 @@ The following assumes you are on MacOS, using `zsh` as your shell and [Homebrew]
 
         zsh -l
 
-4.  Make a virtualenv we can use - in this example we'll call it `bedrock` but use whatever you want :
+4.  Make a virtualenv we can use - the docs assume you call it `bedrock` or `springfield` but you can call it whatever you want :
 
+    === "Bedrock"
+        ```
         pyenv virtualenv 3.13.3 bedrock
+        ```
+    === "Springfield"
+        ```
+        pyenv virtualenv 3.13.3 springfield
+        ```
 
 **Use the virtualenv**
 
 1. Switch to the virtualenv - this is the command you will use any time you need this virtualenv :
 
+    === "Bedrock"
+        ```
         pyenv activate bedrock
+        ```
+    === "Springfield"
+        ```
+        pyenv activate springfield
+        ```
 
-2\. If you'd like to auto activate the virtualenv when you cd into the bedrock directory, and deactivate it when you exit the directory, you can do so with:
+2. Tip! If you'd like to auto activate the virtualenv when you cd into the directory, and deactivate it when you exit the directory, you can do so with :
 
-    echo 'bedrock' > .python-version
+    === "Bedrock"
+        ```
+        echo 'bedrock' > .python-version
+        ```
+    === "Springfield"
+        ```
+        echo 'springfield' > .python-version
+        ```
 
 3.  Securely upgrade pip :
 
@@ -188,7 +219,7 @@ The following assumes you are on MacOS, using `zsh` as your shell and [Homebrew]
 
         python3-dev libxslt-dev
 
-**Download a fresh copy of the sqlite database that Bedrock uses locally** This contains product-details, security-advisories, credits, release notes, localizations, legal-docs etc. We also download the latest translations of site content in many languages:
+**Download a fresh copy of the sqlite database** This contains product-details, security-advisories, credits, release notes, localizations, legal-docs etc. We also download the latest translations of site content in many languages:
 
     bin/bootstrap.sh
 
@@ -197,7 +228,7 @@ The following assumes you are on MacOS, using `zsh` as your shell and [Homebrew]
     npm install
 
 !!! note
-    Bedrock uses npm to ensure that Node.js packages that get installed are the exact ones we meant (similar to pip hash checking mode for python). Refer to the [npm documentation](https://docs.npmjs.com/) for adding or upgrading Node.js dependencies.
+    We ue npm to ensure that Node.js packages that get installed are the exact ones we meant (similar to pip hash checking mode for python). Refer to the [npm documentation](https://docs.npmjs.com/) for adding or upgrading Node.js dependencies.
 
 !!! note
     As a convenience, there is a `make preflight` command which calls some of the commands above to bring your installed Python and NPM dependencies up to date and also fetches the latest DB containing the latest site content. This is a good thing to run after pulling in latest changes from the `main` branch.
@@ -220,9 +251,9 @@ If you don't have Make you can simply run `docker compose run test`.
 
 If you'd like to run only a subset of the tests or only one of the test commands you can accomplish that with a command like the following:
 
-    docker compose run test pytest bedrock/firefox
+    docker compose run test pytest bedrock/legal
 
-This example will run only the unit tests for the `firefox` app in bedrock. You can substitute `pytest bedrock/firefox` with most any shell command you'd like and it will run in the Docker container and show you the output. You can also just run `bash` to get an interactive shell in the container which you can then use to run any commands you'd like and inspect the file system:
+This example will run only the unit tests for the `legal` app in bedrock. You can substitute `pytest bedrock/legal` with most any shell command you'd like and it will run in the Docker container and show you the output. You can also just run `bash` to get an interactive shell in the container which you can then use to run any commands you'd like and inspect the file system:
 
     docker compose run test bash
 
@@ -230,16 +261,30 @@ This example will run only the unit tests for the `firefox` app in bedrock. You 
 
 From the local install instructions above you should still have your virtualenv activated, so running the tests is as simple as:
 
+=== "Bedrock"
+    ```
     pytest lib bedrock
+    ```
+=== "Springfield"
+    ```
+    pytest lib springfield
+    ```
 
 To test a single app, specify the app by name in the command above. e.g.:
 
-    pytest bedrock/firefox
+=== "Bedrock"
+    ```
+    pytest bedrock/legal
+    ```
+=== "Springfield"
+    ```
+    pytest springfield/firefox
+    ```
 
 ## Run a local server
 
 !!! info
-    Regardless of whether you run Bedrock via Docker or directly on your machine, the URL of the site is `http://localhost:8000` - ``not`` `8080`
+    Regardless of whether you run the site via Docker or directly on your machine, the URL of the site is `http://localhost:8000` - ``not`` `8080`
 
 ### Docker
 
@@ -249,13 +294,13 @@ You can simply run the `make run` script mentioned above, or use docker compose 
 
 ### Local
 
-To make the server run, make sure your virtualenv is activated with `pyenv activate bedrock`, and then run the server:
+To make the server run, make sure your virtualenv is activated, and then run the server:
 
     npm start
 
 Wait for the server to start up and then browse to <http://localhost:8000>
 
-Congratulations, you should now have your own copy of [www.mozilla.org](https://www.mozilla.org) running locally!
+Congratulations, you should now have your own copy running locally! 🎉
 
 ### Prod Mode
 
@@ -267,35 +312,12 @@ First you should ensure that your `.env` file is setup the way you need. This us
 make run-prod
 ```
 
-This will run the latest bedrock image using your local bedrock files and templates, but not your local static assets. If you need an updated image just run `make pull`.
+This will run the latest image using your local files and templates, but not your local static assets. If you need an updated image just run `make pull`.
 
 If you need to include the changes you've made to your local static files (images, css, js, etc.) then you have to build the image first:
 
 ``` bash
 make build-prod run-prod
-```
-
-### Documentation
-
-This is a great place for coders and non-coders alike to contribute!
-
-If you see a typo or similarly small change, you can use the "Edit in GitHub" link to propose a fix through GitHub. Note: you will not see your change directly committed to the main branch. You will commit the change to a separate branch so it can be reviewed by a staff member before merging to main.
-
-If you want to make a bigger change or [find a Documentation issue on the repo](https://github.com/mozilla/bedrock/labels/Documentation), it is best to edit and preview locally before submitting a pull request. Run the commands from your root folder. They will build documentation and start a live server to auto-update any changes you make to a documentation file.
-
-#### Docker
-
-``` bash
-make docs
-```
-
-#### Local
-
-``` bash
-# docs-setup installs the docs requirements
-# only need to run this the first time
-make docs-setup
-make livedocs
 ```
 
 ## Localization
@@ -308,7 +330,7 @@ You can read more details about how to localize content [here](l10n.md).
 
 ## Feature Flipping (aka Switches, or waffle switches)
 
-Switches are managed using django-waffle and are stored in the database. These switches control behavior and/or features of select pages on Bedrock, and their state (active or inactive) is based on an `active` boolean field in the database.
+Switches are managed using django-waffle and are stored in the database. These switches control behavior and/or features of select pages, and their state (active or inactive) is based on an `active` boolean field in the database.
 
 ### Defining and Using Switches
 
@@ -332,7 +354,7 @@ To implement a switch via data migration, create an empty migration file:
 ./manage.py makemigrations base --empty
 ```
 
-Then add the following code to the generated migration file, which can be found in the `bedrock/base/migrations` directory:
+Then add the following code to the generated migration file, which can be found in the `{project}/base/migrations` directory:
 
 ``` python
 from django.db import migrations
@@ -406,14 +428,24 @@ You may also use switches in Python code (though locale support is unavailable i
 !!! note
     **Avoid using switch() outside the request/response cycle** (e.g., during module-level imports or in a urls.py file), as the switch's state is managed in the database and can be changed via the admin interface. Using it outside the request cycle would prevent the switch value from reflecting real-time updates.
 
-``` python
-from bedrock.base.waffle import switch
+=== "Bedrock"
+    ``` python
+    from bedrock.base.waffle import switch
 
 
-def home_view(request):
-    title = "Staging Home" if switch("staging-site") else "Prod Home"
-    ...
-```
+    def home_view(request):
+        title = "Staging Home" if switch("staging-site") else "Prod Home"
+        ...
+    ```
+=== "Springfield"
+    ``` python
+    from springfield.base.waffle import switch
+
+
+    def home_view(request):
+        title = "Staging Home" if switch("staging-site") else "Prod Home"
+        ...
+    ```
 
 ### Testing
 
