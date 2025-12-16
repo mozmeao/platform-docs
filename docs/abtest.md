@@ -2,8 +2,6 @@
 render_macros: true
 ---
 
-# A/B Testing {: #ab_testing }
-
 ## Nimbus experiments
 
 Nimbus (Experimenter), is Mozilla's first-party experimentation platform.

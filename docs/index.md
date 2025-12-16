@@ -1,5 +1,3 @@
-# Welcome to the documentation for Bedrock and Springfield
-
 `bedrock` is the project behind [www.mozilla.org](https://www.mozilla.org).
 
 `springfield` is the sibling project behind [www.firefox.com](https://www.firefox.com).

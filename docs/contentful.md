@@ -1,5 +1,3 @@
-# Contentful CMS Integration (Deprecated) {: #contentful }
-
 !!! important
     We are no longer syncing content from Contentful, but we still hold that content frozen in our database and use it to render pages.
 

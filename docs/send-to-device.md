@@ -2,8 +2,6 @@
 render_macros: true
 ---
 
-# Send to Device Widget {: #sendtodevice }
-
 The *Send to Device* widget is a single form which facilitates the sending of a download link from a desktop browser to a mobile device. The form allows sending via email.
 
 !!! important

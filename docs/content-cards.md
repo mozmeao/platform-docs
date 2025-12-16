@@ -2,8 +2,6 @@
 render_macros: true
 ---
 
-# Using External Content Cards Data {: #content-cards }
-
 The [www-admin repo](https://www-admin.readthedocs.io/) contains data files and images that are synced to bedrock and available for use on any page. The docs for updating said data is available via that repo, but this page will explain how to use the cards data once it's in the bedrock database.
 
 ## Add to a View

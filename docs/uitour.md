@@ -1,5 +1,3 @@
-# Mozilla.UITour {: #ui-tour }
-
 ## Introduction
 
 `Mozilla.UITour` is a JS library that exposes an event-based Web API for communicating with the Firefox browser chrome. It can be used for tasks such as opening menu panels, highlighting buttons, or querying Mozilla account signed-in state. It is supported in Firefox 29 onward, but some API calls are only supported in later versions.

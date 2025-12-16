@@ -1,5 +1,3 @@
-# Private repos
-
 The vast majority of the time, all the work done on Bedrock and Springfield is in the open, in our public repos at [https://github.com/mozilla/bedrock/](https://github.com/mozilla/bedrock/) and [https://github.com/mozmeao/springfield/](https://github.com/mozmeao/springfield/).
 
 However, there are occasions where we have to work on something sensitive (e.g. content pending legal approval, or some other work that's under embargo) for a short period of time. To achieve this, we have "sibling" repos that are private.

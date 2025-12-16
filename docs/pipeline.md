@@ -1,5 +1,3 @@
-# Continuous Integration & Deployment {: #pipeline }
-
 Bedrock and Springfield run a series of automated tests as part of continuous integration workflow and deployment pipeline. You can learn more about each of the individual test suites by reading their respective pieces of documentation:
 
 - Python unit tests (see [Run the tests](install.md#run-python-tests)).

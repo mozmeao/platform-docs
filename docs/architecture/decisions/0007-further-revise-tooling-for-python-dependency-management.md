@@ -1,5 +1,3 @@
-# 7. Further revise tooling for Python dependency management
-
 Date: 2022-03-02
 
 ## Status

@@ -1,5 +1,3 @@
-# Firefox desktop attribution {: #firefox_desktop_attribution }
-
 Firefox Desktop Attribution (often referred to as Stub Attribution) is a system that enables Mozilla to link website attributable referral data (including Google Analytics data) to a user's Firefox profile. When a website visitor lands on www.mozilla.org and clicks to download Firefox, we pass attribution data about their visit to the Firefox installer for inclusion in [Telemetry](https://telemetry.mozilla.org/). This is to enable Mozilla to better understand how changes to our website and different marketing campaigns can affect installation rates, as well as overall product retention. The data also gives us an insight into how many installations originate from www.mozilla.org, as opposed to elsewhere on the internet.
 
 ## Scope and requirements

@@ -1,5 +1,3 @@
-# Firefox mobile attribution {: #firefox_mobile_attribution }
-
 For Firefox mobile referrals we use native app store web links with additional campaign parameters to help measure download to install rates.
 
 ## App store url helpers

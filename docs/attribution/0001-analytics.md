@@ -2,8 +2,6 @@
 render_macros: true
 ---
 
-# Website Analytics {: #analytics }
-
 ## Google Analytics
 
 We use Google Analytics (GA) to track how our website is used.

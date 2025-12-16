@@ -103,37 +103,37 @@ nav:
   - Browser Support: browser-support.md
   - How to Contribute: contribute.md
   - Continuous Integration & Deployment: pipeline.md
-  - Front-end testing: testing.md
+  - Front-end Testing: testing.md
   - Demo servers: demos.md
   - Private work: private-repos.md
   - Databases: databases.md
   - Task Queue: task-queue.md
-  - Managing redirects: redirects.md
+  - Managing Redirects: redirects.md
   - Newsletters: newsletters.md
   - Legal Docs: legal-docs.md
   - Content Management System: cms.md
   - Sitemaps: sitemap.md
   - Banners: banners.md
   - Mozilla.UITour: uitour.md
-  - Send to Device widget: send-to-device.md
+  - Send to Device Widget: send-to-device.md
 
-  - Mozilla account helpers: mozilla-accounts.md
+  - Mozilla Account Helpers: mozilla-accounts.md
   - A/B Testing: abtest.md
   - Mozilla VPN Subscriptions: vpn-subscriptions.md
   - Firefox Downloads:
-    - firefox-downloads/download-buttons.md
-    - firefox-downloads/desktop-download-support.md
-    - firefox-downloads/desktop-download-as-default.md
-    - firefox-downloads/desktop-download-pages.md
+    - Download Buttons: firefox-downloads/download-buttons.md
+    - Download Support by Platform: firefox-downloads/desktop-download-support.md
+    - Download as Default: firefox-downloads/desktop-download-as-default.md
+    - Desktop Download Pages: firefox-downloads/desktop-download-pages.md
   - Attribution:
-    - attribution/index.md
-    - Mozorg Analytics: attribution/0001-analytics.md
+    - Attribution Overview: attribution/index.md
+    - Website Analytics: attribution/0001-analytics.md
     - Firefox Desktop attribution: attribution/0002-firefox-desktop.md
     - Firefox Mobile attribution: attribution/0003-firefox-mobile.md
     - Mozilla accounts attribution: attribution/0004-mozilla-accounts.md
     - Managing Data Privacy and Consent: attribution/0005-consent-management.md
   - Architectural Decision Records:
-    - architecture/decisions/index.md
+    - Architectural Decision Records: architecture/decisions/index.md
     - 1. Record architecture decisions: architecture/decisions/0001-record-architecture-decisions.md
     - 2. Move CI/CD Pipelines to Gitlab: architecture/decisions/0002-move-ci-cd-pipelines-to-gitlab.md
     - 3. Use Cloudflare Workers and Convert for multi-variant testing: architecture/decisions/0003-use-cloudflare-workers-and-convert-for-multi-variant-testing.md

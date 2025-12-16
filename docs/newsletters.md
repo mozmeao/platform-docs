@@ -2,8 +2,6 @@
 render_macros: true
 ---
 
-# Newsletters
-
 Bedrock includes support for signing up for and managing subscriptions and preferences for Mozilla newsletters. 
 
 In Bedrock, the site-wide footer form includes sign-up for "Mozilla Foundation" newsletter. Other pages have more specific sign up forms, such as the contribute page, or Mozilla VPN wait-list page.

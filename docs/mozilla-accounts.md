@@ -2,8 +2,6 @@
 render_macros: true
 ---
 
-# Mozilla accounts helpers
-
 !!! note
     Since a rebranding in October 2023, we now refer to "Mozilla accounts" in our web pages instead of "Firefox accounts". This rebranding is so far superficial, and sign up flows still go to `accounts.firefox.com`. Because of this, our internal code and helpers still use `FxA` or `fxa` as a common abbreviation. However the language used around them should now be "Mozilla accounts" going forward.
 

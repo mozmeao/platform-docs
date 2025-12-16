@@ -1,5 +1,3 @@
-# Front-end testing {: #testing }
-
 Bedrock and Springfield run several different types of front-end tests to ensure that the site is working correctly and that new changes don't break existing functionality.
 
 - [Jasmine](https://jasmine.github.io/index.html) unit/behavioral tests are used to test JavaScript code that runs in the browser. These tests are run against both Firefox and Chrome browsers via a GitHub action, which is triggered against all pull requests and commits to the main branch.

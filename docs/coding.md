@@ -2,8 +2,6 @@
 render_macros: true
 ---
 
-# Developing on Bedrock or Springfield {: #coding }
-
 ## Managing Dependencies
 
 For Python we use [`uv`](https://github.com/astral-sh/uv) in `pip` mode to manage dependencies expressed in our [requirements files](https://github.com/mozilla/bedrock/tree/main/requirements). Requirements-file compilation is wrapped up in Makefile commands, to ensure we use it consistently.

@@ -1,5 +1,3 @@
-# Sitemaps {: #sitemap }
-
 Bedrock and Springfield both serve a root sitemap at `/all-urls.xml`, which links to localised sitemaps for each supported locale.
 
 The sitemap data is (re)generated on a schedule by the command `manage.py update_sitemaps_data` which is run as part of

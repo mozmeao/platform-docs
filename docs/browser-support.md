@@ -1,5 +1,3 @@
-# Browser Support {: #browser_support }
-
 We seek to provide usable experiences of our most important web content to all user agents. But newer browsers are far more capable than older browsers, and the capabilities they provide are valuable to developers and site visitors. We **will** take advantage of modern browser capabilities. Older browsers **will** have a different experience of the website than newer browsers. We will strike this balance by generally adhering to the core principles of [Progressive Enhancement](https://en.wikipedia.org/wiki/Progressive_enhancement):
 
 - Basic content should be accessible to all web browsers

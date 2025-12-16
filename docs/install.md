@@ -1,5 +1,3 @@
-# Installing Bedrock {: #install }
-
 !!! both "Mind the path"
     This section is written with Bedrock as an example, but applies - with renamed paths - to Springfield, too.
 

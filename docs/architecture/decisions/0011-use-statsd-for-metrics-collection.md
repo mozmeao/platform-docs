@@ -1,5 +1,3 @@
-# 11. Use StatsD for metrics collection
-
 Date: 2023-05-19
 
 ## Status

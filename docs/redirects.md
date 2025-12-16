@@ -1,5 +1,3 @@
-# Managing Redirects {: #redirects }
-
 We have a redirects app in both Bedrock and Springfield that makes it easier to add and manage redirects. Due to the size, scope, and history of mozilla.org we have quite a lot of redirects. If you need to add or manage redirects read on.
 
 ## Add a redirect

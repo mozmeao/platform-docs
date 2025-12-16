@@ -2,8 +2,6 @@
 render_macros: true
 ---
 
-# Mozilla VPN Subscriptions {: #vpn_subscriptions }
-
 The [Mozilla VPN landing page](https://www.mozilla.org/en-US/products/vpn/) displays both pricing and currency information that is dependant on someone's physical location in the world (using geo-location). If someone is in the United States, they should see pricing in \$USD, and if someone is in Germany they should see pricing in Euros. The page is also available in multiple languages, which can be viewed independently of someone's physical location. So someone who lives in Switzerland, but is viewing the page in German, should still see pricing and currency displayed in Swiss Francs (CHF).
 
 Additionally, it is important that we render location specific subscription links, as purchasing requires a credit card that is registered to each country where we have a plan available. We are also legally obligated to prevent both purchasing and/or downloading of Mozilla VPN in certain countries. In countries where VPN is not yet available, we also rely on geo-location to hide subscription links, and instead to display a *call to action* to encourage prospective customers to sign up to the [VPN wait list](https://www.mozilla.org/en-US/products/vpn/invite/).

@@ -1,5 +1,3 @@
-# Managing Data Privacy and Consent {: #consent_management }
-
 Please see the internal [Confluence page](https://mozilla-hub.atlassian.net/wiki/spaces/EN/pages/538050566/Cookie+Banner+Implementation+On+Mozilla.org) on Mozilla's overall approach to handling data privacy and cookie consent management on www.mozilla.org. This page will include detailed legal guidance and FAQs on the permitted use of tracking technologies.
 
 Here we will cover bedrock's technical approach to implementing data consent per that legal guidance, whilst also balancing UX considerations and input from other teams.

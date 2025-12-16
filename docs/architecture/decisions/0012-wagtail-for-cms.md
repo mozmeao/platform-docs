@@ -1,5 +1,3 @@
-# 12. Use Wagtail as Bedrock's CMS
-
 Date: 2024-04-15
 
 ## Status

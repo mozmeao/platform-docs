@@ -1,5 +1,3 @@
-# Banners
-
 ## Creating page banners
 
 Any page can incorporate a top of page banner as a temporary feature. An example of such a banner is the MOFO fundraising banner that gets shown on the home page several times a year.
