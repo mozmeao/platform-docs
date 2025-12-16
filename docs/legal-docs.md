@@ -2,7 +2,8 @@
 render_macros: true
 ---
 
-# Legal Docs {: #legaldocs }
+!!! bedrock "Bedrock Only"
+    Legal docs are specific to www.mozilla.org
 
 Privacy notices and their applicable translations are markdown files managed by the legal team in the [legal-docs](https://github.com/mozilla/legal-docs) repository.
 
