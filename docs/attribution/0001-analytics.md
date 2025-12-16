@@ -49,7 +49,7 @@ Alternatively, visitors can also opt-out of GA by visiting the [cookie settings 
 
 #### Enhanced Event Measurement
 
-Pageviews, scrolls, video events, and outbound link clicks are being collected using GA4's [enhanced event measurement](https://support.google.com/analytics/answer/9216061).
+Pageviews, scrolls, video events, and outbound link clicks are being collected using GA's [enhanced event measurement](https://support.google.com/analytics/answer/9216061).
 
 Some form submissions are also being collected but newsletter signups are not [(see bug #13348)](https://github.com/mozilla/bedrock/issues/13348) . They are instead being tracked with the `newsletter_subscribe` event.
 
@@ -137,7 +137,7 @@ Events that bedrock will send to GTM include:
 
 ##### Begin Checkout
 
-We are using GA4's recommended eCommerce event [begin_checkout](https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#begin_checkout) for VPN referrals to the FxA Subscription Platform with purchase intent. This event can accept values for other products but we are not currently using it for anything other than VPN.
+We are using GA's recommended eCommerce event [begin_checkout](https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#begin_checkout) for VPN referrals to the FxA Subscription Platform with purchase intent. This event can accept values for other products but we are not currently using it for anything other than VPN.
 
 !!! note
     Any link to Mozilla accounts should also be using [mozilla accounts attribution](/platform-docs/attribution/0004-mozilla-accounts/)
@@ -271,7 +271,7 @@ TrackProductDownload.sendEvent(customEventObject);
 ```
 
 !!! note
-    Calling TrackProductDownload will also fire an event named ``product_download`` so two events are being logged for each product download. This is because prior to Feb 2024 we only used one unified product download event and did not have the individual product download events yet. The split events are considered easier to deal with for reporting purposes inside GA4. Some data science dashboards use ``product_download`` because it has existed longer. Ideally, we will remove it some day.
+    Calling TrackProductDownload will also fire an event named ``product_download`` so two events are being logged for each product download. This is because prior to Feb 2024 we only used one unified product download event and did not have the individual product download events yet. The split events are considered easier to deal with for reporting purposes inside GA. Some data science dashboards use ``product_download`` because it has existed longer. Ideally, we will remove it some day.
 
 
 ##### Send to Device
@@ -360,7 +360,7 @@ window.dataLayer.push({
 
 ##### Dimension Set
 
-When using GA4 through GTM there isn't a way to set user scoped custom dimensions without an accompanying event. The custom event we use for this is ``dimension_set``.
+When using GA through GTM there isn't a way to set user scoped custom dimensions without an accompanying event. The custom event we use for this is ``dimension_set``.
 
 ``` javascript
 window.dataLayer.push({
@@ -369,7 +369,7 @@ window.dataLayer.push({
 });
 ```
 
-User scoped custom dimensions must be configured in GA4. The list of supported custom dimensions is:
+User scoped custom dimensions must be configured in GA. The list of supported custom dimensions is:
 
 -   ``firefox_is_default`` (boolean)
 -   ``firefox_is_signed_in`` (boolean)
@@ -380,7 +380,7 @@ In addition to GA, Bedrock also runs a parallel web analytics implementation usi
 
 One advantage to Glean is that it is a first-party solution, meaning that we have full control over the data we collect and how it is used. It is also less likely to be blocked by ad blockers or privacy tools.
 
-Using Glean\'s standardized schema for data collection, we can also take advantage of automated dashboard creation in Looker (see below), which makes it easier to query data than some other tools such as GA4\'s default dashboard.
+Using Glean\'s standardized schema for data collection, we can also take advantage of automated dashboard creation in Looker (see below), which makes it easier to query data than some other tools such as GA\'s default dashboard.
 
 ### Where can I query Glean data?
 
