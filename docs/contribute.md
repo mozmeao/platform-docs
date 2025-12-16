@@ -1,6 +1,6 @@
 # How to contribute {: #contribute }
 
-Before diving into code it might be worth reading through the `Developing on Bedrock<coding>`{.interpreted-text role="ref"} documentation, which contains useful information and links to our coding guidelines for Python, Django, JavaScript and CSS.
+Before diving into code it might be worth reading through the [Developing on Bedrock or Springfield](/platform-docs/coding/) documentation, which contains useful information and links to our coding guidelines for Python, Django, JavaScript and CSS.
 
 ## Git workflow
 

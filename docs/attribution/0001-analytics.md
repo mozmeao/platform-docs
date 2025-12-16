@@ -140,7 +140,7 @@ Events that bedrock will send to GTM include:
 We are using GA4's recommended eCommerce event [begin_checkout](https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#begin_checkout) for VPN referrals to the FxA Subscription Platform with purchase intent. This event can accept values for other products but we are not currently using it for anything other than VPN.
 
 !!! note
-    Any link to Mozilla accounts should also be using `mozilla accounts attribution<mozilla-accounts-attribution>`{.interpreted-text role="ref"}
+    Any link to Mozilla accounts should also be using [mozilla accounts attribution](/platform-docs/attribution/0004-mozilla-accounts/)
 
 
 `datalayer-begincheckout.es6.js` contains generic functions that can be called on to push the appropriate information to the dataLayer. The script is expecting the following values:

@@ -127,4 +127,7 @@ When ``init()`` is called, flow metrics will automatically be added to add accou
 
 ## Google Analytics guidelines
 
-For `GTM (Google Tag Manager)`{.interpreted-text role="abbr"} `datalayer` attribute values in Mozilla account links, please use the `analytics<analytics>`{.interpreted-text role="ref"} documentation.
+For GTM `datalayer` attribute values in Mozilla account links, please use the [analytics documentation](/platform-docs/attribution/0001-analytics/).
+
+
+*[GTM]: Google Tag Manager 

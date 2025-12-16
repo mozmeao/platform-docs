@@ -70,7 +70,7 @@ The majority of config changes need to happen in `bedrock/settings/base.py`:
     }
     ```
 
-    See the *Begin Checkout* section of the `analytics docs<analytics>`{.interpreted-text role="ref"} for more a detailed description of what should be in the analytics objects.
+    See the *Begin Checkout* section of the [analytics docs](/platform-docs/attribution/0001-analytics/) for more a detailed description of what should be in the analytics objects.
 
 2.  Map each new country code to one or more applicable pricing plans in `VPN_VARIABLE_PRICING`.
 
