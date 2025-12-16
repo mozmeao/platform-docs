@@ -7,51 +7,53 @@ Bedrock and Springfield run a series of automated tests as part of continuous in
 - Redirect tests (see [Testing redirects](redirects.md#testing-redirects)).
 - Functional tests (see [Front-end testing](testing.md)).
 
-## Deployed site URLs for Bedrock
+**Deployed site URLs:**
 
-### Dev
+=== "Bedrock"
 
-- *Mozorg URL:* <https://www-dev.allizom.org/>
-- *Bedrock locales:* dev repo
-- *Bedrock Git branch:* main, deployed on git push
-- *Firefox download URL:* <https://bouncer-bouncer.stage.mozaws.net/>
+    ### Dev
 
-### Staging
+    - *Mozorg URL:* <https://www-dev.allizom.org/>
+    - *Bedrock locales:* dev repo
+    - *Bedrock Git branch:* main, deployed on git push
+    - *Firefox download URL:* <https://bouncer-bouncer.stage.mozaws.net/>
 
-- *Mozorg URL:* <https://www.allizom.org/>
-- *Bedrock locales:* prod repo
-- *Bedrock Git branch:* stage, deployed on git push
-- *Firefox download URL:* <https://download.mozilla.org/>
+    ### Staging
 
-### Production
+    - *Mozorg URL:* <https://www.allizom.org/>
+    - *Bedrock locales:* prod repo
+    - *Bedrock Git branch:* stage, deployed on git push
+    - *Firefox download URL:* <https://download.mozilla.org/>
 
-- *Mozorg URL:* <https://www.mozilla.org/>
-- *Bedrock locales:* prod repo
-- *Bedrock Git branch:* prod, deployed on git push with date-tag
-- *Firefox download URL:* <https://download.mozilla.org/>
+    ### Production
 
-## Deployed site URLs for Springfield
+    - *Mozorg URL:* <https://www.mozilla.org/>
+    - *Bedrock locales:* prod repo
+    - *Bedrock Git branch:* prod, deployed on git push with date-tag
+    - *Firefox download URL:* <https://download.mozilla.org/>
 
-### Dev
+=== "Springfield"
 
-- *URL:* <https://www-dev.springfield.moz.works/>
-- *Springfield locales:* dev repo
-- *Springfield Git branch:* main, deployed on git push
-- *Firefox download URL:* <https://bouncer-bouncer.stage.mozaws.net/>
+    ### Dev
 
-### Staging
+    - *URL:* <https://www-dev.springfield.moz.works/>
+    - *Springfield locales:* dev repo
+    - *Springfield Git branch:* main, deployed on git push
+    - *Firefox download URL:* <https://bouncer-bouncer.stage.mozaws.net/>
 
-- *URL:* <https://www.springfield.moz.works/>
-- *Springfield locales:* prod repo
-- *Springfield Git branch:* stage, deployed on git push
-- *Firefox download URL:* <https://download.mozilla.org/>
+    ### Staging
 
-### Production
+    - *URL:* <https://www.springfield.moz.works/>
+    - *Springfield locales:* prod repo
+    - *Springfield Git branch:* stage, deployed on git push
+    - *Firefox download URL:* <https://download.mozilla.org/>
 
-- *URL:* <https://www.firefox.com/>
-- *Springfield locales:* prod repo
-- *Springfield Git branch:* prod, deployed on git push with date-tag
-- *Firefox download URL:* <https://download.mozilla.org/>
+    ### Production
+
+    - *URL:* <https://www.firefox.com/>
+    - *Springfield locales:* prod repo
+    - *Springfield Git branch:* prod, deployed on git push with date-tag
+    - *Firefox download URL:* <https://download.mozilla.org/>
 
 !!! note
     By default, the Demo servers on Google Cloud Platform for Bedrock and Springfield point to the Bouncer Dev service at <https://dev.bouncer.nonprod.webservices.mozgcp.net/> To change this, you will have adjust GCP Secrets - see the [demo sites](https://bedrock.readthedocs.io/en/latest/contribute.html#demo-sites) docs
@@ -149,17 +151,17 @@ When a tagged commit is pushed to the `prod` branch, a production container imag
 
 You can look at the git log of the `main` branch to find the last commit with a date-tag on it (e.g. `2022-05-05`): this commit will be the last one that was deployed to production. You can also use the following links to compare Dev (`main`), with Stage and/or Prod:
 
-### Bedrock
+=== "Bedrock"
 
-- [Bedrock: Compare Stage (`stage`) to Dev (`main`)](https://github.com/mozilla/bedrock/compare/stage...main)
-- [Bedrock: Compare Prod (`prod`) to Dev (`main`)](https://github.com/mozilla/bedrock/compare/prod...main)
-- [Bedrock: Compare Prod (`prod`) to Stage (`stage`)](https://github.com/mozilla/bedrock/compare/prod...stage)
+    - [Bedrock: Compare Stage (`stage`) to Dev (`main`)](https://github.com/mozilla/bedrock/compare/stage...main)
+    - [Bedrock: Compare Prod (`prod`) to Dev (`main`)](https://github.com/mozilla/bedrock/compare/prod...main)
+    - [Bedrock: Compare Prod (`prod`) to Stage (`stage`)](https://github.com/mozilla/bedrock/compare/prod...stage)
 
-###  Springfield
+=== "Springfield"
 
-- [Springfield: Compare Stage (`stage`) to Dev (`main`)](https://github.com/mozmeao/springfield/compare/stage...main)
-- [Springfield: Compare Prod (`prod`) to Dev (`main`)](https://github.com/mozmeao/springfield/compare/prod...main)
-- [Springfield: Compare Prod (`prod`) to Stage (`stage`)](https://github.com/mozmeao/springfield/compare/prod...stage)
+    - [Springfield: Compare Stage (`stage`) to Dev (`main`)](https://github.com/mozmeao/springfield/compare/stage...main)
+    - [Springfield: Compare Prod (`prod`) to Dev (`main`)](https://github.com/mozmeao/springfield/compare/prod...main)
+    - [Springfield: Compare Prod (`prod`) to Stage (`stage`)](https://github.com/mozmeao/springfield/compare/prod...stage)
 
 ## Updating Selenium
 

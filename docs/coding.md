@@ -131,18 +131,28 @@ For pages that are served to Firefox browsers only, such as `/whatsnew`, it is a
 URL patterns should be the entire URL you desire, minus any prefixes from URLs files importing this one, and including a trailing slash. You should also give the URL a name so that other pages can reference it instead of hardcoding the URL. Example:
 
 ``` python
-path("channel/", channel, name="mozorg.channel")
+path("robots.txt", views.Robots.as_view(), name="robots.txt"),
 ```
 
-If you only want to render a template and don't need to do anything else in a custom view, Bedrock comes with a handy shortcut to automate all of this:
+If you only want to render a template and don't need to do anything else in a custom view, both projects come with a handy shortcut to automate all of this:
 
-``` python
-from bedrock.mozorg.util import page
+=== "Bedrock"
 
-page("channel/", "mozorg/channel.html")
-```
+    ``` python
+    from bedrock.mozorg.util import page
 
-Springfield also has the same `page` helper, which you can import from `springfield.base.util`
+    page("cookie-settings/", "privacy/cookie-settings.html")
+    ```
+
+=== "Springfield"
+
+    ``` python
+    from springfield.base.util import page
+
+    page("cookie-settings/", "privacy/cookie-settings.html")
+    ```
+
+The `page` helper is functionally identical in both projects
 
 You don't need to create a view. It will serve up the specified template at the given URL (the first parameter. see the [Django docs](https://docs.djangoproject.com/en/3.2/ref/urls/#django.urls.path) for details). You can also pass template data as keyword arguments:
 
@@ -164,22 +174,22 @@ Bedrock and Springfield follow the Django app structure and most templates can b
 
 Ignore the scheme, domain and locale (`/en-US`). The next path segment is usually the app name.
 
-#### bedrock (mozilla.org)
+=== "Bedrock"
 
-| URL: `https://www.mozilla.org/en-US/privacy/`
-| Template path: `bedrock/privacy/templates/privacy/index.html`
+    - URL: `https://www.mozilla.org/en-US/privacy/`
+    - Template path: `bedrock/privacy/templates/privacy/index.html`
 
-If you don't find it where you expect check in the `mozorg` app. The home page and child pages related to Mozilla Corporation (i.e. About, Contact, Diversity) end up in here.
+    If you don't find it where you expect check in the `mozorg` app. The home page and child pages related to Mozilla Corporation (i.e. About, Contact, Diversity) end up in here.
 
-| URL: `https://www.mozilla.org/en-US/about/manifesto/`
-| Template path: `bedrock/mozorg/templates/mozorg/about/manifesto.html`
+    - URL: `https://www.mozilla.org/en-US/about/manifesto/`
+    - Template path: `bedrock/mozorg/templates/mozorg/about/manifesto.html`
 
-#### springfield (firefox.com)
+=== "Springfield"
 
-When Firefox content migrated to Springfield, most URLs moved up a level by removing the `/firefox/` prefix. For example, `mozilla.org/firefox/features/private-browsing/` became `firefox.com/features/private-browsing/`, but the internal template path still uses the `firefox` app structure.
+    When Firefox content migrated to Springfield, most URLs moved up a level by removing the `/firefox/` prefix. For example, `mozilla.org/firefox/features/private-browsing/` became `firefox.com/features/private-browsing/`, but the internal template path still uses the `firefox` app structure.
 
-| URL: `https://www.firefox.com/en-US/features/private-browsing/`
-| Template path: `/springfield/firefox/templates/firefox/features/private-browsing.html`
+    - URL: `https://www.firefox.com/en-US/features/private-browsing/`
+    - Template path: `/springfield/firefox/templates/firefox/features/private-browsing.html`
 
 
 ### Whatsnew and Firstrun

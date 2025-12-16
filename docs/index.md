@@ -12,26 +12,41 @@ Originally, all content lived in the Bedrock repository. All Firefox content was
 
 There are many updates that will need to apply to both projects to keep them in sync.
 
-### Bedrock ([mozilla/bedrock](https://github.com/mozilla/bedrock))
+=== "Bedrock"
 
-**Hosts:** www.mozilla.org
+    **Hosts:** www.mozilla.org
 
-**Content:**
-- Pan-Mozilla (Home, About, Manifesto, Careers)
-- Mozilla Corporation (Products, Policies, Terms)
-- Mozilla Foundation (Governance)
-- A small amount of legacy Firefox content
+    **Content:**
 
-### Springfield ([mozmeao/springfield](https://github.com/mozmeao/springfield))
+    - Pan-Mozilla (Home, About, Manifesto, Careers)
+    - Mozilla Corporation (Products, Policies, Terms)
+    - Mozilla Foundation (Governance)
+    - A small amount of legacy Firefox content
 
-**Hosts:** www.firefox.com
 
-**Content:**
-- Firefox product marketing pages
-- Firefox download functionality and helpers
-- Firefox release notes and system requirements
-- The eventual plan is to move the What's New pages to springfield but 
-  at the moment the migration is incomplete and non-EU and non-Release WNPs are still in bedrock
+=== "Springfield"
+
+    **Hosts:** www.firefox.com
+
+    **Content:**
+
+    - Firefox product marketing pages
+    - Firefox download functionality and helpers
+    - Firefox release notes and system requirements
+    - The eventual plan is to move the What's New pages to springfield but 
+      at the moment the migration is incomplete and non-EU and non-Release WNPs are still in bedrock
+
+Look for these notes to make sure the docs you're reading apply to the project you're working on. 
+
+!!! bedrock "Bedrock Only"
+    This feature is specific to Bedrock.
+
+!!! springfield "Springfield Only"
+    This feature is specific to Springfield.
+
+!!! both "Applies to Both Projects"
+    This example is written for Bedrock but applies to Springfield as well.
+
 
 ## Contributing
 

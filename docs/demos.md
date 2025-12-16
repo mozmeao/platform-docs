@@ -22,26 +22,27 @@ git push -f mozilla my-demo-branch:mozorg-demo-2
 
 ## Branches and environments available
 
-### Bedrock
+=== "Bedrock"
 
-- Branch `mozorg-demo-1` -> <https://www-demo1.allizom.org/>
-- Branch `mozorg-demo-2` -> <https://www-demo2.allizom.org/>
-- Branch `mozorg-demo-3` -> <https://www-demo3.allizom.org/>
-- Branch `mozorg-demo-4` -> <https://www-demo4.allizom.org/>
-- Branch `mozorg-demo-5` -> <https://www-demo5.allizom.org/>
-- Branch `mozorg-demo-6` -> <https://www-demo6.allizom.org/>
-- Branch `mozorg-demo-7` -> <https://www-demo7.allizom.org/>
-- Branch `mozorg-demo-8` -> <https://www-demo8.allizom.org/>
-- Branch `mozorg-demo-9` -> <https://www-demo9.allizom.org/>
+    - Branch `mozorg-demo-1` -> <https://www-demo1.allizom.org/>
+    - Branch `mozorg-demo-2` -> <https://www-demo2.allizom.org/>
+    - Branch `mozorg-demo-3` -> <https://www-demo3.allizom.org/>
+    - Branch `mozorg-demo-4` -> <https://www-demo4.allizom.org/>
+    - Branch `mozorg-demo-5` -> <https://www-demo5.allizom.org/>
+    - Branch `mozorg-demo-6` -> <https://www-demo6.allizom.org/>
+    - Branch `mozorg-demo-7` -> <https://www-demo7.allizom.org/>
+    - Branch `mozorg-demo-8` -> <https://www-demo8.allizom.org/>
+    - Branch `mozorg-demo-9` -> <https://www-demo9.allizom.org/>
 
-### Springfield
+=== "Springfield"
 
-- Branch `fxc-demo-1` -> <https://www-demo1.springfield.moz.works/>
-- Branch `fxc-demo-2` -> <https://www-demo2.springfield.moz.works/>
-- Branch `fxc-demo-3` -> <https://www-demo3.springfield.moz.works/>
-- Branch `fxc-demo-4` -> <https://www-demo4.springfield.moz.works/>
-- Branch `fxc-demo-5` -> <https://www-demo5.springfield.moz.works/>
-- Branch `fxc-demo-6` -> <https://www-demo6.springfield.moz.works/>
+    - Branch `fxc-demo-1` -> <https://www-demo1.springfield.moz.works/>
+    - Branch `fxc-demo-2` -> <https://www-demo2.springfield.moz.works/>
+    - Branch `fxc-demo-3` -> <https://www-demo3.springfield.moz.works/>
+    - Branch `fxc-demo-4` -> <https://www-demo4.springfield.moz.works/>
+    - Branch `fxc-demo-5` -> <https://www-demo5.springfield.moz.works/>
+    - Branch `fxc-demo-6` -> <https://www-demo6.springfield.moz.works/>
+
 
 ### Reserving and declaring use of demo servers
 
