@@ -1,4 +1,4 @@
-# Contentful `CMS (Content Management System)`{.interpreted-text role="abbr"} Integration (Deprecated) {: #contentful }
+# Contentful CMS Integration (Deprecated) {: #contentful }
 
 !!! important
     We are no longer syncing content from Contentful, but we still hold that content frozen in our database and use it to render pages.
@@ -11,7 +11,7 @@
 
 ## Overview
 
-Contentful is a headless `CMS (Content Management System)`{.interpreted-text role="abbr"}. It stores content for our website in a structured format. We request the content from Contentful using an API. Then the content gets made into Protocol components for display on the site.
+Contentful is a headless CMS. It stores content for our website in a structured format. We request the content from Contentful using an API. Then the content gets made into Protocol components for display on the site.
 
 We define the structure Contentful uses to store the data in **content models**. The content models are used to create a form for editors to fill out when they want to enter new content. Each chunk of content is called an **entry**.
 
@@ -19,7 +19,7 @@ For example: we have a content model for our "card" component. That model create
 
 We have created a few different types of content models. Most are components that correspond to components in our design system. The smallest create little bits of code like buttons. The larger ones group together several entries for the smaller components into a bigger component or an entire page.
 
-For example: The *Page: General* model allows editors to include a hero entry, body entry, and callout entry. The callout layout entry, in turn, includes a `CTA (Call To Action)`{.interpreted-text role="abbr"} entry.
+For example: The *Page: General* model allows editors to include a hero entry, body entry, and callout entry. The callout layout entry, in turn, includes a CTA entry.
 
 One advantage of storing the content in small chunks like this is that is can be reused in many different pages. A callout which focuses on the privacy related reasons to download Firefox could end up on the Private Browsing, Ad Tracker Blocking, and Fingerprinter Blocking pages. If our privacy focused tagline changes from "Keep it secret with Firefox" to "Keep it private with Firefox" it only needs to be updated in one entry.
 
@@ -31,7 +31,7 @@ When a Contentful page is requested the code in ``api.py`` transforms the inform
 
 This data is then passed to the page template (either Mozilla or for Firefox themed as appropriate). The page template includes some files which take the data and feed it into macros to create Protocol components. These are the same macros we use on non-Contentful pages. There are also includes which will import the appropriate JS and CSS files to support the components.
 
-Once rendered the pages get cached on the `CDN (Content Delivery Network)`{.interpreted-text role="abbr"} as usual.
+Once rendered the pages get cached on the CDN as usual.
 
 ## Contentful Apps
 
@@ -121,7 +121,7 @@ Rich Text Content
 
 :   Rich text field in a Compose Page
 
-`CTA (Call To Action)`{.interpreted-text role="abbr"}
+CTA
 
 :   The button/link/dropdown that we want a user to interact with following some content. Most often appearing in Split and Callout components.
 
@@ -324,11 +324,11 @@ This is the approach that will likely be used for the German and French homepage
 
     **Please do not add new pages to Bedrock using Contentful.**
 
-Images that are uploaded in Contentful will be served to site visitors from the Contentful `CDN (Content Delivery Network)`{.interpreted-text role="abbr"}. The cost of using the CDN are not by request so we don't have to worry about how many times an image will be requested.
+Images that are uploaded in Contentful will be served to site visitors from the Contentful CDN. The cost of using the CDN are not by request so we don't have to worry about how many times an image will be requested.
 
-Using the Contentful `CDN (Content Delivery Network)`{.interpreted-text role="abbr"} lets us use their [Images API](https://www.contentful.com/developers/docs/references/images-api/) to format our images.
+Using the Contentful CDN lets us use their [Images API](https://www.contentful.com/developers/docs/references/images-api/) to format our images.
 
-In theory, a large high quality image is uploaded in Contentful and then bedrock inserts links to the `CDN (Content Delivery Network)`{.interpreted-text role="abbr"} for images which are cropped to fit their component and resized to fit their place on the page.
+In theory, a large high quality image is uploaded in Contentful and then bedrock inserts links to the CDN for images which are cropped to fit their component and resized to fit their place on the page.
 
 Because we cannot rely on the dimensions of the image uploaded to Contentful as a guide for displaying the image - bedrock needs to be opinionated about what size images it requests based on the component and its configuration. For example, hero images are fixed at 800px wide. In the future this could be a user configurable option.
 
@@ -448,7 +448,7 @@ Also note that when you select `Localhost preview`, the choice sticks, so you sh
 
 ### How to update/refresh the sandbox environment
 
-It helps to think of Contentful 'environments' as simply branches of a git-like repo full of content. You can take a particular environment and branch off it to make a new environment for `WIP (Work in Progress)`{.interpreted-text role="abbr"} or experimental content, using the original one as your starting point. On top of this, Contentful has the concept of aliases for environments and we use two aliases in our setup:
+It helps to think of Contentful 'environments' as simply branches of a git-like repo full of content. You can take a particular environment and branch off it to make a new environment for WIP or experimental content, using the original one as your starting point. On top of this, Contentful has the concept of aliases for environments and we use two aliases in our setup:
 
 -   `master` is used for production and is an alias currently pointing to the ``V1`` environment. It is pretty stable and access to it is limited.
 -   `sandbox` is used for development and more team members have access to edit content. Again, it's an alias and is pointed at an environment (think, branch) with a name in the format `sandbox-YYYY-MM-DD`.
@@ -603,3 +603,8 @@ Using a connect component to create the link between jinja template and the Cont
 In other contexts a connect content model could be created to link to entries where the ID may change. For example: the "Latest Firefox Features: section of /new could be moved to Contentful using a connect component which references 3 picto blocks.
 
 Because the ID must be added to a bedrock by a dev, only devs should be able to make new connect entries.
+
+*[CMS]: Content Management System
+*[CTA]: Call To Action
+*[CDN]: Content Delivery Network
+*[WIP]: Work in Progress

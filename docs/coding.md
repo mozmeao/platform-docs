@@ -554,7 +554,7 @@ The first argument is the data you'd like to encode in the QR Code (usually a UR
 
 We don't want to (and if large enough GitHub won't let us) commit large files to the repo. Files such as large PDFs or very-high-res JPG files (e.g. leadership team photos), or videos are not well-tracked in git and will make every checkout after they're added slower and this diffs less useful. So we have another domain at which we upload these files: assets.mozilla.net
 
-This domain is simply an AWS S3 bucket with a CloudFront `CDN (Content Delivery Network)`{.interpreted-text role="abbr"} in front of it. It is highly available and fast. We've made adding files to this domain very simple using [git-lfs](https://git-lfs.github.com/). You simply install git-lfs, clone our [assets.mozilla.net repo](https://github.com/mozmeao/assets.mozilla.net), and then add and commit files under the `assets` directory there as usual. Open a pull request, and once it's merged it will be automatically uploaded to the S3 bucket and be available on the domain.
+This domain is simply an AWS S3 bucket with a CloudFront CDN in front of it. It is highly available and fast. We've made adding files to this domain very simple using [git-lfs](https://git-lfs.github.com/). You simply install git-lfs, clone our [assets.mozilla.net repo](https://github.com/mozmeao/assets.mozilla.net), and then add and commit files under the `assets` directory there as usual. Open a pull request, and once it's merged it will be automatically uploaded to the S3 bucket and be available on the domain.
 
 For example, if you add a file to the repo under `assets/pdf/the-dude-abides.pdf`, it will be available as <https://assets.mozilla.net/pdf/the-dude-abides.pdf>. Once that is done you can link to that URL from the codebase as you would any other URL.
 
@@ -707,7 +707,7 @@ Any request to the page in for example French would not use the alternate templa
 
 ### Geo Template View {: #geo-location }
 
-Now that we have our `CDN (Content Delivery Network)`{.interpreted-text role="abbr"} configured properly, we can also just swap out templates per request country. This is very similar to the above, but it will simply use the proper template for the country from which the request originated.
+Now that we have our CDN configured properly, we can also just swap out templates per request country. This is very similar to the above, but it will simply use the proper template for the country from which the request originated.
 
 ``` python
 from bedrock.base.views import GeoTemplateView
@@ -726,7 +726,7 @@ For testing purposes while you're developing or on any deployment that is not ac
 
 ### Other Geo Stuff
 
-There are a couple of other tools at your disposal if you need to change things depending on the location of the user. You can use the `bedrock.base.geo.get_country_from_request` function in a view and it will return the country code for the request (either from the `CDN (Content Delivery Network)`{.interpreted-text role="abbr"} or the query param, just like above).
+There are a couple of other tools at your disposal if you need to change things depending on the location of the user. You can use the `bedrock.base.geo.get_country_from_request` function in a view and it will return the country code for the request (either from the CDN or the query param, just like above).
 
 ``` python
 from bedrock.base.geo import get_country_from_request
@@ -740,7 +740,7 @@ def dude_view(request):
         ...  # do the default thing
 ```
 
-The other convenience available is that the country code, either from the `CDN (Content Delivery Network)`{.interpreted-text role="abbr"} or the query param, is avilable in any template in the `country_code` variable. This allows you to change anything about how the template renders based on the location of the user.
+The other convenience available is that the country code, either from the CDN or the query param, is avilable in any template in the `country_code` variable. This allows you to change anything about how the template renders based on the location of the user.
 
 ``` jinja
 {% if country_code == "US" %}
@@ -917,3 +917,5 @@ Include a CSS bundle in the template's `page_css` block along with any other pag
     {{ css_bundle('page-specific-bundle') }}
 {% endblock %}
 ```
+
+*[CDN]: Content Delivery Network

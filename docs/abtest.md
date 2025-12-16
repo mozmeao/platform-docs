@@ -42,7 +42,7 @@ More complex experiments, such as those that feature full page redesigns, or mul
 
 It's possible to test more than 2 variants.
 
-Traffic Cop sends users to experiments and then we use Google Analytics (GA) to analyze which variation is more successful. (If the user has `DNT (Do Not Track)`{.interpreted-text role="abbr"} or `GPC (Global Privacy Control)`{.interpreted-text role="abbr"} enabled they do not participate in experiments.)
+Traffic Cop sends users to experiments and then we use Google Analytics (GA) to analyze which variation is more successful. (If the user has DNT or GPC enabled they do not participate in experiments.)
 
 ### Coding the variants
 
@@ -124,7 +124,7 @@ function setVariationCookie(exp) {
 
 Send the experiment view events to GA with the event name `experiment_view`. The `id` of all variants should be the same and all `variant` values should be unique.
 
-Make sure any buttons and interaction which are being compared as part of the test will report into `GA (Google Analytics)`{.interpreted-text role="abbr"}.
+Make sure any buttons and interaction which are being compared as part of the test will report into GA.
 
 ``` javascript
 if (href.indexOf('v=a') !== -1) {
@@ -179,3 +179,7 @@ if (isApprovedToRun()) {
 ```
 
 The `isApprovedToRun()` function will check the page URL's query parameters against a list of well-known experimental params, and return `false` if any of those params are found. It will also check for some other cases where we do not want to run experiments, such as if the page is being opened in an automated testing environment.
+
+*[DNT]: Do Not Track
+*[GPC]: Global Privacy Control
+*[GA]: Google Analytics
