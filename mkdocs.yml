@@ -19,6 +19,9 @@ theme:
     repo: fontawesome/brands/github
     admonition:
       note: material/lightbulb
+      bedrock: material/alpha-b-box
+      springfield: material/alpha-s-box
+      both: material/set-all
   features:
     - content.action.edit
     - content.action.view

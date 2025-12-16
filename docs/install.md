@@ -1,6 +1,7 @@
 # Installing Bedrock {: #install }
 
-_This section is written with Bedrock as an example, but applies - with renamed paths - to Springfield, too._
+!!! both "Mind the path"
+    This section is written with Bedrock as an example, but applies - with renamed paths - to Springfield, too.
 
 ## Installation Methods
 

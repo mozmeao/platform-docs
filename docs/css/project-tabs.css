@@ -43,5 +43,61 @@ label[data-project="bedrock"]:hover,
 
 label[data-project="springfield"]:hover,
 .tabbed-set > input[id^='springfield']:checked ~ .tabbed-labels label[data-project="springfield"] {
-    background-color: #f1e7f8;
+    background-color: var(--color-fx-purple-light);
+}
+
+/**
+ * Admonitions - Custom styling for Bedrock/Springfield tabs
+ */
+
+/* Bedrock-only admonition - green */
+.md-typeset .admonition.bedrock,
+.md-typeset details.bedrock {
+    border-color: var(--color-moz-green-mid);
+}
+
+.md-typeset .admonition.bedrock > .admonition-title,
+.md-typeset details.bedrock > summary {
+    background-color: var(--color-moz-green-light);
+}
+
+.md-typeset .admonition.bedrock > .admonition-title::before,
+.md-typeset details.bedrock > summary::before {
+    background-color: var(--color-moz-green-mid);
+    mask-image: var(--md-admonition-icon--bedrock);
+}
+
+/* Springfield-only admonition - purple */
+.md-typeset .admonition.springfield,
+.md-typeset details.springfield {
+    border-color: var(--color-fx-purple-mid);
+}
+
+.md-typeset .admonition.springfield > .admonition-title,
+.md-typeset details.springfield > summary {
+    background-color: var(--color-fx-purple-light);
+}
+
+.md-typeset .admonition.springfield > .admonition-title::before,
+.md-typeset details.springfield > summary::before {
+    background-color: var(--color-fx-purple-mid);
+    mask-image: var(--md-admonition-icon--springfield);
+}
+
+/* Both projects admonition - blue/teal */
+.md-typeset .admonition.both,
+.md-typeset details.both {
+    border-color: var(--color-moz-clay-dark);
+}
+
+.md-typeset .admonition.both > .admonition-title,
+.md-typeset details.both > summary {
+    background-color: var(--color-moz-clay-light);
+}
+
+.md-typeset .admonition.both > .admonition-title::before,
+.md-typeset details.both > summary::before {
+    background-color: var(--color-moz-clay-dark);
+    -webkit-mask-image: var(--md-admonition-icon--both);
+    mask-image: var(--md-admonition-icon--both);
 }
