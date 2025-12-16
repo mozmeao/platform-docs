@@ -40,7 +40,7 @@ Docker is the easiest and recommended way, but local installation directly onto 
 
     Install the framework by running `pip install pre-commit`, then - ensuring you are in your `bedrock` directory -run `pre-commit install` in your terminal, followed by `pre-commit install-hooks`. This will set up the hooks that are specified in `bedrock/.precommit.yaml`
 
-    After that setup, whenever you try to make a commit, the 'hooks' will check/lint your Python, JS, and CSS files beforehand and report on problems that need to be fixed before the commit can be made. This will save you time waiting for the tests to run in our `CI (Continuous Integration)`{.interpreted-text role="abbr"} before noticing a linting error.
+    After that setup, whenever you try to make a commit, the 'hooks' will check/lint your Python, JS, and CSS files beforehand and report on problems that need to be fixed before the commit can be made. This will save you time waiting for the tests to run in our CI before noticing a linting error.
 
 ### Docker Installation
 
@@ -457,3 +457,5 @@ To work with/test these experiment switches locally, you must add the switches t
 A shortcut for activating virtual envs in zsh or bash is ``. venv/bin/activate``. The dot is the same as ``source``.
 
 There's a project called [pew](https://pypi.org/project/pew/) that provides a better interface for managing/activating virtual envs, so you can use that if you want. Also if you need help managing various versions of Python on your system, the [pyenv](https://github.com/pyenv/pyenv) project can help.
+
+*[CI]: Continuous Integration

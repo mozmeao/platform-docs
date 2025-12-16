@@ -73,7 +73,7 @@ The sign-up form macro accepts the following parameters (* indicates a required 
 | utm_term              | Used for paid search keywords.                                                                                             | Brief keyword                                           | 'existing-users'                             |
 | utm_content           | Declared when more than one piece of content (on a page or at a URL) links to the same place, to distinguish between them. | Description of content, or name of experiment treatment | 'get-the-rest-of-firefox'                    |
 
-Invoking the macro will automatically include a set of default `UTM (Urchin Tracking Module)`{.interpreted-text role="abbr"} parameters as hidden form input fields:
+Invoking the macro will automatically include a set of default UTM parameters as hidden form input fields:
 
 - `utm_source` is automatically assigned the value of the `entrypoint` parameter.
 - `utm_campaign` is automatically set as the value of `fxa-embedded-form`. This can be prefixed with a custom value by passing a `utm_campaign` value to the macro. For example, `utm_campaign='trailhead'` would result in a value of `trailhead-fxa-embedded-form`.
@@ -84,7 +84,7 @@ Invoking the macro will automatically include a set of default `UTM (Urchin Trac
 
 ## Mozilla account links
 
-Use the `fxa_button` helper to create a `CTA (Call To Action)`{.interpreted-text role="abbr"} button or link to <https://accounts.firefox.com/>.
+Use the `fxa_button` helper to create a CTA button or link to <https://accounts.firefox.com/>.
 
 ### Usage
 
@@ -121,7 +121,7 @@ The `fxa_button` and `monitor_fxa_button` helpers all support the same standard 
 | entrypoint* | Unambiguous identifier for which page of the site is the referrer. This also serves as a value for 'utm_source'. | 'mozilla.org-firefox-monitor'    | 'mozilla.org-firefox-monitor' |
 | button_text* | The button copy to be used in the call to action. | Localizable string | 'Try Monitor Now' |
 | class_name | A class name to be applied to the link (typically for styling with CSS). | String of one or more class names | 'monitor-main-cta-button' |
-| is_button_class | A boolean value that dictates if the `CTA (Call To Action)`{.interpreted-text role="abbr"} should be styled as a button or a link. Defaults to 'True'. | Boolean | True or False |
+| is_button_class | A boolean value that dictates if the CTA should be styled as a button or a link. Defaults to 'True'. | Boolean | True or False |
 | include_metrics | A boolean value that dictates if metrics parameters should be added to the button href. Defaults to 'True'. | Boolean | True or False |
 | optional_parameters | An dictionary of key value pairs containing additional parameters to append the the href. | Dictionary | {'s': 'ffmonitor'} |
 | optional_attributes | An dictionary of key value pairs containing additional data attributes to include in the button. | Dictionary                        | {'data-cta-text': 'Try Monitor Now', 'data-cta-type': 'monitor','data-cta-position': 'primary'} |
@@ -129,9 +129,9 @@ The `fxa_button` and `monitor_fxa_button` helpers all support the same standard 
 !!! note
     The `fxa_button` helper also supports an additional `action` parameter, which accepts the values `signup`, `signin`, and `email` for configuring the type of authentication flow.
 
-## Mozilla `VPN (Virtual Private Network)`{.interpreted-text role="abbr"} Links {: #vpn-helpers }
+## Mozilla VPN Links {: #vpn-helpers }
 
-Use the `vpn_subscribe_link` helpers to create a `VPN (Virtual Private Network)`{.interpreted-text role="abbr"} subscription link via a Mozilla accounts auth flow.
+Use the `vpn_subscribe_link` helpers to create a VPN subscription link via a Mozilla accounts auth flow.
 
 ### Usage
 
@@ -139,9 +139,9 @@ Use the `vpn_subscribe_link` helpers to create a `VPN (Virtual Private Network)`
 {{ vpn_subscribe_link(entrypoint='www.mozilla.org-vpn-product-page', link_text='Get Mozilla VPN') }}
 ```
 
-### Common `VPN (Virtual Private Network)`{.interpreted-text role="abbr"} Parameters
+### Common VPN Parameters
 
-Both helpers for Mozilla `VPN (Virtual Private Network)`{.interpreted-text role="abbr"} support the same parameters (* indicates a required parameter)
+Both helpers for Mozilla VPN support the same parameters (* indicates a required parameter)
 
 | Parameter name | Definition | Format | Example |
 | -------------- | ---------- | ------ | ------- |
@@ -149,7 +149,7 @@ Both helpers for Mozilla `VPN (Virtual Private Network)`{.interpreted-text role=
 | link_text* | The link copy to be used in the call to action. | Localizable string | 'Get Mozilla VPN' |
 | class_name | A class name to be applied to the link (typically for styling with CSS). | String of one or more class names | 'vpn-button' |
 | lang | Page locale code. Used to query the right subscription plan ID in conjunction to country code. | Locale string | 'de' |
-| country_code | Country code provided by the `CDN (Content Delivery Network)`{.interpreted-text role="abbr"}. Used to determine the appropriate subscription plan ID. | Two digit, uppercase country code | 'DE' |
+| country_code | Country code provided by the CDN. Used to determine the appropriate subscription plan ID. | Two digit, uppercase country code | 'DE' |
 | optional_parameters | An dictionary of key value pairs containing additional parameters to append the the href. | Dictionary | {'utm_campaign': 'vpn-product-page'} |
 | optional_attributes | An dictionary of key value pairs containing additional data attributes to include in the button. | Dictionary | {'data-cta-text': 'VPN Sign In', 'data-cta-type': 'fxa-vpn', 'data-cta-position': 'navigation'} |
 
@@ -177,7 +177,7 @@ Set the following in your local `.env` file:
 FXA_ENDPOINT=https://accounts.stage.mozaws.net/
 ```
 
-For Mozilla `VPN (Virtual Private Network)`{.interpreted-text role="abbr"} links you can also set:
+For Mozilla VPN links you can also set:
 
 ``` text
 VPN_ENDPOINT=https://stage.guardian.nonprod.cloudops.mozgcp.net/
@@ -186,3 +186,8 @@ VPN_SUBSCRIPTION_URL=https://accounts.stage.mozaws.net/
 
 !!! note
     The above values for staging are already set by default when `Dev=True`, which will also apply to demo servers. You may only need to configure your `.env` file if you wish to change a setting to something else.
+
+*[UTM]: Urchin Tracking Module
+*[CTA]: Call To Action
+*[VPN]: Virtual Private Network
+*[CDN]: Content Delivery Network

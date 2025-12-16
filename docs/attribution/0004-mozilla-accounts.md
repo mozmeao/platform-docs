@@ -21,7 +21,7 @@ When using any of the [Mozilla accounts helpers](../mozilla-accounts.md) in bedr
 | `flow_begin_time` | The time at which a flow event occurred (used for funnel analysis).                      | Timestamp                          |
 | `service`         | Product ID used for data analysis in BigQuery (optional).                                | Alpha numeric string               |
 
-When performing data analysis, the default `UTM (Urchin Tracking Module)`{.interpreted-text role="abbr"} values above are what we equate to "direct" traffic (i.e. someone came to the landing page directly then subscribed. They did not arrive from a specific marketing campaign or other channel).
+When performing data analysis, the default UTM values above are what we equate to "direct" traffic (i.e. someone came to the landing page directly then subscribed. They did not arrive from a specific marketing campaign or other channel).
 
 If we do detect that someone came from a marketing campaign or other form of referral, then we have logic in place that will replace the default UTM parameters on each link with more specific referral data, so that we can attribute subscriptions to individual campaigns.
 
@@ -118,7 +118,7 @@ The above JS is also available as a pre-compiled bundle, which can be included d
 When ``init()`` is called, flow metrics will automatically be added to add account sign up links on a page.
 
 !!! important
-    Requests to metrics API endpoints should only be made when an associated `CTA (Call To Action)`{.interpreted-text role="abbr"} is visibly displayed on a page. For example, if a page contains both a Mozilla accounts sign-up form and a Mozilla Monitor button, but only one CTA is displayed at any one time, then only the metrics request associated with the visible CTA should occur.
+    Requests to metrics API endpoints should only be made when an associated CTA is visibly displayed on a page. For example, if a page contains both a Mozilla accounts sign-up form and a Mozilla Monitor button, but only one CTA is displayed at any one time, then only the metrics request associated with the visible CTA should occur.
 
 
 !!! note
@@ -130,4 +130,6 @@ When ``init()`` is called, flow metrics will automatically be added to add accou
 For GTM `datalayer` attribute values in Mozilla account links, please use the [analytics documentation](/platform-docs/attribution/0001-analytics/).
 
 
-*[GTM]: Google Tag Manager 
+*[GTM]: Google Tag Manager
+*[UTM]: Urchin Tracking Module
+*[CTA]: Call To Action

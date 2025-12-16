@@ -7,7 +7,7 @@ render_macros: true
 The *Send to Device* widget is a single form which facilitates the sending of a download link from a desktop browser to a mobile device. The form allows sending via email.
 
 !!! important
-    This widget should only be shown to a limited set of locales who are set up to receive the emails. For those locales not in the list, direct links to the respective app stores should be shown instead. If a user is on iOS or Android, `CTA (Call To Action)`{.interpreted-text role="abbr"} buttons should also link directly to respective app stores instead of showing the widget. This logic should be handled on a page-by-page basis to cover individual needs.
+    This widget should only be shown to a limited set of locales who are set up to receive the emails. For those locales not in the list, direct links to the respective app stores should be shown instead. If a user is on iOS or Android, CTA buttons should also link directly to respective app stores instead of showing the widget. This logic should be handled on a page-by-page basis to cover individual needs.
 
 
 !!! note
@@ -55,3 +55,5 @@ The Jinja macro supports parameters as follows (* indicates a required parameter
 | legal_note_email | Provides a custom legal note for email use.                          | Localizable String. | 'The intended recipient of the email must have consented.' |
 | spinner_color    | Hex color for the form spinner. Defaults to '#000'.                | String              | '#fff'                                                     |
 | button_class     | Optional button CSS class string. Defaults to 'mzp-t-product'      | String              | 'mzp-t-product mzp-t-dark'                                 |
+
+*[CTA]: Call To Action

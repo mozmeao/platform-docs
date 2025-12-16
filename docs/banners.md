@@ -2,7 +2,7 @@
 
 ## Creating page banners
 
-Any page can incorporate a top of page banner as a temporary feature. An example of such a banner is the `MOFO (Mozilla Foundation)`{.interpreted-text role="abbr"} fundraising banner that gets shown on the home page several times a year.
+Any page can incorporate a top of page banner as a temporary feature. An example of such a banner is the MOFO fundraising banner that gets shown on the home page several times a year.
 
 Banners can be inserted into any page template by using the `page_banner` block. Banners can also be toggled on and off using a switch:
 
@@ -61,3 +61,5 @@ By default, page banners will be rendered directly underneath the primary page n
 ### L10n for page banners
 
 Because banners can technically be shown on any page, they need to be broadly translated, or alternatively limited to the subset of locales that have translations. Each banner should have its own `.ftl` associated with it, and accessible to the template or view it gets used in.
+
+*[MOFO]: Mozilla Foundation

@@ -376,7 +376,7 @@ User scoped custom dimensions must be configured in GA4. The list of supported c
 
 ## Glean
 
-In addition to GA, Bedrock also runs a parallel web analytics implementation using Mozilla\'s own [Glean](https://mozilla.github.io/glean.js/) telemetry `SDK (Software Development Kit)`{.interpreted-text role="abbr"}.
+In addition to GA, Bedrock also runs a parallel web analytics implementation using Mozilla's own [Glean](https://mozilla.github.io/glean.js/) telemetry SDK.
 
 One advantage to Glean is that it is a first-party solution, meaning that we have full control over the data we collect and how it is used. It is also less likely to be blocked by ad blockers or privacy tools.
 
@@ -432,7 +432,7 @@ if (typeof window.Mozilla.Glean !== 'undefined') {
 
 ### Defining additional metrics and pings
 
-Outside of the standard page load and click event metrics recorded by Glean, any additional metrics we send to the Glean pipeline is defined in `YAML (Yet Another Markup Language)`{.interpreted-text role="abbr"} schema files in the `./glean/` project root directory. The `metrics.yaml` file defines all the different metrics types and events we record.
+Outside of the standard page load and click event metrics recorded by Glean, any additional metrics we send to the Glean pipeline is defined in YAML schema files in the `./glean/` project root directory. The `metrics.yaml` file defines all the different metrics types and events we record.
 
 !!! note
     Before running any Glean commands locally, always make sure you have first activated your virtual environment by running `pyenv activate bedrock`.
@@ -460,3 +460,8 @@ Glean supports debugging pings via a set of flags that can be enabled directly i
 ### How can visitors opt out of Glean?
 
 Website visitors can opt out of Glean by visiting the [cookie settings page](https://www.mozilla.org/privacy/websites/cookie-settings/), which is linked to in the main site footer on every page. Clicking opt-out will set a cookie which Glean checks for before initializing on page load.
+
+*[SDK]: Software Development Kit
+*[YAML]: Yet Another Markup Language
+*[GA]: Google Analytics
+*[GTM]: Google Tag Manager
