@@ -7,7 +7,7 @@ Bedrock and Springfield run a series of automated tests as part of continuous in
 - Redirect tests (see [Testing redirects](redirects.md#testing-redirects)).
 - Functional tests (see [Front-end testing](testing.md)).
 
-**Deployed site URLs:**
+## Deployed site URLs:
 
 === "Bedrock"
 
@@ -73,11 +73,11 @@ The change is developed locally, and page specific integration tests can be exec
 
 ### Pull request
 
-Once a pull request is submitted, a [Unit Tests Github Action](https://github.com/mozilla/bedrock/actions/workflows/pull_request_tests.yml) will run both the Python and JavaScript unit tests, as well as the suite of redirect headless HTTP(s) response checks.
+Once a pull request is submitted, a Unit Tests Github Action (/actions/workflows/pull_request_tests.yml) will run both the Python and JavaScript unit tests, as well as the suite of redirect headless HTTP(s) response checks.
 
 ### Push to main branch
 
-Whenever a change is pushed to the main branch, a new image is built and deployed to the dev environment, and the full suite of headless and UI tests are run. This is handled by the pipeline, and is subject to change according to the settings in the Github Action workflow defined in `bedrock/.github/workflows/integration_tests.yml`.
+Whenever a change is pushed to the main branch, a new image is built and deployed to the dev environment, and the full suite of headless and UI tests are run. This is handled by the pipeline, and is subject to change according to the settings in the Github Action workflow defined in `/.github/workflows/integration_tests.yml`.
 
 The tests for the dev environment are currently configured as follows:
 
@@ -90,17 +90,17 @@ The tests for the dev environment are currently configured as follows:
 !!! note
     **The deployment workflow runs like this**
 
-    1. A push to the `main`/`stage`/`prod`/`run-integration-tests` branch of `mozilla/bedrock` triggers a webhook ping to the (private) `mozilla-sre-deploy/deploy-bedrock` repo.
+    1. A push to the `main`/`stage`/`prod`/`run-integration-tests` branch of `mozilla/bedrock` or `mozmeao/springfield` triggers a webhook ping to the (private) `mozilla-sre-deploy/deploy-bedrock` repo.
 
-    2. A Github Action (GHA) in `mozilla-sre-deploy/deploy-bedrock` builds a "release"-ready Bedrock container image, which it stores in a private container registry (private because our infra requires container-image access to be locked down). Using the same commit, the workflow also builds an equivalent set of public Bedrock container images, which are pushed to Docker Hub.
+    2. A Github Action (GHA) in `mozilla-sre-deploy/deploy-bedrock` builds a "release"-ready container image, which it stores in a private container registry (private because our infra requires container-image access to be locked down). Using the same commit, the workflow also builds an equivalent set of public container images, which are pushed to Docker Hub.
 
     3.  The GHA deploys the relevant container image to the appropriate environment.
 
-    4. The GHA pings a webhook back in `mozilla/bedrock` to run integration tests against the environment that has just been deployed.
+    4. The GHA pings a webhook back in `mozilla/bedrock` or `mozmeao/springfield` to run integration tests against the environment that has just been deployed.
 
 ### Push to stage branch
 
-Whenever a change is pushed to the stage branch, a production docker image is built, published to [Docker Hub](https://hub.docker.com/r/mozmeao/bedrock/tags), and deployed to a [public staging environment](https://www.allizom.org). Once the new image is deployed, the full suite of UI tests is run against it again, but this time with the addition of the ``headless download tests``.
+Whenever a change is pushed to the stage branch, a production docker image is built, published to Docker Hub ([bedrock](https://hub.docker.com/r/mozmeao/bedrock/tags) / [springfield](https://hub.docker.com/r/mozmeao/springfield/tags)), and deployed to a public [staging environment](#deployed-site-urls). Once the new image is deployed, the full suite of UI tests is run against it again, but this time with the addition of the ``headless download tests``.
 
 ### Push to prod branch (tagged) {: #tagged-commit }
 
@@ -108,16 +108,16 @@ Whenever a change is pushed to the stage branch, a production docker image is bu
     This section is written with Bedrock as an example, but applies - with renamed paths - to Springfield, too.
 
 
-When a tagged commit is pushed to the `prod` branch, a production container image (private, see above) is built, and a set of public images is also built and pushed to [Docker Hub](https://hub.docker.com/r/mozmeao/bedrock/tags) if needed (usually this will have already happened as a result of a push to the `main` or `stage` branch). The production image is deployed to each [production](https://www.mozilla.org) deployment.
+When a tagged commit is pushed to the `prod` branch, a production container image (private, see above) is built, and a set of public images is also built and pushed to Docker Hub ([bedrock](https://hub.docker.com/r/mozmeao/bedrock/tags) / [springfield](https://hub.docker.com/r/mozmeao/springfield/tags)) if needed (usually this will have already happened as a result of a push to the `main` or `stage` branch). The production image is deployed to each [production](#deployed-site-urls) deployment.
 
 **Push to prod cheat sheet**
 
 1. Check out the `main` branch
 
-2. Make sure the `main` branch is up to date with `mozilla/bedrock main`
+2. Make sure the `main` branch is up to date with `mozilla/bedrock main` / `mozmeao/springfield main`
 
 3. Check that dev deployment is green:
-    1. View the [Integration Tests Github Action](https://github.com/mozilla/bedrock/actions/workflows/integration_tests.yml) and look at the run labelled `Run Integration tests for main`
+    1. View the Integration Tests Github Action ([bedrock](https://github.com/mozilla/bedrock/actions/workflows/integration_tests.yml) / [springfield](https://github.com/mozmeao/springfield/actions/workflows/integration_tests.yml)) and look at the run labelled `Run Integration tests for main`
 
 4. Check that stage deployment is also green (`Run Integration tests for stage`)
 
@@ -126,31 +126,33 @@ When a tagged commit is pushed to the `prod` branch, a production container imag
 !!! note
     By default the `tag-release.sh` script will push to the `origin` git remote. If you'd like for it to push to a different remote name you can either pass in a `-r` or `--remote` argument, or set the `MOZ_GIT_REMOTE` environment variable. So the following are equivalent:
 
-    ``` bash
-    # for Bedrock / www.mozilla.org
-    bin/tag-release.sh --push -r mozilla
-    ```
+    === "Bedrock"
 
-    ``` bash
-    # for Bedrock / www.mozilla.org
-    MOZ_GIT_REMOTE=mozilla bin/tag-release.sh --push
-    ```
+        ``` bash
+        # for Bedrock / www.mozilla.org
+        bin/tag-release.sh --push -r mozilla
+        ```
+
+        ``` bash
+        # for Bedrock / www.mozilla.org
+        MOZ_GIT_REMOTE=mozilla bin/tag-release.sh --push
+        ```
+
+    === "Springfield"
+
+        ``` bash
+        # for Springfield / www.firefox.com
+        bin/tag-release.sh --push -r mozmeao
+        ```
+
+        ``` bash
+        # for Springfield / www.firefox.com
+        MOZ_GIT_REMOTE=mozmeao bin/tag-release.sh --push
+        ```
 
     And if you'd like to just tag and not push the tag anywhere, you may omit the `--push` parameter.
 
-
-    For Springfield, the repo's organization is `mozmeao` not `mozilla`:
-
-    ``` bash
-    # for Springfield / www.firefox.com
-    bin/tag-release.sh --push -r mozmeao
-    ```
-
-    ``` bash
-    # for Springfield / www.firefox.com
-    MOZ_GIT_REMOTE=mozmeao bin/tag-release.sh --push
-    ```
-
+    
 ## What Is Currently Deployed?
 
 You can look at the git log of the `main` branch to find the last commit with a date-tag on it (e.g. `2022-05-05`): this commit will be the last one that was deployed to production. You can also use the following links to compare Dev (`main`), with Stage and/or Prod:
@@ -169,11 +171,11 @@ You can look at the git log of the `main` branch to find the last commit with a 
 
 ## Updating Selenium
 
-There are several components for Selenium, which are independently versioned. The first is the Python client, and this can be updated via the [test dependencies](https://github.com/mozilla/bedrock/blob/main/requirements/dev.txt). The other components are the Selenium versions used in both SauceLabs and the local Selenium grid. These versions are selected automatically based on the required OS / Browser configuration, so they should not need to be updated or specified independently.
+There are several components for Selenium, which are independently versioned. The first is the Python client, and this can be updated via the test dependencies in `/requirements/dev.txt`. The other components are the Selenium versions used in both SauceLabs and the local Selenium grid. These versions are selected automatically based on the required OS / Browser configuration, so they should not need to be updated or specified independently.
 
 ## Adding test runs
 
-Test runs can be added by creating a new job in `bedrock/.github/workflows/integration_tests.yml` with the desired variables and pushing that branch to Github. For example, if you wanted to run the smoke tests in IE10 (using Saucelabs) you could add the following clause to the matrix:
+Test runs can be added by creating a new job in `/.github/workflows/integration_tests.yml` with the desired variables and pushing that branch to Github. For example, if you wanted to run the smoke tests in IE10 (using Saucelabs) you could add the following clause to the matrix:
 
 ``` yaml
 - LABEL: test-ie10-saucelabs
@@ -189,7 +191,7 @@ You can use [Sauce Labs platform configurator](https://wiki.saucelabs.com/displa
 
 ## Pushing to the integration tests branch
 
-If you have commit rights to our Github repo (mozilla/bedrock) you can simply push your branch to the branch named `run-integration-tests`, and the app will be deployed and the full suite of integration tests for that branch will be run. Please announce in our Slack channel (#www on mozilla.slack.com) that you'll be doing this so that we don't get conflicts. Also remember that you'll likely need to force push, as there may be commits on that branch which aren't in yours -- so, if you have the `mozilla/bedrock` remote set as `mozilla`:
+If you have commit rights to our Github repos (mozilla/bedrock and mozmeao/springfield) you can simply push your branch to the branch named `run-integration-tests`, and the app will be deployed and the full suite of integration tests for that branch will be run. Please announce in our Slack channel (#www or #springfield-dev on mozilla.slack.com) that you'll be doing this so that we don't get conflicts. Also remember that you'll likely need to force push, as there may be commits on that branch which aren't in yours -- so, if you have the remote set as `mozilla`:
 
 ``` bash
 git push -f mozilla $(git branch --show-current):run-integration-tests
