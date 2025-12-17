@@ -1,7 +1,3 @@
----
-render_macros: true
----
-
 # Mozilla accounts helpers
 
 !!! note

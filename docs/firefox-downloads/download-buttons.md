@@ -1,7 +1,3 @@
----
-render_macros: true
----
-
 To ensure that visitors to Firefox download pages get served the correct build and installer type for their operating system, we rely on [User Agent](https://developer.mozilla.org/docs/Glossary/User_agent) information to figure out what's needed. We primarily use the [Client Hints API](https://developer.mozilla.org/docs/Web/HTTP/Guides/Client_hints) to query this information, falling back to [navigator.UserAgent](https://developer.mozilla.org/docs/Web/API/Navigator/userAgent) for other web browsers.
 
 The logic for this User Agent detection can be found in `/media/js/base/site.js`. The script adds a computed platform based CSS class name such as `windows`, `osx`, `linux`, `android` or `ios` to the root `<html>` element of the DOM. This class is then used as a styling hook for displaying platform specific content, such as the correct download button to display. The CSS selectors that are specific to Firefox download buttons can be found in `media/css/protocol/components/_download-button.scss`, which are imported into the global site base stylesheet.

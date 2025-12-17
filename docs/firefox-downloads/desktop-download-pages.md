@@ -1,7 +1,3 @@
----
-render_macros: true
----
-
 What we typically refer to as the "download page" is [https://www.firefox.com/en-US/](https://www.firefox.com/en-US/) the request for that url is handled by the [DownloadView](https://github.com/mozmeao/springfield/blob/5ea60084360e5b434d1a2fd5cd4e09fc0a180b94/springfield/firefox/views.py#L438) view and will respond with one of a few templates. One of those templates is highly flexible and is frequently served at other URLs as well.
 
 # By URL

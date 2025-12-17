@@ -1,7 +1,3 @@
----
-render_macros: true
----
-
 # CMS
 
 Bedrock and Springfield's CMSes are powered by [Wagtail CMS](https://wagtail.org/).
