@@ -1,8 +1,13 @@
+# Desktop Download Pages
+
+!!! springfield "Springfield Only"
+    This feature is specific to Springfield.
+
 What we typically refer to as the "download page" is [https://www.firefox.com/en-US/](https://www.firefox.com/en-US/) the request for that url is handled by the [DownloadView](https://github.com/mozmeao/springfield/blob/5ea60084360e5b434d1a2fd5cd4e09fc0a180b94/springfield/firefox/views.py#L438) view and will respond with one of a few templates. One of those templates is highly flexible and is frequently served at other URLs as well.
 
-# By URL
+## By URL
 
-## / (home)
+### / (home)
 
 When a user requests `/` the [DownloadView](https://github.com/mozmeao/springfield/blob/5ea60084360e5b434d1a2fd5cd4e09fc0a180b94/springfield/firefox/views.py#L438) view considers the following:
 
@@ -14,25 +19,30 @@ When a user requests `/` the [DownloadView](https://github.com/mozmeao/springfie
 It then responds with the first template that matches:
 
 - `firefox/download/home.ftl` file is active and `xv` is not basic or legacy
-  - *firefox/new/desktop/firefox-new-refresh.html*
+    - *firefox/new/desktop/firefox-new-refresh.html*
 - `firefox/download/desktop` file is active and `xv` is not basic
-  - *firefox/new/desktop/download.html*
+    - *firefox/new/desktop/download.html*
 - no ftl files are active or `xv` is basic
-  - *firefox/new/basic/base_download.html*
+    - *firefox/new/basic/base_download.html*
 
 These templates all use the basic `download_firefox_thanks` helper and serve release Firefox in the language of the current page for the platform (aka operating system) that has been auto-detected.
 
-## /windows, /mac, /linux (the platform pages)
+### /windows, /mac, /linux (the platform pages)
 
 The "platform" pages [windows](https://www.firefox.com/browsers/desktop/windows/), [mac](https://www.firefox.com/browsers/desktop/mac), [linux](https://www.firefox.com/browsers/desktop/linux/) are based on the templates in *firefox/download/basic/*.
 
 These pages use the more complicated `download_firefox` download helper to link directly to the specified platform.
 
-## /channel (the channel pages)
+It may seem confusing that we have these pages when downloads can happen from the homepage or /all however these pages rank high for common searches and have a very high conversion rate.
 
-[channel pages](https://www.firefox.com/channel/desktop/)
+### /channel (the channel pages)
 
-## /all
+The [channel pages](https://www.firefox.com/channel/desktop/) are for downloading Beta, Developer Edition, and Nightly builds of Firefox. We call these different versions "release channels". Firefox Desktop and Android both multiple release channels, and iOS uses a Test Flight program.
+
+Templates are in <https://github.com/mozmeao/springfield/tree/main/springfield/firefox/templates/firefox/channel>
+
+
+### /all
 
 Firefox is available in more languages than the website is. The /all pages were originally implemented as a way for a user to download a copy of Firefox in a language that the website does not support. It has since ballooned as a way to get a highly configured version of Firefox.
 
@@ -40,15 +50,15 @@ This app is in desperate need of a UX re-think. The templates it uses are in */t
 
 An older copy of /all is also served as a [fall back page for the entire site](https://github.com/mozmeao/www-error-page) in some conditions.
 
-# By Template
+## By Template
 
-## templates/firefox/download/basic/*
+### templates/firefox/download/basic/*
 
 Originally created in 2018, this simple template has been preserved because of its wide translation status. See it in English by appending `?xv=legacy` to the URL. This download page was the first to focus specifically on the desktop version of Firefox, prior to this all platforms were advertised on the download page.
 
 It's also used to create the high converting platform pages which target searches for "Download Firefox for { platform }".
 
-## templates/firefox/download/desktop/base.html
+### templates/firefox/download/desktop/base.html
 
 The base template extends the *base-protocol.html* template with some meta data specific to Firefox downloads.
 
@@ -70,4 +80,4 @@ Created in 2025 to reflect the changing Firefox brand this template focuses on o
 
 Rather than adding an experiment directly to one of the existing templates we typically duplicate or extend the template and add it to the view.
 
-For details on configuring an a/b test see [A/B testing](../abtest.md).
+For details on configuring an a/b test see [A/B testing](../measurement/abtest.md).

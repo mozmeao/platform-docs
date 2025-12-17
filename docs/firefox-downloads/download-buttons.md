@@ -1,3 +1,5 @@
+# Download Buttons
+
 To ensure that visitors to Firefox download pages get served the correct build and installer type for their operating system, we rely on [User Agent](https://developer.mozilla.org/docs/Glossary/User_agent) information to figure out what's needed. We primarily use the [Client Hints API](https://developer.mozilla.org/docs/Web/HTTP/Guides/Client_hints) to query this information, falling back to [navigator.UserAgent](https://developer.mozilla.org/docs/Web/API/Navigator/userAgent) for other web browsers.
 
 The logic for this User Agent detection can be found in `/media/js/base/site.js`. The script adds a computed platform based CSS class name such as `windows`, `osx`, `linux`, `android` or `ios` to the root `<html>` element of the DOM. This class is then used as a styling hook for displaying platform specific content, such as the correct download button to display. The CSS selectors that are specific to Firefox download buttons can be found in `media/css/protocol/components/_download-button.scss`, which are imported into the global site base stylesheet.
@@ -6,7 +8,7 @@ The `site.js` script gets loaded in the `<head>` of each page. This is important
 
 Web browser vendors are also starting to freeze and limit the types information contained in User Agent strings today, so a good rule of thumb is to only rely on very basic information whenever possible, such as operating system name. Changes to the logic in `site.js` have potential to have site wide impact, so they must be made carefully and with a good amount of QA and testing. There are also tests in `tests/unit/spec/base/site.js`, so please maintain these and keep adding to them for your own sanity. The Playwright integration tests should also hopefully pick up possible regressions that might impact user flows.
 
-# Helpers
+## Helpers
 
 There are two Firefox download button helpers in Springfeld (and any remaining pages on Bedrock) to choose from. The first is a lightweight button that links directly to the `/firefox/download/thanks/` page. Its sole purpose is to facilitate downloading the main release version of Firefox.
 
@@ -28,7 +30,7 @@ The download button rendered by the `download_firefox()` helper is actually seve
 
 A good rule of thumb is to always use `download_firefox_thanks()` for regular landing pages (such as `/firefox/new/`) where the main release version of Firefox is the product being offered. For pages pages that require direct download links, or promote pre-release products (such as `/firefox/channel/`) then `download_firefox()` should be used instead.
 
-## A note for future brave developers
+## A note for future developers
 
 Much of the logic in the `{{ download_firefox() }}` helper is OLD, and could be refactored. It could be nice, for example, to move all of the logic for determining the right build of Firefox entirely into JS where it is easier to write tests for, eliminating the delicate selector classes in `_download-button.scss`. We made inroads to doing this with the lightweight `download_firefox_thanks()` helper (see above) that points to `/firefox/download/thanks/`, but the more heavyweight `download_firefox()` helper still relies on `_download-button.scss` to display the correct download links. We'd still need to maintain a no-JS fallback, but this could be as simple as a link to `/firefox/all/`.
 

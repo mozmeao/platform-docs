@@ -34,7 +34,7 @@ Cloud Run then deploys the built container as a 'serverless' webapp. By
 default, supervisord runs in the container, so it updates DB and L10N files
 automatically.
 
-This process is triggered by a simple push to a specific target branch. e.g.
+This process is triggered by a push to a specific target branch. e.g.
 pushing code to mozorg-demo-2 will result in the relevant code being deployed in
 Mozorg mode to www-demo2.allizom.org, while pushing to pocket-demo-4 will deploy
 it to www-demo4.tekcopteg.com in Pocket mode.
