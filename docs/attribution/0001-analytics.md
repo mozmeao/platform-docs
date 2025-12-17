@@ -1,7 +1,3 @@
----
-render_macros: true
----
-
 # Website Analytics {: #analytics }
 
 ## Google Analytics

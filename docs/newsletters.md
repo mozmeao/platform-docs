@@ -1,7 +1,3 @@
----
-render_macros: true
----
-
 # Newsletters
 
 Bedrock includes support for signing up for and managing subscriptions and preferences for Mozilla newsletters. 

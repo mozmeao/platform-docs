@@ -1,7 +1,3 @@
----
-render_macros: true
----
-
 # Developing on Bedrock or Springfield {: #coding }
 
 ## Managing Dependencies

@@ -1,7 +1,3 @@
----
-render_macros: true
----
-
 # Mozilla accounts attribution
 
 For products such as Mozilla VPN, Relay, and Monitor, we use Mozilla account as an authentication and subscription service. In addition to Google Analytics for basic conversion tracking, we attribute web page visits and clicks and through to actual subscriptions and installs by passing a specific allow-list of known query parameters through to the subscription platform. This is accomplished by adding referral data as parameters to sign up links on product landing pages.

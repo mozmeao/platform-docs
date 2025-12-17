@@ -1,7 +1,3 @@
----
-render_macros: true
----
-
 ## Windows
 
 For Windows, we generally only serve the 32bit stub installer. The reason for this is that the installer can figure out if the OS is 32bit or 64bit more accurately than User Agent strings can be relied upon for. The installer can then trigger the full download for the most appropriate binary. The only exception to this is for Firefox Beta. Here we serve links to the full installer and rely upon 32bit / 64 bit detection at the website level. The reason for this is that only the full installer offers the ability to change the installation path, as by default installing Firefox Beta would override the default location for the release installation of Firefox.

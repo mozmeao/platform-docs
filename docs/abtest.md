@@ -1,7 +1,3 @@
----
-render_macros: true
----
-
 # A/B Testing {: #ab_testing }
 
 ## Nimbus experiments

@@ -1,7 +1,3 @@
----
-render_macros: true
----
-
 !!! bedrock "Bedrock Only"
     Legal docs are specific to www.mozilla.org
 
