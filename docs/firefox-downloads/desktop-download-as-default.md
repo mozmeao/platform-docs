@@ -1,3 +1,8 @@
+# Desktop Download As Default
+
+!!! springfield "Springfield Only"
+    This feature is specific to Springfield.
+
 The stub installer is has been configured to serve a version of Firefox that will set itself as the default
 browser during installation if the stub attribution code includes the campaign value `SET_DEFAULT_BROWSER`.
 

@@ -64,7 +64,6 @@ markdown_extensions:
   - def_list
   - tables
   - toc:
-      baselevel: 2
       permalink: true
   - pymdownx.betterem:
       smart_enable: all
@@ -97,57 +96,103 @@ extra_css:
 
 nav:
   - Home: index.md
-  - Install: install.md
-  - Localization: l10n.md
-  - Developing on Bedrock or Springfield: coding.md
-  - Browser Support: browser-support.md
-  - How to Contribute: contribute.md
-  - Continuous Integration & Deployment: pipeline.md
-  - Front-end testing: testing.md
-  - Demo servers: demos.md
-  - Private work: private-repos.md
-  - Databases: databases.md
-  - Task Queue: task-queue.md
-  - Managing redirects: redirects.md
-  - Newsletters: newsletters.md
-  - Legal Docs: legal-docs.md
-  - Content Management System: cms.md
-  - Sitemaps: sitemap.md
-  - Banners: banners.md
-  - Mozilla.UITour: uitour.md
-  - Send to Device widget: send-to-device.md
 
-  - Mozilla account helpers: mozilla-accounts.md
-  - A/B Testing: abtest.md
-  - Mozilla VPN Subscriptions: vpn-subscriptions.md
+  - Getting Started:
+    - Getting Started: getting-started/index.md
+    - Installation: getting-started/install.md
+    - Running Locally: getting-started/running-locally.md
+    - Contributing: getting-started/contributing.md
+
+  - Development:
+    - Development: development/index.md
+    - Coding Style: development/coding-style.md
+    - Browser Support: development/browser-support.md
+    - Adding a View: development/views.md
+    - Finding Templates: development/finding-templates.md
+    - Writing JavaScript: development/javascript.md
+    - Writing CSS: development/protocol.md
+    - Working with Images: development/images.md
+    - Asset Bundling: development/assets.md
+    - Redirects: development/redirects.md
+    - Banners: development/banners.md
+    - Feature Switches: development/feature-switches.md
+    - Managing Dependencies: development/dependencies.md
+
+  - Testing:
+    - Testing: testing/index.md
+    - Pytest (Python): testing/pytest.md
+    - Jasmine (JavaScript): testing/jasmine.md
+    - Playwright (Integration): testing/playwright.md
+    - Axe (Accessibility): testing/axe.md
+    - Selenium (Legacy): testing/selenium.md
+
+  - Localization:
+    - Localization: l10n/index.md
+    - Fluent Basics: l10n/fluent.md
+    - Fluent Configuration: l10n/configuration.md
+    - CSS & Fonts: l10n/css.md
+
+  - Measurement:
+    - Measurement: measurement/index.md
+    - Consent Management: measurement/consent-management.md
+    - Website Analytics: measurement/analytics.md
+    - Firefox Desktop Attribution: measurement/firefox-desktop.md
+    - Firefox Mobile Attribution: measurement/firefox-mobile.md
+    - Mozilla Accounts Attribution: measurement/mozilla-accounts.md
+    - A/B Testing: measurement/abtest.md
+    - Markus: measurement/markus.md
+
   - Firefox Downloads:
     - firefox-downloads/download-buttons.md
     - firefox-downloads/desktop-download-support.md
-    - firefox-downloads/desktop-download-as-default.md
     - firefox-downloads/desktop-download-pages.md
-  - Attribution:
-    - attribution/index.md
-    - Mozorg Analytics: attribution/0001-analytics.md
-    - Firefox Desktop attribution: attribution/0002-firefox-desktop.md
-    - Firefox Mobile attribution: attribution/0003-firefox-mobile.md
-    - Mozilla accounts attribution: attribution/0004-mozilla-accounts.md
-    - Managing Data Privacy and Consent: attribution/0005-consent-management.md
-  - Architectural Decision Records:
-    - architecture/decisions/index.md
-    - 1. Record architecture decisions: architecture/decisions/0001-record-architecture-decisions.md
-    - 2. Move CI/CD Pipelines to Gitlab: architecture/decisions/0002-move-ci-cd-pipelines-to-gitlab.md
-    - 3. Use Cloudflare Workers and Convert for multi-variant testing: architecture/decisions/0003-use-cloudflare-workers-and-convert-for-multi-variant-testing.md
-    - 4. Use Fluent For Localization: architecture/decisions/0004-use-fluent-for-localization.md
-    - 5. Use a Single Docker Image For All Deployments: architecture/decisions/0005-use-a-single-docker-image-for-all-deployments.md
-    - 6. Revise tooling for Python dependency management: architecture/decisions/0006-revise-tooling-for-python-dependency-management.md
-    - 7. Further revise tooling for Python dependency management: architecture/decisions/0007-further-revise-tooling-for-python-dependency-management.md
-    - 8. Move Demos To GCP: architecture/decisions/0008-move-demos-to-gcp.md
-    - 9. Manage Contentful schema state via migrations: architecture/decisions/0009-use-manage-contentful-migrations.md
-    - 10. Move CI to Github Actions for Unit and Integration tests: architecture/decisions/0010-move-ci-cd-to-github-actions.md
-    - 11. Use StatsD for metrics collection: architecture/decisions/0011-use-statsd-for-metrics-collection.md
-    - 12. Use Wagtail CMS: architecture/decisions/0012-wagtail-for-cms.md
-  - Contentful (deprecated): contentful.md
-  - External Content Cards (deprecated): content-cards.md
+    - firefox-downloads/desktop-download-as-default.md
+
+  - Integrations:
+    - Integrations: integrations/index.md
+    - UI Tour: integrations/uitour.md
+    - Mozilla Account Helpers: integrations/mozilla-accounts.md
+    - VPN Subscriptions: integrations/vpn-subscriptions.md
+    - Newsletters: integrations/newsletters.md
+    - Send to Device: integrations/send-to-device.md
+    - Legal Docs: integrations/legal-docs.md
+    - Release Notes: integrations/release-notes.md
+
+  - Wagtail CMS:
+    - Wagtail CMS: cms/index.md
+    - Local Setup: cms/setup.md
+    - Creating Pages: cms/pages.md
+    - Images: cms/images.md
+    - Localization: cms/l10n.md
+
+  - Operations:
+    - Operations: operations/index.md
+    - CI/CD Pipeline: operations/pipeline.md
+    - Demo Servers: operations/demos.md
+    - Databases: operations/databases.md
+    - Database Migrations: development/migrations.md
+    - Sitemaps: operations/sitemap.md
+    - Task Queue: operations/task-queue.md
+    - Private Repos: operations/private-repos.md
+
+  - Reference:
+    
+    - Architectural Decisions:
+      - architecture/decisions/index.md
+      - 1. Record architecture decisions: architecture/decisions/0001-record-architecture-decisions.md
+      - 2. Move CI/CD Pipelines to Gitlab: architecture/decisions/0002-move-ci-cd-pipelines-to-gitlab.md
+      - 3. Use Cloudflare Workers and Convert for multi-variant testing: architecture/decisions/0003-use-cloudflare-workers-and-convert-for-multi-variant-testing.md
+      - 4. Use Fluent For Localization: architecture/decisions/0004-use-fluent-for-localization.md
+      - 5. Use a Single Docker Image For All Deployments: architecture/decisions/0005-use-a-single-docker-image-for-all-deployments.md
+      - 6. Revise tooling for Python dependency management: architecture/decisions/0006-revise-tooling-for-python-dependency-management.md
+      - 7. Further revise tooling for Python dependency management: architecture/decisions/0007-further-revise-tooling-for-python-dependency-management.md
+      - 8. Move Demos To GCP: architecture/decisions/0008-move-demos-to-gcp.md
+      - 9. Manage Contentful schema state via migrations: architecture/decisions/0009-use-manage-contentful-migrations.md
+      - 10. Move CI to Github Actions for Unit and Integration tests: architecture/decisions/0010-move-ci-cd-to-github-actions.md
+      - 11. Use StatsD for metrics collection: architecture/decisions/0011-use-statsd-for-metrics-collection.md
+      - 12. Use Wagtail CMS: architecture/decisions/0012-wagtail-for-cms.md
+    - Contentful (deprecated): reference/contentful.md
+    - External Content Cards (deprecated): reference/content-cards.md
 
 extra:
   social:
