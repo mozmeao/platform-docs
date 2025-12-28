@@ -10,16 +10,22 @@ BUILDDIR      = site
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
+	@echo "  build      to build the output site"
 	@echo "  clean      to remove all output files"
-	@echo "  deps       to rebuild Python dependencies for MkDocs"
+	@echo "  deps       to hash Python dependencies after version bump"
 	@echo "  install    to install Python dependencies for MkDocs"
 	@echo "  serve      to run MkDocs locally, live-rebuilding content as it changes"
+
+build:
+	mkdocs build -d $(BUILDDIR)
 
 clean:
 	rm -rf $(BUILDDIR)/*
 
 deps:
-	./bin/compile-requirements.sh
+	pip install -U uv
+	rm -f requirements.txt
+	uv pip compile --generate-hashes --no-strip-extras --python-version 3.13 requirements.in -o requirements.txt
 
 install:
 	pip install -U uv
@@ -27,6 +33,3 @@ install:
 
 serve:
 	mkdocs serve --open
-
-build:
-	mkdocs build
