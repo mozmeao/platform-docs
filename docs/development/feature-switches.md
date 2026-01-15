@@ -83,7 +83,7 @@ To test reversing the migration, run the following command but replace `0001` wi
 
 ## Example Usage in Templates
 
-You can use the `switch()` helper function in your templates as follows:
+You can use the `switch()` helper function in your Jinja2 templates as follows:
 
 ``` html
 {% if switch('the-dude') %}
@@ -95,13 +95,16 @@ You can use the `switch()` helper function in your templates as follows:
 
 You may also use switches in Python code (though locale support is unavailable in this context):
 
-!!! note
-    **Avoid using switch() outside the request/response cycle** (e.g., during module-level imports or in a urls.py file), as the switch's state is managed in the database and can be changed via the admin interface. Using it outside the request cycle would prevent the switch value from reflecting real-time updates.
+!!! warning
+    **Avoid using switch() outside the request/response cycle** (e.g., during module-level imports or in a urls.py file), as the switch's state is managed in the database and can be changed via the admin interface.
+
+    Using it outside the request cycle would prevent the switch value from immmediately reflecting any updates to it, until the Django server is restarted. Or (more confusingly) because we actually have multiple webs servers in use and turn these on and off to suit load demands, users might get inconsistent behaviour depending on where in the world they are.
+
+    If you need to put a page/view/URL behind a Switch, skip down to [Putting pages behind a Switch](#putting-pages-behind-a-switch).
 
 === "Bedrock"
     ``` python
     from bedrock.base.waffle import switch
-
 
     def home_view(request):
         title = "Staging Home" if switch("staging-site") else "Prod Home"
@@ -111,11 +114,139 @@ You may also use switches in Python code (though locale support is unavailable i
     ``` python
     from springfield.base.waffle import switch
 
-
     def home_view(request):
         title = "Staging Home" if switch("staging-site") else "Prod Home"
         ...
     ```
+
+## Putting pages behind a Switch
+
+As noted above, we can't just wrap a route definition in a `urlpatterns` with a `switch()`, because the `URLConf` is evaluated once at startup, rather than afresh each time a HTTP request comes in. If you need to put a view behind a switch, here's what you can do:
+
+### Switches with a Django function-based view
+
+=== "Bedrock"
+    ``` python
+    from django.http import Http404
+    from bedrock.base.waffle import switch
+
+    def some_view(request):
+        # Check the switch right at the start of the view function
+        if not switch("some-switch-here"):
+            raise Http404
+
+        # rest of code view continues
+        ...
+
+    ```
+=== "Springfield"
+    ``` python
+    from django.http import Http404
+    from springfield.base.waffle import switch
+
+    def some_view(request):
+        # Check the switch right at the start of the view function
+        if not switch("some-switch-here"):
+            raise Http404
+
+        # rest of code view continues
+        ...
+
+    ```
+
+### Switches with a Django class-based view
+
+=== "Bedrock"
+    ``` python
+    from django.http import Http404
+    from bedrock.base.waffle import switch
+
+    class SomeClassBasedView(TemplateView):
+
+        def dispatch(self, *args, **kwargs):
+            if not switch("some-switch-here"):
+                raise Http404
+            return super().dispatch(*args, **kwargs)
+
+        # other view methods follow as usual
+        ...
+    ```
+=== "Springfield"
+    ``` python
+    from django.http import Http404
+    from springfield.base.waffle import switch
+
+    class SomeClassBasedView(TemplateView):
+
+        def dispatch(self, *args, **kwargs):
+            if not switch("some-switch-here"):
+                raise Http404
+            return super().dispatch(*args, **kwargs)
+
+        # other view methods follow as usual
+        ...
+
+    ```
+
+### Switches for a route with our `page()` helper
+
+The [`page()` helper](/platform-docs/development/views/#page-helper) gives us a quick way to render a HTML template at a particular route, with support for our l10n machinery. However, the helper doesn't currently allow use of switches.
+
+The simplest approach here is to turn them into a function-based view, then have the switch behaviour added.
+
+So if the un-switched page might normally be added with:
+
+``` python
+page("some/feature/", "path/to/some/feature.html", ftl_files=["some/feature"]),
+```
+
+That would become a Django view like this, in a `views.py` file:
+
+=== "Bedrock"
+    ``` python
+    from lib import l10n_utils
+    from django.http import Http404
+    from bedrock.base.waffle import switch
+
+    def some_feature(request):
+        # Check the switch right at the start of the view function
+        if not switch("some-switch-here"):
+            raise Http404
+
+        return l10n_utils.render(
+            request,
+            "path/to/some/feature.html",
+            ftl_files=["some/feature"],
+        )
+
+    ```
+=== "Springfield"
+    ``` python
+    from lib import l10n_utils
+    from django.http import Http404
+    from springfield.base.waffle import switch
+
+    def some_feature(request):
+        # Check the switch right at the start of the view function
+        if not switch("some-switch-here"):
+            raise Http404
+
+        return l10n_utils.render(
+            request,
+            "path/to/some/feature.html",
+            ftl_files=["some/feature"],
+        )
+
+    ```
+
+and then included in the URLconf as
+
+``` python
+from somemodule.views import some_feature
+...
+
+path("some/feature/", some_feature, name="some.feature"),
+```
 
 ## Testing
 
