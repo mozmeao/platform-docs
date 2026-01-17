@@ -17,9 +17,11 @@ If a surface uses an image, images use must be made explicit via template markup
 
 ## Allowed filter specs
 
-When including an image in a template we ONLY use filter specs between 2400px down to 200px in 200px steps, plus 100px.
+When including an image in a template we ONLY use pre-generated filter specs. **Using alternative ones will trigger an error in production.**
 
-Laying them out, these are the **only** filter specs allowed. **Using alternative ones will trigger an error in production.**
+### Width-based (preserve aspect ratio)
+
+Widths from 2400px down to 200px in 200px steps, plus 100px:
 
 - `width-100`
 - `width-200`
@@ -34,6 +36,24 @@ Laying them out, these are the **only** filter specs allowed. **Using alternativ
 - `width-2000`
 - `width-2200`
 - `width-2400`
+
+### Aspect ratio crops (fill)
+
+!!! bedrock "Bedrock Only"
+    These aspect ratio renditions are only available in Bedrock. Springfield uses only the width-based renditions listed above.
+
+For each supported aspect ratio, cropped renditions are available at 13 width steps. The format is `fill-{width}x{height}`.
+
+| Ratio | Example specs |
+|-------|---------------|
+| **2:1** (wide landscape) | `fill-100x50`, `fill-200x100`, `fill-400x200`, ... `fill-2400x1200` |
+| **1:1** (square) | `fill-100x100`, `fill-200x200`, `fill-400x400`, ... `fill-2400x2400` |
+| **5:4** (landscape) | `fill-100x80`, `fill-200x160`, `fill-400x320`, ... `fill-2400x1920` |
+| **22:9** (ultra-wide) | `fill-100x41`, `fill-200x82`, `fill-400x164`, ... `fill-2400x982` |
+| **4:5** (portrait) | `fill-100x125`, `fill-200x250`, `fill-400x500`, ... `fill-2400x3000` |
+| **2:3** (tall portrait) | `fill-100x150`, `fill-200x300`, `fill-400x600`, ... `fill-2400x3600` |
+
+Each ratio has 13 width steps: 100, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400.
 
 ## Why are we limiting filter-specs to that set?
 
