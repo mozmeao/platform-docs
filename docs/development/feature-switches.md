@@ -192,61 +192,29 @@ As noted above, we can't just wrap a route definition in a `urlpatterns` with a 
 
 The [`page()` helper](/platform-docs/development/views/#page-helper) gives us a quick way to render a HTML template at a particular route, with support for our l10n machinery. However, the helper doesn't currently allow use of switches.
 
-The simplest approach here is to turn them into a function-based view, then have the switch behaviour added.
+You can pass a switch's name in as a parameter in order to enable the view/page if the switch is ON, else the route will 404
 
-So if the un-switched page might normally be added with:
-
-``` python
-page("some/feature/", "path/to/some/feature.html", ftl_files=["some/feature"]),
-```
-
-That would become a Django view like this, in a `views.py` file:
-
-=== "Bedrock"
-    ``` python
-    from lib import l10n_utils
-    from django.http import Http404
-    from bedrock.base.waffle import switch
-
-    def some_feature(request):
-        # Check the switch right at the start of the view function
-        if not switch("some-switch-here"):
-            raise Http404
-
-        return l10n_utils.render(
-            request,
-            "path/to/some/feature.html",
-            ftl_files=["some/feature"],
-        )
-
-    ```
-=== "Springfield"
-    ``` python
-    from lib import l10n_utils
-    from django.http import Http404
-    from springfield.base.waffle import switch
-
-    def some_feature(request):
-        # Check the switch right at the start of the view function
-        if not switch("some-switch-here"):
-            raise Http404
-
-        return l10n_utils.render(
-            request,
-            "path/to/some/feature.html",
-            ftl_files=["some/feature"],
-        )
-
-    ```
-
-and then included in the URLconf as
+So if an un-switched page might normally be added with:
 
 ``` python
-from somemodule.views import some_feature
-...
-
-path("some/feature/", some_feature, name="some.feature"),
+page(
+    "some/feature/",
+    "path/to/some/feature.html",
+    ftl_files=["some/feature"],
+),
 ```
+
+A switched page would be added with:
+
+``` python
+page(
+    "some/new/feature/",
+    "path/to/some/new/feature.html",
+    enabling_switch="new-feature",
+    ftl_files=["some/new/feature"]
+),
+```
+
 
 ## Testing
 
