@@ -24,3 +24,4 @@ See [A/B Testing](../../measurement/abtest.md) for full documentation.
 - [ ] Experiment activation logic is sound
 - [ ] Traffic is split between variants as expected
 - [ ] [Cookie support is not necessary or is included](../../measurement/abtest.md#cookies-consent)
+    - [ ] Cookie name is prefixed with `moz-exp-` (so it is automatically approved in Transcend)
