@@ -31,10 +31,12 @@ Your local Bedrock or Springfield installation will just download the Bedrock De
 
 The DB will contain a table that knows the relative paths of the images uploaded to the CMS, but not the actual images. Those are in a cloud storage bucket. To get the images if you need them, see [this documentation](../cms/images.md#ive-downloaded-a-fresh-db-and-the-images-are-missing)
 
-By default, `make preflight` or `./bin/run-db-download.py` will download a database file based on Bedrock Dev or Springfield Dev. If you want to download data from Stage or Prod, which are also available in sanitised form, you need to specify which environment you want by prefixing the command with `AWS_DB_S3_BUCKET=bedrock-db-stage`,  `AWS_DB_S3_BUCKET=bedrock-db-prod`.
-`AWS_DB_S3_BUCKET=springfield-db-stage` or  `AWS_DB_S3_BUCKET=springfield-db-prod`.
+By default, `make preflight` or `./bin/run-db-download.py` will download a database file based on Bedrock Dev or Springfield Dev. If you want to download data from Stage or Prod, which are also available in sanitised form, you need to specify which environment you want by prefixing the command with `AWS_DB_S3_BUCKET=bedrock-db-stage` or `AWS_DB_S3_BUCKET=bedrock-db-prod` for Bedrock, and `AWS_DB_S3_BUCKET=springfield-db-stage` or  `AWS_DB_S3_BUCKET=springfield-db-prod` for Springfield, e.g.:
 
-e.g. `AWS_DB_S3_BUCKET=bedrock-db-stage make preflight python manage.py download_media_to_local --environment=stage`
+```
+AWS_DB_S3_BUCKET=bedrock-db-stage make preflight
+python manage.py download_media_to_local --environment=stage
+```
 
 ## Ensuring new data gets exported to sqlite
 
