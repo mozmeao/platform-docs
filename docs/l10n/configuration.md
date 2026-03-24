@@ -120,7 +120,8 @@ def about_view(request):
 
 In order for a Fluent file to be extracted through automation and sent out for localization, it must first be configured to go through one or more distinct pipelines. This is controlled via a set of configuration files:
 
-- [Vendor](https://github.com/mozilla/bedrock/blob/main/l10n/configs/vendor.toml), locales translated by an agency, and paid for by Marketing (locales covered by staff are also included in this group).
+- [Vendor](https://github.com/mozilla/bedrock/blob/main/l10n/configs/vendor.toml), locales translated by an agency, and paid for by Marketing (locales covered by staff are also included in this group). 
+    - **Note:** The automation will always trigger all locales on the vendor side. Changes to this config file will not be applied by vendor.
 - [Pontoon](https://github.com/mozilla/bedrock/blob/main/l10n/configs/pontoon.toml), locales translated by Mozilla contributors.
 - [Special templates](https://github.com/mozilla/bedrock/blob/main/l10n/configs/special-templates.toml), for locales with dedicated templates that don't go through the localization process (not currently used).
 
@@ -142,12 +143,13 @@ You can read more about configuration files in the [L10n Project Configuration](
 Using a combination of vendor and pontoon configuration offers a flexible but specific set of options to choose from when it comes to defining an l10n strategy for a page. The available choices are:
 
 1. Staff locales.
-2. Staff + select vendor locales.
-3. Staff + all vendor locales.
-4. Staff + vendor + pontoon.
-5. All pontoon locales (for non-marketing content only).
+2. Staff + all vendor locales.
+3. Staff + vendor + pontoon.
+4. All pontoon locales (for non-marketing content only).
 
 When choosing an option, it's important to consider that vendor locales have a cost associated with them, and pontoon leans on the goodwill of our volunteer community. Typically, only non-marketing content should go through Pontoon for all locales. Everything that is marketing related should feature one of the staff/vendor/pontoon configurations.
+
+See docs on [CMS localisation](../cms/l10n.md) for Wagtail-specific integrations.
 
 ## Fluent File Activation
 
