@@ -142,11 +142,10 @@ You can read more about configuration files in the [L10n Project Configuration](
 
 Using a combination of vendor and pontoon configuration offers a flexible but specific set of options to choose from when it comes to defining an l10n strategy for a page. The available choices are:
 
-1. Staff locales.
 1. No localization exposed (e.g. by only limiting to `en-US/*.ftl` file locally, instead of source `en/*.ftl` sent for translation).
-1. All vendor locales.
-1. All vendor locales + subset of pontoon locales.
-1. All vendor locales + all pontoon locales.
+2. All vendor locales.
+3. All vendor locales + subset of pontoon locales.
+4. All vendor locales + all pontoon locales.
 
 When choosing an option, it's important to consider that vendor locales have a cost associated with them, and pontoon leans on the goodwill of our volunteer community. Exposing strings that only end up used in two or three vendor locales costs the same as having them translated in all the paid-for languages. Similarly, exposing a string to several dozen volunteer languages in case such content will never be shown in these locales (e.g. elements for pages with limited locale enablement) triggers unnecessary work from our contributor communities.
 
