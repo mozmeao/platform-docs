@@ -120,7 +120,8 @@ def about_view(request):
 
 In order for a Fluent file to be extracted through automation and sent out for localization, it must first be configured to go through one or more distinct pipelines. This is controlled via a set of configuration files:
 
-- [Vendor](https://github.com/mozilla/bedrock/blob/main/l10n/configs/vendor.toml), locales translated by an agency, and paid for by Marketing (locales covered by staff are also included in this group).
+- [Vendor](https://github.com/mozilla/bedrock/blob/main/l10n/configs/vendor.toml), locales translated by an agency, and paid for by Marketing (locales covered by staff are also included in this group). 
+    - **Note:** Automation always submits all vendor locales at once for paid translation. Exclusions in the configs currently do not have any effect.
 - [Pontoon](https://github.com/mozilla/bedrock/blob/main/l10n/configs/pontoon.toml), locales translated by Mozilla contributors.
 - [Special templates](https://github.com/mozilla/bedrock/blob/main/l10n/configs/special-templates.toml), for locales with dedicated templates that don't go through the localization process (not currently used).
 
@@ -141,13 +142,14 @@ You can read more about configuration files in the [L10n Project Configuration](
 
 Using a combination of vendor and pontoon configuration offers a flexible but specific set of options to choose from when it comes to defining an l10n strategy for a page. The available choices are:
 
-1. Staff locales.
-2. Staff + select vendor locales.
-3. Staff + all vendor locales.
-4. Staff + vendor + pontoon.
-5. All pontoon locales (for non-marketing content only).
+1. No localization exposed (e.g. by only limiting to `en-US/*.ftl` file locally, instead of source `en/*.ftl` sent for translation).
+2. All vendor locales.
+3. All vendor locales + subset of pontoon locales.
+4. All vendor locales + all pontoon locales.
 
-When choosing an option, it's important to consider that vendor locales have a cost associated with them, and pontoon leans on the goodwill of our volunteer community. Typically, only non-marketing content should go through Pontoon for all locales. Everything that is marketing related should feature one of the staff/vendor/pontoon configurations.
+When choosing an option, it's important to consider that vendor locales have a cost associated with them, and pontoon leans on the goodwill of our volunteer community. Exposing strings that only end up used in two or three vendor locales costs the same as having them translated in all the paid-for languages. Similarly, exposing a string to several dozen volunteer languages in case such content will never be shown in these locales (e.g. elements for pages with limited locale enablement) triggers unnecessary work from our contributor communities.
+
+See docs on [CMS localisation](../cms/l10n.md) for Wagtail-specific integrations.
 
 ## Fluent File Activation
 
