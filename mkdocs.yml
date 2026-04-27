@@ -131,7 +131,7 @@ nav:
 
   - Code Review:
     - Code Review: code-review/index.md
-    - Checklists: 
+    - Checklists:
       - Checklists: code-review/checklists/index.md
       - General: code-review/checklists/general.md
       - Analytics: code-review/checklists/analytics.md
@@ -141,6 +141,7 @@ nav:
       - JavaScript: code-review/checklists/js.md
       - Localization: code-review/checklists/l10n.md
       - Media: code-review/checklists/media.md
+      - Backend: code-review/checklists/backend.md
       - Tests: code-review/checklists/tests.md
 
   - Localization:
@@ -194,7 +195,7 @@ nav:
     - Private Repos: operations/private-repos.md
 
   - Reference:
-    
+
     - Architectural Decisions:
       - architecture/decisions/index.md
       - 1. Record architecture decisions: architecture/decisions/0001-record-architecture-decisions.md
