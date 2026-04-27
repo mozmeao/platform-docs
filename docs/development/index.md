@@ -7,11 +7,10 @@ This section covers how to build features for Bedrock and Springfield.
 - **[Managing Dependencies](dependencies.md)** - Python and Node.js package management
 - **[Asset Bundling](assets.md)** - Webpack configuration and static assets
 - **[Writing JavaScript](javascript.md)** - ES5, ES6/Babel, and modern JS
-- **[Adding Pages](adding-pages.md)** - URL patterns for new pages
+- **[Writing Views](views.md)** - URL patterns, views, variation views, and geo-based rendering
 - **[Finding Templates](finding-templates.md)** - Locating templates by URL
-- **[Writing Views](views.md)** - Views, variation views, and geo-based rendering
 - **[Working with Images](images.md)** - Image optimization and helpers
-- **[Database Migrations](migrations.md)** - Safe migration practices
+- **[Database Migrations](../operations/migrations.md)** - Safe migration practices
 
 ## Standards & Tools
 

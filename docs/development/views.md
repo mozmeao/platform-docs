@@ -45,7 +45,7 @@ The variable `latest_version` will be available in the template.
 
 ## Writing a Custom View
 
-You should rarely need to write a view. Most pages are static and you should use the `page` function documented in [Adding Pages](adding-pages.md).
+You should rarely need to write a view. Most pages are static and you should use the `page` function documented in the [Page() helper](#page-helper) section above.
 
 If you need to write a view and the page is translated or translatable then it should use the `l10n_utils.render()` function to render the template.
 

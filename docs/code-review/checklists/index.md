@@ -23,6 +23,6 @@ These checklists are `bedrock` & `springfield` specific and are not intended to 
 
 Automated checks will also be run by GitHub to check:
 
-- [Pre-commit checks have been run](../../getting-started/install/#pre-commit-hooks) (fluent, ruff, stylelint, etc.)
+- [Pre-commit checks have been run](../../getting-started/install.md#pre-commit-hooks) (fluent, ruff, stylelint, etc.)
 - JS unit tests pass
 - Python unit tests pass
