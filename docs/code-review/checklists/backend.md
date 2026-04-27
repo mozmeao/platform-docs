@@ -11,7 +11,7 @@ A non-exhaustive list of things to watch out for when reviewing.
 
 ## Caching
 
-- [ ] `SimpleDictCache` stores object references, not copies - mutating an object retrieved from this cache also mutates the cached value
+- [ ] `SimpleDictCache` stores object references, not copies - mutating an object retrieved from this cache also mutates the cached value. Confirm this is not a risk, or that the risk is handled.
 
 ## Code Style
 
