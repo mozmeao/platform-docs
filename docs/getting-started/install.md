@@ -61,7 +61,7 @@ After that setup, whenever you try to make a commit, the 'hooks' will check/lint
 ## Docker Installation
 
 !!! note
-    This method assumes you have [Docker installed for your platform](https://www.docker.com/). If not please do that now or skip to the [Pyenv Installation](#pyenv-installation) section.
+    This method assumes you have [Docker installed for your platform](https://www.docker.com/). If not please do that now or skip to the [Pyenv Installation](#pyenv-direct-installation) section.
 
 This is the simplest way to get started developing. If you're on Linux or Mac (and possibly Windows 10 with the Linux subsystem) you can run a script that will pull our production and development docker images and start them:
 
@@ -115,7 +115,7 @@ If you make a change to `media/static-bundles.json`, you'll need to restart Dock
 
 This method installs Python, dependencies, and runs the application directly on your machine using [pyenv](https://github.com/pyenv/pyenv) to manage Python versions and [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv) to isolate dependencies.
 
-These instructions assume you have pip and Node.js installed. If you don't have ``pip`` installed (you probably do) you can install it with the instructions in [the pip docs](https://pip.pypa.io/en/stable/installing/).
+These instructions assume you have pip and Node.js installed. If you don't have ``pip`` installed (you probably do) you can install it with the instructions in [the pip docs](https://pip.pypa.io/en/stable/installation/).
 
 The following assumes you are on MacOS, using `zsh` as your shell and [Homebrew](https://brew.sh/) as your package manager. If you are not, there are installation instructions for a variety of platforms and shells in the READMEs for the two pyenv projects.
 

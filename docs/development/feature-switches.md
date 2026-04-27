@@ -190,7 +190,7 @@ As noted above, we can't just wrap a route definition in a `urlpatterns` with a 
 
 ### Switches for a route with our `page()` helper
 
-The [`page()` helper](/platform-docs/development/views/#page-helper) gives us a quick way to render a HTML template at a particular route, with support for our l10n machinery. However, the helper doesn't currently allow use of switches.
+The [`page()` helper](views.md#page-helper) gives us a quick way to render a HTML template at a particular route, with support for our l10n machinery. However, the helper doesn't currently allow use of switches.
 
 You can pass a switch's name in as a parameter in order to enable the view/page if the switch is ON, else the route will 404
 

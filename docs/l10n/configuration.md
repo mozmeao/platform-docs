@@ -338,7 +338,7 @@ The root `.toml` files point to the ones in `/configs/` and are a 'gateway' thro
     There are two repos, to hold the translation files as part of the pipeline.
 
     - **A repo in where the files are sent to** for the L10N team's automation to pick up. ([bedrock](https://github.com/mozilla-l10n/www-l10n/) / [springfield](https://github.com/mozilla-l10n/www-firefox-l10n)).
-    - **An optional repo where files are post-processed following translation**. ([bedrock](https:/github.com/mozmeao/www-l10n/) / [springfield](https://github.com/mozmeao/www-firefox-l10n/))
+    - **An optional repo where files are post-processed following translation**. ([bedrock](https://github.com/mozmeao/www-l10n/) / [springfield](https://github.com/mozmeao/www-firefox-l10n/))
 
         !!! important
             **This repo is optional if not using Pontoon/community translations.** Why? If the translations are done by the community (via Pontoon), there is a possibility that not enough of the strings will be translated in order to render the content in the relevant locale. We run a CI task to determine whether a locale has enough translated strings to be considered 'active'. If we used a vendor entirely, we would expect all locales to be 100% translated.
