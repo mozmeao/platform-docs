@@ -189,7 +189,7 @@ nav:
     - CI/CD Pipeline: operations/pipeline.md
     - Demo Servers: operations/demos.md
     - Databases: operations/databases.md
-    - Database Migrations: development/migrations.md
+    - Database Migrations: operations/migrations.md
     - Sitemaps: operations/sitemap.md
     - Task Queue: operations/task-queue.md
     - Private Repos: operations/private-repos.md
