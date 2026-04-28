@@ -18,3 +18,12 @@ To avoid this, split your changes across releases, such as below.
 - Release 2: Clean up - drop the old, deprecated column.
 
 With both paths, check for any custom schema or data migrations that might reference the deprecated column.
+
+## Table Drops
+
+When removing an entire model and its database table:
+
+- Release 1: Remove all code that uses the model (views, templates, URL routes, serializers, etc.). The model class itself and its migration history should be the only things that remain — nothing in the codebase should reference the model's fields or manager any more.
+- Release 2: Delete the model class and add a migration to drop the table. Ship this as a small, isolated release.
+
+The reason for the isolated release is that the migration to drop the table is irreversible. Keeping it separate makes it easier to identify and roll back if something goes wrong.

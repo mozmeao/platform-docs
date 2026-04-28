@@ -17,3 +17,4 @@ ENV/
 .cache
 *.log
 pip-log.txt
+.claude

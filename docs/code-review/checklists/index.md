@@ -1,8 +1,8 @@
 # Code Review Checklists
 
 !!! warning "These checklists are not exhaustive"
-    Look, I can't document all the ways something can go wrong. Just because a PR checks all these boxes doesn't mean it should be approved.
-    
+    We can't document all the ways something can go wrong. Just because a PR checks all these boxes doesn't mean it should be approved.
+
     Be curious about the code you are reviewing and look for places where it might break or could be improved.
 
     Think about: functionality, accessibility, analytics, code quality, localization, maintainability (including tests), performance, and security.
@@ -18,6 +18,7 @@ These checklists are `bedrock` & `springfield` specific and are not intended to 
 - [JavaScript](js.md) - Behavior, error handling, and console output
 - [Localization](l10n.md) - Fluent files, string conventions, and style
 - [Media](media.md) - Images, alt text, and optimization
+- [Backend](backend.md) - Python, Django and Wagtail code
 - [Tests](tests.md) - Unit and functional tests
 
 Automated checks will also be run by GitHub to check:
