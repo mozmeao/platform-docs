@@ -53,7 +53,22 @@ https://www.mozilla.org/firefox/browsers/mobile/app/?product=firefox&campaign=fi
     The `product` parameter is limited to only `firefox`, `focus`, or `klar`, and the `campaign`
     parameter is limited to values that only contain letters, numbers, dashes, underscores, and periods.
 
+### Adjust opt-in routing for Firefox on Android
+
+For campaigns that need install attribution recorded in [Adjust](https://www.adjust.com/) (rather than relying on Google Play install referrers), append `via=adjust` to the redirect URL. When present, the redirect goes through an Adjust attribution link instead of straight to Google Play.
+
+```
+https://www.mozilla.org/firefox/browsers/mobile/app/?via=adjust&product=firefox&campaign=firefox-whatsnew
+```
+
+!!! note
+    `via=adjust` only takes effect when **both** `product=firefox` and the request comes from an Android user-agent. iOS, desktop, and non-Firefox products (Focus, Klar) ignore the parameter and fall back to the default app-store redirect. An unrecognized `via` value also falls back to the default behavior.
+
+The Adjust link forwards the click on to Google Play (so the user-visible end destination is unchanged) and records the install in Adjust under the **`mozorg-mobile-redirect`** channel, with the `campaign` query parameter preserved as the Adjust campaign value. See *Where can I find mobile attribution data?* below for where to view the data.
+
 
 ## Where can I find mobile attribution data?
 
 You can find Firefox Android client attribution data in [Looker](https://mozilla.cloud.looker.com/looks/1997). Firefox iOS data is currently only available in [App Store Connect](https://appstoreconnect.apple.com/), however this will also be added to Looker in the near future.
+
+For Android installs attributed via the `?via=adjust` redirect (see *Adjust opt-in routing for Firefox on Android* above), data is available in the [Adjust dashboard](https://www.adjust.com/). All campaigns routed through this redirect are grouped under the **`mozorg-mobile-redirect`** channel, with the `campaign` query parameter preserved as the Adjust campaign value — so each distinct `campaign=` you send shows up as its own row under that channel.
