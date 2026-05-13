@@ -7,6 +7,10 @@ Bedrock and Springfield run a series of automated tests as part of continuous in
 - Redirect tests (see [Testing redirects](../development/redirects.md#testing-redirects)).
 - Functional tests (see [Front-end testing](../testing/index.md)).
 
+!!! note
+    This document is still valid and explains the manual deployment process that is the fallback approach to use if the `Release` Github Action in Bedrock and Springfield fails.
+    The `Release` GHA is [documented internally](https://mozilla-hub.atlassian.net/wiki/spaces/EN/pages/2665873864/Release+process+via+Github+Actions) for users with repo-write access
+
 ## Deployed site URLs:
 
 === "Bedrock"
