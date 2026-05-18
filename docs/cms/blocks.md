@@ -73,7 +73,7 @@ Here's how we implement that.
 
 `page.html`
 
-```html
+``` jinja
 {% block content %}
 <div class="my-page-class">
   {% set ns = namespace(headings=0) %}
@@ -100,7 +100,7 @@ When the heading block template is rendered, it will use this variable to determ
 
 `blocks/heading.html`
 
-```html
+``` jinja
 {% set heading_level = "h" ~ block_level if block_level else "h2" %}
 <{{ heading_level }} class="my-heading">{{ value.heading_text }}</{{ heading_level }}>
 ```
@@ -146,7 +146,7 @@ The section block's html would look like this:
 
 `section.html`
 
-```html
+``` jinja
 {% set block_text = value.heading.heading_text|richtext|remove_tags %}
 
 <div class="section">
@@ -180,7 +180,7 @@ Here's what the button template looks like:
 
 `button.html`
 
-```html
+``` jinja
 {% set block_text = block_text ~ " - " ~ value.label %}
 
 <button
@@ -200,7 +200,7 @@ When the button is rendered in the CTA block, it will use the existing `block_te
 Now let's look at the cards from the example. They are in a lower level in relation to the section.
 
 `cards-list.html`
-```html
+``` jinja
 {% set block_level = block_level or 1 %}
 
 <div class="cards-list">
@@ -214,7 +214,7 @@ Now let's look at the cards from the example. They are in a lower level in relat
 ```
 
 `card.html`
-```html
+``` jinja
 {% set heading_level = 'h' ~ block_level if block_level else 'h3' %}
 {% set block_text =  value.heading|richtext|remove_tags %}
 
