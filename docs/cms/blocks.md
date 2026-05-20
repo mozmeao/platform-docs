@@ -6,7 +6,7 @@ Most pages defined in the CMS have at least one free form section that accepts d
 
 The UI elements available for each page type are first defined by designers and implemented according to the options the team wants to give to editors to create new pages. When implementing a new block, consider the following principles:
 
-- The basic usage of a block should be straight forward and intuitive.
+- The basic usage of a block should be straightforward and intuitive.
 - Set default values whenever possible so that editors don't have to make choices for the basic usage.
 - Separate content from presentation. Optional parameters, such as layout and theme, should be grouped inside a block's "Settings"
 - Protect editors from making mistakes. We trust our editors to spot when a page doesn't look good, but they shouldn't have to.
@@ -195,7 +195,7 @@ Here's what the button template looks like:
 
 The section set the `block_text` variable with the content from it's heading. Note that we're using a custom `remove_tags` template tag to preserve only the text, without any HTML tags.
 
-When the button is rendered in the CTA block, it will use the existing `block_text` template variable and append it's own label.  The `block_position` is set by the parent block. The result for the CTA button will be `data-cta-position="block-1-section.cta-1"` and `data-cta-text="Section Heading - Button label"`.
+When the button is rendered in the CTA block, it will use the existing `block_text` template variable and append its own label.  The `block_position` is set by the parent block. The result for the CTA button will be `data-cta-position="block-1-section.cta-1"` and `data-cta-text="Section Heading - Button label"`.
 
 Now let's look at the cards from the example. They are in a lower level in relation to the section.
 
