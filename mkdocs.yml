@@ -183,6 +183,7 @@ nav:
     - Images: cms/images.md
     - Writing Alt Text: cms/alt-text.md
     - Localization: cms/l10n.md
+    - Creating Blocks: cms/blocks.md
 
   - Operations:
     - Operations: operations/index.md

@@ -8,6 +8,7 @@ Bedrock and Springfield use [Wagtail CMS](https://wagtail.org/) for content mana
 - **[Creating Pages](pages.md)** - Page models, migrations, templates, testing
 - **[Images](images.md)** - Working with CMS-uploaded images
 - **[Localization](l10n.md)** - Translating CMS content via Smartling/Pontoon
+- **[Creating Blocks](blocks.md)** - CMS architecture and conventions
 
 ## Quick Start
 
