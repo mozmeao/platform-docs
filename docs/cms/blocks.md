@@ -7,18 +7,18 @@ Most pages defined in the CMS have at least one free form section that accepts d
 The UI elements available for each page type are first defined by designers and implemented according to the options the team wants to give to editors to create new pages. When implementing a new block, consider the following principles:
 
 - The basic usage of a block should be straightforward and intuitive.
-- Set default values whenever possible so that editors don't have to make choices for the basic usage.
+- Set default values whenever possible so that editors can think primarily about content and don't have to make choices when using a block. Use the simplest implementation of the block as default.
 - Separate content from presentation. Optional parameters, such as layout and theme, should be grouped inside a block's "Settings"
-- Protect editors from making mistakes. We trust our editors to spot when a page doesn't look good, but they shouldn't have to.
-  - If a block shouldn't be placed in a certain position on the page, add a page level validation.
-  - If a certain combination of settings in a block doesn't make sense, raise a validation error.
-  - If a field is optional, make sure that the template doesn't render it, adding white space.
-  - However blocks are combined in a page, they should always output semantic HTML. Headings hierarchy must be consistent, for example.
+- Protect editors from making mistakes. We trust our editors to spot when a page doesn't look good, but they shouldn't have to. If a specific combination of settings results in a bad UI, make that impossible. Add help text explaining the intended usage of each field.
+    - If a block shouldn't be placed in a certain position on the page, add a page level validation.
+    - If a certain combination of settings in a block doesn't make sense, raise a validation error.
+    - If a field is optional, make sure that the template doesn't render it, adding white space.
+    - However blocks are combined in a page, they should always output semantic HTML. Headings hierarchy must be consistent, for example.
 - Smaller UI elements (atoms and molecules) should be generic enough to be used inside other blocks with little or no extra configuration.
 - We frequently need to decide if a new UI element is a variation of an existing block or whole new one. To make that decision, consider these factors:
-  - The intended usage of the block. Does it make sense only in a specific page or could it be placed in any page?
-  - Will the new settings addition to the existing block make it confusing for editors?
-  - If implemented as a new block, will it be clear to editors which is which and why they should pick one or the other?
+    - The intended usage of the block. Does it make sense only in a specific page or could it be placed in any page?
+    - Will the new settings addition to the existing block make it confusing for editors?
+    - If implemented as a new block, will it be clear to editors which is which and why they should pick one or the other?
 - Don't be afraid to refactor blocks if it means improving usability - data migrations exist for this. (See the section about [migrating blocks](#block-data-migrations) below.)
 
 ## Blocks hierarchy
@@ -51,7 +51,7 @@ Editors shouldn't have to manually set heading levels. The templates should be a
 Consider the following page:
 
 - Notification - no heading here
-- Into block
+- Intro block
     - Heading (`<h1>`)
     - Some content
 - Section
