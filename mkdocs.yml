@@ -154,7 +154,6 @@ nav:
     - Measurement: measurement/index.md
     - Consent Management: measurement/consent-management.md
     - Website Analytics: measurement/analytics.md
-    - Firefox Desktop Attribution: measurement/firefox-desktop.md
     - Firefox Mobile Attribution: measurement/firefox-mobile.md
     - Mozilla Accounts Attribution: measurement/mozilla-accounts.md
     - A/B Testing: measurement/abtest.md
@@ -164,7 +163,7 @@ nav:
     - firefox-downloads/download-buttons.md
     - firefox-downloads/desktop-download-support.md
     - firefox-downloads/desktop-download-pages.md
-    - firefox-downloads/desktop-download-as-default.md
+    - firefox-downloads/download-attribution.md
 
   - Integrations:
     - Integrations: integrations/index.md
