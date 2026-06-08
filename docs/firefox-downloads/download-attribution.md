@@ -101,7 +101,7 @@ Below is a breakdown of the data type contained in each key.
 | `ua` | Analytics | simplified browser name parsed from the visitor's User Agent string | `chrome`
 | `session_id` | Analytics | random 10 digit string identifier used to associate attribution data with GA session | `9770365798`
 | `client_id_ga4` | Analytics | Google Analytics 4 Client ID | `1715265578.1681917481`
-| `dlsource` | Analytics | A hard-coded string ID used to distinguish downloads from archive downloads | `fxdotcom`
+| `dlsource` | Essential | A hard-coded string ID used to distinguish downloads from archive downloads | `fxdotcom`
 
 !!! note
     There is a proposal to update the stub attribution service in future to provide essential-specific keys (i.e. `product_context` and `install_options`). But for now, we have to share the existing `campaign` and `content` keys. **When there is a conflict between an essential value and an analytics value, the essential value wins.**
@@ -150,7 +150,7 @@ The auto-download JS bundle overrides default "append to links" download attribu
     1. *Even if analytics data was granted, this would <em>not</em> include the GA client ID.
 9.  Once the user installs Firefox, the data that was passed to the installer is then stored in the users' Telemetry profile.
     1. If analytics data was granted, during analysis, the download token can be used to join Telemetry data with the corresponding GA data in the server logs.
-    2. If analytics data was denied, all fields except the Essential campaign/content would be `(not set)`. There would be no session ID and no GA data.
+    2. If analytics data was denied, all non-Essential fields are `(not set)`. There is no session ID and no GA data.
 
 !!! note
     The download attribution script uses the attribute `data-download-version` to identify what links are download links.
