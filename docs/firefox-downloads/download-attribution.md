@@ -91,7 +91,7 @@ Below is a breakdown of the data type contained in each key.
 | Key | Data type | Description | Example |
 | ----| --------- | ----------- | ------- | 
 | `campaign` | Essential or Analytics | Essential: user-facing download feature <br>Analytics: specific marketing campaign | Essential: `SET_DEFAULT_BROWSER` <br>Analytics: `fast`
-| `source` | Analytics | referring site which sent the visitor
+| `source` | Analytics | referring site which sent the visitor | `google`
 | `medium` | Analytics | type of link, such as referral, cost per click, or email | `cpc`
 | `content` | Essential or Analytics | Essential: validation for RTAMO feature <br>Analytics: specific element that was clicked | Essential: `rta:dUJsb2NrMEByYXltb25kaGlsbC5uZXQ` <br>Analytics: `getfirefox`
 | `experiment` | Analytics | an experiment name that visitor was a cohort of | `taskbar`
@@ -102,7 +102,7 @@ Below is a breakdown of the data type contained in each key.
 | `dlsource` | Analytics | A hard-coded string ID used to distinguish downloads from archive downloads | `fxdotcom`
 
 !!! note
-    There is a proposal to update the stub attribution service in future to provide essential-specific keys (i.e. `product_context` and `install_options`). But for now, we have to share the existing `campaign` and `content` keys. When there is a conflict between an essential value and an analytics value, the essential value wins.
+    There is a proposal to update the stub attribution service in future to provide essential-specific keys (i.e. `product_context` and `install_options`). But for now, we have to share the existing `campaign` and `content` keys. **When there is a conflict between an essential value and an analytics value, the essential value wins.**
 
 The stub attribution service returns two base64-encoded values which we store in cookies:
 
