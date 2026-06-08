@@ -141,16 +141,16 @@ The auto-download JS bundle overrides default "append to links" download attribu
     1. Essential campaigns are checked against whitelist.
     2. Analytics generates an attribution session ID. This ID is also sent to Google Analytics as a non-interaction event.
 3. If attribution data passes client-side validation, the data is stored as a `-raw` cookie in the user's web browser. These cookies have a 24 hour expiry.
-3.  Next we use these raw cookies to send attribution data to an authentication service that is part of springfield's back-end server. The data is validated again, then base64 encoded and returned to the client together with an signed, encrypted signature to prove that the data came from www.firefox.com.
-4.  The encoded attribution data and signature are then stored as cookies in the user's web browser. The cookies have the IDs `moz-download-attribution-code` (the attribution code) and `moz-download-attribution-sig` (the encrypted signature). Both cookies have a 24 hour expiry.
-5.  On all pages, Springfield checks if both `moz-download-attribution-code` and `moz-download-attribution-sig` cookies exist. If so, we append the authenticated data to any Firefox direct download links on the page. The query parameters are labelled `attribution_code` and `attribution_sig`.
-6.  When the user clicks the Firefox download link, another attribution service hosted at `download.mozilla.org` then decrypts and validates the attribution signature. If the secret matches, a unique download token is generated. The service then stores both the attribution data* and the download token in Mozilla's private server logs.
+4.  Next we use these raw cookies to send attribution data to an authentication service that is part of springfield's back-end server. The data is validated again, then base64 encoded and returned to the client together with an signed, encrypted signature to prove that the data came from www.firefox.com.
+5.  The encoded attribution data and signature are then stored as cookies in the user's web browser. The cookies have the IDs `moz-download-attribution-code` (the attribution code) and `moz-download-attribution-sig` (the encrypted signature). Both cookies have a 24 hour expiry.
+6.  On all pages, Springfield checks if both `moz-download-attribution-code` and `moz-download-attribution-sig` cookies exist. If so, we append the authenticated data to any Firefox direct download links on the page. The query parameters are labelled `attribution_code` and `attribution_sig`.
+7.  When the user clicks the Firefox download link, another attribution service hosted at `download.mozilla.org` then decrypts and validates the attribution signature. If the secret matches, a unique download token is generated. The service then stores both the attribution data* and the download token in Mozilla's private server logs.
     1. *If analytics data was granted, this would include the Google Analytics client ID.
-7.  The service then passes the download token and attribution data* into the installer being served to the user.
+8.  The service then passes the download token and attribution data* into the installer being served to the user.
     1. *Even if analytics data was granted, this would <em>not</em> include the GA client ID.
-8.  Once the user installs Firefox, the data that was passed to the installer is then stored in the users' Telemetry profile.
+9.  Once the user installs Firefox, the data that was passed to the installer is then stored in the users' Telemetry profile.
     1. If analytics data was granted, during analysis, the download token can be used to join Telemetry data with the corresponding GA data in the server logs.
-    1. If analytics data was denied, all fields except the Essential campaign/content would be `(not set)`. There would be no session ID and no GA data.
+    2. If analytics data was denied, all fields except the Essential campaign/content would be `(not set)`. There would be no session ID and no GA data.
 
 !!! note
     The download attribution script uses the attribute `data-download-version` to identify what links are download links.
