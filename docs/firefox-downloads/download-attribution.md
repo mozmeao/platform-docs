@@ -15,7 +15,7 @@ To clarify the separate types of data, we have two triggers to initialize downlo
 
 Essential data is information required for a user-facing feature to function (i.e. return to AMO, set as default, enable smart window).
 
-Essential data is created when the user:
+Essential data is created when the user does one or more of the following:
 
 - arrives on a special landing page dedicated to a download feature
 - interacts with a checkbox related to a download feature
@@ -78,13 +78,13 @@ We store a snapshot of each type of data in a cookie:
 These are not the cookies we use to pass information to the download installer. We use these cookies internally to create requests to the [stub attribution service](https://github.com/mozilla-services/stubattribution/tree/master). 
 
 !!! note
-    Because we have separate triggers for different types of download attribution data, we need to manage conflicting requests. 
+    Because we have separate triggers for different types of download attribution data, we need to manage conflicting HTTP requests. 
     
-    For example, if a request with combined essential and analytics data is in progress, but then analytics consent is denied, we want that second request (with essential data only) to be applied, regardless of whether the request's response was received first or second. 
+    For example, if a HTTP request with combined essential and analytics data is in progress, but then analytics consent is denied, we want that second request (with essential data only) to be applied, regardless of whether the request's response was received first or second. 
     
     To do this, we track in-flight requests and run `inFlightXHR.abort()` on prior requests to ensure to most up-to-date request always wins.
 
-The stub attribution service is separately maintained, and it expects specific keys. The default value for all keys is `(not set)`.
+The stub attribution service is separately maintained, and it expects specific keys. The default value for all keys is `(not set)` with the exception of `dlsource` which is `fxdotcom`.
 
 Below is a breakdown of the data type contained in each key. 
 
@@ -138,7 +138,7 @@ The auto-download JS bundle overrides default "append to links" download attribu
     1. Essential trigger fires based on page or checkbox.
     2. Analytics trigger fires according to GTM consent status.
 2.  [Attribution data](#download-attribution-data-keys) is validated:
-    1. Essential campaigns are checked against whitelist.
+    1. Essential campaigns are checked against allowlist.
     2. Analytics generates an attribution session ID. This ID is also sent to Google Analytics as a non-interaction event.
 3. If attribution data passes client-side validation, the data is stored as a `-raw` cookie in the user's web browser. These cookies have a 24 hour expiry.
 4.  Next we use these raw cookies to send attribution data to an authentication service that is part of springfield's back-end server. The data is validated again, then base64 encoded and returned to the client together with an signed, encrypted signature to prove that the data came from www.firefox.com.
@@ -148,7 +148,7 @@ The auto-download JS bundle overrides default "append to links" download attribu
     1. *If analytics data was granted, this would include the Google Analytics client ID.
 8.  The service then passes the download token and attribution data* into the installer being served to the user.
     1. *Even if analytics data was granted, this would <em>not</em> include the GA client ID.
-9.  Once the user installs Firefox, the data that was passed to the installer is then stored in the users' Telemetry profile.
+9.  Once the user installs Firefox, the data that was passed to the installer is then stored in the user's Telemetry profile.
     1. If analytics data was granted, during analysis, the download token can be used to join Telemetry data with the corresponding GA data in the server logs.
     2. If analytics data was denied, all non-Essential fields are `(not set)`. There is no session ID and no GA data.
 
@@ -177,11 +177,11 @@ You might not need to test all these depending on what is changing this is an ex
 
 3.  Using Dev Tools, open the Application tab and inspect cookies.
 
-4.  Look for a cookie called ``moz-download-attribution-code`` and copy the value (it should be a base64 encoded string).
+4.  Look for a cookie called `moz-download-attribution-code` and copy the value (it should be a base64 encoded string).
 
 5. Decode the base64 string (e.g. using <https://base64decode.org>) and check that:
 
-    -   ``dlsource`` parameter value is fxdotcom
+    -   `dlsource` parameter value is `fxdotcom`
     -   ``client_id_ga4`` and ``session_id`` parameters exist
     -   ``client_id_ga4`` should look something like 0700077325.1656063224 (the numbers will differ but the format with the middle period should look the same).
     -   ``source`` and ``campaign`` have the values ham and pineapple, respectively.
