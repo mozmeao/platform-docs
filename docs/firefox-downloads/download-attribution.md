@@ -37,7 +37,7 @@ RTAMO initially worked for only a limited subset of addons recommended by Mozill
 
 ##### Download as Default
 
-The `SET_DEFAULT_BROWSER` campaign communicates to the installer that the browser should be set as default when downloaded. This campaign is based on a checkbox setting next to the download button.
+The `SET_DEFAULT_BROWSER` UTM campaign communicates to the installer that the browser should be set as default when downloaded. The inclusion of this value is based on a checkbox setting next to the download button.
 
 At the moment (2026-06-08) if the switch `download_as_default` is enabled, the checkbox should appear for users who match the following criteria:
 
@@ -47,7 +47,7 @@ At the moment (2026-06-08) if the switch `download_as_default` is enabled, the c
 
 ##### Enable Smart Window
 
-The `smart_window` campaign initializes a first-time installation onboarding flow customized to Smart Window features. This campaign is based on a user deciding to **download** from the [Smart Window landing page](https://www.firefox.com/en-US/smart-window/?view=download).
+The `smart_window` UTM campaign initializes a first-time installation onboarding flow customized to Smart Window features. The inclusion of this value is based on a user deciding to **download** from the [Smart Window landing page](https://www.firefox.com/en-US/smart-window/?view=download).
 
 At the moment (2026-06-08), this feature is geo-restricted. Users who are not in an eligible geo will see the **waitlist** version of the page. 
 
