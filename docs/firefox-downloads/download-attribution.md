@@ -36,7 +36,7 @@ Essential data operates on a "last touch" principle:
 
 Specifically, the RTAMO feature looks for a `utm_content` parameter that starts with `rta:`, followed by an ID specific to an extension. For example: `utm_content=rta:dUJsb2NrMEByYXltb25kaGlsbC5uZXQ`. Springfield also checks the referrer before passing this on, to make sure the links originate from AMO. If RTAMO data comes from a domain other than AMO, then the attribution data is dropped.
 
-RTAMO initially worked for only a limited subset of addons recommended by Mozilla. This functionality was expanded by the AMO team to cover all publically listed addons, under a project called ``Extended RTAMO (ERTAMO)``.
+RTAMO initially worked for only a limited subset of addons recommended by Mozilla. This functionality was expanded by the AMO team to cover all publically listed addons, under a project called `Extended RTAMO (ERTAMO)`.
 
 ##### Download as Default
 
@@ -202,18 +202,18 @@ You might not need to test all these depending on what is changing this is an ex
 5. Decode the base64 string (e.g. using <https://base64decode.org>) and check that:
 
     -   `dlsource` parameter value is `fxdotcom`
-    -   ``client_id_ga4`` and ``session_id`` parameters exist
-    -   ``client_id_ga4`` should look something like 0700077325.1656063224 (the numbers will differ but the format with the middle period should look the same).
-    -   ``source`` and ``campaign`` have the values ham and pineapple, respectively.
+    -   `client_id_ga4` and `session_id` parameters exist
+    -   `client_id_ga4` should look something like 0700077325.1656063224 (the numbers will differ but the format with the middle period should look the same).
+    -   `source` and `campaign` have the values ham and pineapple, respectively.
     -   The ua value should be chrome (assuming you tested in Chrome).
     -   Everything else should be (not set).
 
-6.  Inspect the "Download Firefox" button in the top right and verify the download URL contains ``attribution_code`` and ``attribution_sig`` params.
+6.  Inspect the "Download Firefox" button in the top right and verify the download URL contains `attribution_code` and `attribution_sig` params.
 
 7.  Click "Download Firefox".
 
-8.  Inspect the "Try downloading again" link and check for the ``attribution_code`` and ``attribution_sig`` params.
-    -   decode the value of ``attribution_code`` to check it has the expected values
+8.  Inspect the "Try downloading again" link and check for the `attribution_code` and `attribution_sig` params.
+    -   decode the value of `attribution_code` to check it has the expected values
 
 Other places on the site you may want to check:
 
