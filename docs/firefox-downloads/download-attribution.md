@@ -157,7 +157,13 @@ The auto-download JS bundle overrides default "append to links" download attribu
 3. If attribution data passes client-side validation, the data is stored as a `-raw` cookie in the user's web browser. These cookies have a 24 hour expiry.
 4.  Next we use these raw cookies to send attribution data to an authentication service that is part of springfield's back-end server. The data is validated again, then base64 encoded and returned to the client together with an signed, encrypted signature to prove that the data came from www.firefox.com.
 5.  The encoded attribution data and signature are then stored as cookies in the user's web browser. The cookies have the IDs `moz-download-attribution-code` (the attribution code) and `moz-download-attribution-sig` (the encrypted signature). Both cookies have a 24 hour expiry.
-6.  On all pages, Springfield checks if both `moz-download-attribution-code` and `moz-download-attribution-sig` cookies exist. If so, we append the authenticated data to any Firefox direct download links on the page. The query parameters are labelled `attribution_code` and `attribution_sig`.
+6.  On all pages, Springfield checks [if essential data needs to be created](https://github.com/mozmeao/springfield/blob/main/media/js/base/download-attribution/download-attribution.es6.js#L819). There are three possible outcomes of this check:
+    1. **Pre-existing essential data and no current page essential data**: we remove the stale pre-existing essential data. 
+    2. **New essential data**: we add or update essential data.
+    3. **No essential data (pre-existing or current page)**: no change to essential data.
+
+    All three outcomes finish by checking if both `moz-download-attribution-code` and `moz-download-attribution-sig` cookies exist. If so, we append the authenticated data to any Firefox direct download links on the page. The query parameters are labelled `attribution_code` and `attribution_sig`. We do not automatically try to create analytics data (that is the responsibility of GTM consent logic). But if there is pre-existing analytics data, it will be attached to the download links at this step.
+
 7.  When the user clicks the Firefox download link, another attribution service hosted at `download.mozilla.org` then decrypts and validates the attribution signature. If the secret matches, a unique download token is generated. The service then stores both the attribution data* and the download token in Mozilla's private server logs.
     1. *If analytics data was granted, this would include the Google Analytics client ID.
 8.  The service then passes the download token and attribution data* into the installer being served to the user.
