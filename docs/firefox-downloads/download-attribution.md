@@ -7,6 +7,9 @@ Historically, this data was analytics-based (i.e. GA4 client id, UTM parameters)
 !!! note
     You will see legacy references to `stub attribution` in website code and documentation. This is planned to be renamed to `download attribution` once the [refactor](https://github.com/mozmeao/springfield/pull/1296) is active in production.
 
+!!! warning
+    Download Attribution does not yet work for Linux, Android or iOS devices.
+
 ## Triggers
 
 To clarify the separate types of data, we have two triggers to initialize download attribution.
