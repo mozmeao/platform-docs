@@ -86,7 +86,7 @@ These are not the cookies we use to pass information to the download installer. 
 
 The stub attribution service is separately maintained, and it expects specific keys. The default value for all keys is `(not set)` with the exception of `dlsource` which is `fxdotcom`.
 
-Below is a breakdown of the data type contained in each key. 
+Below is a breakdown of the data type contained in each key. Springfield's JS prefixes several of these keys with `utm_` for the request to the back-end. The back-end removes these prefixes before encoding the `attribution_code` response. 
 
 ### Download Attribution Data Keys
 
