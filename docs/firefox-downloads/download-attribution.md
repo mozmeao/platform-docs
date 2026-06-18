@@ -143,8 +143,8 @@ The auto-download JS bundle overrides default "append to links" download attribu
 
 1. If there is essential data to include in the download (i.e. RTAMO), make request to stub attribution service:
     1. On success, append data to links and start download
-    2. On timeout, do not re-try, start download without data
-2. If there is no essential data (i.e. `/thanks`), start download immediately 
+    2. On timeout (2 seconds), do not re-try, start download without data
+2. If there is no essential data to add or update (i.e. `/thanks`), attach any existing download attribution data, and start download 
 
 ## Details of Flow
 
