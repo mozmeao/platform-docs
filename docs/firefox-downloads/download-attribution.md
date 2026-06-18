@@ -184,7 +184,7 @@ STUB_ATTRIBUTION_HMAC_KEY=thedude
 ```
 
 !!! note
-    This value can be anything if all you need to do is test the springfield functionality. It only needs to match the value used to verify data passed to the stub installer for full end-to-end testing via Telemetry.
+    This value can be anything if all you need to do is test the springfield functionality. It only needs to match the value used to verify data passed to the stub installer for full end-to-end testing via Telemetry. The HMAC key varies per environment if you did want to test against a real download service
 
 
 ## Manual testing for code reviews
