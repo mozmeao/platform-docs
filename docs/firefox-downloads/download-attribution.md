@@ -116,6 +116,17 @@ The stub attribution service returns two base64-encoded values which we store in
 
 These are the cookies we use to pass information to the download installer.
 
+### Download Attribution Cookies
+
+All cookies use `www.firefox.com` domain, with `/` path and 24 hour expiry.
+
+| Name                        | Value                             | Passes data to installer | 
+| --------------------------- | --------------------------------- | ------------------------ |
+| `moz-download-attribution-essential-raw` | Object | ❌ |
+| `moz-download-attribution-analytics-raw`  | Object        | ❌ |
+| `moz-download-attribution-code` | Base64 encoded attribution string | ✅ |
+| `moz-download-attribution-sig`  | Base64 encoded signature          | ✅ |
+
 ## Applying to Downloads
 
 By default, if download attribution cookies exist, the encoded data is appended to any Firefox download links on the page. 
