@@ -38,6 +38,9 @@ Specifically, the RTAMO feature looks for a `utm_content` parameter that starts 
 
 RTAMO initially worked for only a limited subset of addons recommended by Mozilla. This functionality was expanded by the AMO team to cover all publically listed addons, under a project called `Extended RTAMO (ERTAMO)`.
 
+!!! warning
+    RTAMO is currently still using `www.mozilla.org` and Stub Attribution JS from `bedrock`. In future, the AMO links should point directly to `www.firefox.com` and use Download Attribution JS from `springfield`
+
 ##### Download as Default
 
 The `SET_DEFAULT_BROWSER` UTM campaign communicates to the installer that the browser should be set as default when downloaded. The inclusion of this value is based on a checkbox setting next to the download button.
