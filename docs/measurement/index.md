@@ -13,7 +13,6 @@ These documents define how attribution works for the different products on our w
 **Attribution**
 
 - [Mozilla accounts attribution](mozilla-accounts.md)
-- [Firefox desktop attribution](firefox-desktop.md)
 - [Firefox mobile attribution](firefox-mobile.md)
 
 **Experimentation**

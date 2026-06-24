@@ -116,7 +116,11 @@ function setVariationCookie(exp) {
 ### Recording the data
 
 !!! note
-    If you are measuring installs as part of your experiment be sure to configure [custom stub attribution](../measurement/firefox-desktop.md#measuring-campaigns-and-experiments) as well.
+    If you are measuring installs as part of your experiment be sure to configure custom download attribution as well.
+
+Firefox Desktop Attribution was originally designed for measuring the effectiveness of marketing campaigns where the top of the funnel was outside the remit of www.firefox.com. For such campaigns, download attribution requires zero configuration. It works in the background and passes along any attribution data that exists if allowed by consent status.
+
+It is also possible to measure the effectiveness of experiments on installation rates and retention. This is achieved by adding optional `experiment` and `variation` parameters to a page URL. 
 
 Send the experiment view events to GA with the event name `experiment_view`. The `id` of all variants should be the same and all `variant` values should be unique.
 
