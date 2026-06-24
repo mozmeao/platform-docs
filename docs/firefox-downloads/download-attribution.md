@@ -99,7 +99,7 @@ Below is a breakdown of the data type contained in each key. Springfield's JS pr
 | Key | Data type | Description | Example |
 | ----| --------- | ----------- | ------- | 
 | `campaign` | Essential or Analytics | Essential: user-facing download feature <br>Analytics: specific marketing campaign | Essential: `SET_DEFAULT_BROWSER` <br>Analytics: `fast`
-| `source` | Analytics | referring site which sent the visitor | `google`
+| `source` | Essential or Analytics | Essential: validation for RTAMO feature <br>Analytics: referring site which sent the visitor | Essential: `addons.mozilla.org` Analytics: `google`
 | `medium` | Analytics | type of link, such as referral, cost per click, or email | `cpc`
 | `content` | Essential or Analytics | Essential: validation for RTAMO feature <br>Analytics: specific element that was clicked | Essential: `rta:dUJsb2NrMEByYXltb25kaGlsbC5uZXQ` <br>Analytics: `getfirefox`
 | `experiment` | Analytics | an experiment name that visitor was a cohort of | `taskbar`
@@ -107,7 +107,7 @@ Below is a breakdown of the data type contained in each key. Springfield's JS pr
 | `ua` | Analytics | simplified browser name parsed from the visitor's User Agent string | `chrome`
 | `session_id` | Analytics | random 10 digit string identifier used to associate attribution data with GA session | `9770365798`
 | `client_id_ga4` | Analytics | Google Analytics 4 Client ID | `1715265578.1681917481`
-| `dlsource` | Essential | A hard-coded string ID used to distinguish downloads from archive downloads | `fxdotcom`
+| `dlsource` | Essential | A hard-coded string ID used to distinguish downloads from archive downloads, validation for all download attribution | `fxdotcom`
 
 !!! note
     There is a proposal to update the stub attribution service in future to provide essential-specific keys (i.e. `product_context` and `install_options`). But for now, we have to share the existing `campaign` and `content` keys. **When there is a conflict between an essential value and an analytics value, the essential value wins.**
