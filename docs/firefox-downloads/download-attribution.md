@@ -150,6 +150,7 @@ The auto-download JS bundle overrides default "append to links" download attribu
 2. If there is no essential data to add or update (i.e. `/thanks`), attach any existing download attribution data, and start download 
 
 ## Details of Flow
+(also available in [Figma flow chart](https://www.figma.com/board/q5mJpicWBpzAYuQ3fV00ix/Firefox-Stub-Attribution-Flow?node-id=0-1&p=f&t=zRfexqfK4prQL5is-0), Moz acccess only)
 
 1.  A user visits a page on www.firefox.com:
     1. Essential trigger fires based on page or checkbox.
