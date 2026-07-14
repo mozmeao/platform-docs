@@ -51,10 +51,10 @@ The DB export is generated twice a day and is put into the same public cloud buc
 
 The DB will contain a table that knows the relative paths of the images uploaded to the CMS, but not the actual images. Those are in a cloud storage bucket, and if you want your local machine to have them available after you download the DB that expects them to be present, you can run `python manage.py download_media_to_local` which will sync down any images you don't already have.
 
-By default, `make preflight` and `./bin/run-db-download.py` will download a database file based on `bedrock-dev` or `springfield-dev`. If you want to download from stage or prod, which are also available in sanitised form, you need to specify which environment you want by prefixing the command with `AWS_DB_S3_BUCKET=bedrock-db-stage` or `AWS_DB_S3_BUCKET=bedrock-db-prod` for Bedrock, and `AWS_DB_S3_BUCKET=springfield-db-stage` or  `AWS_DB_S3_BUCKET=springfield-db-prod` for Springfield, e.g.:
+By default, `make preflight` and `./bin/run-db-download.py` will download a database file based on `bedrock-dev` or `springfield-dev`. If you want to download from stage or prod, which are also available in sanitised form, you need to specify which environment you want by prefixing the command with `GCS_DB_BUCKET=bedrock-db-stage` or `GCS_DB_BUCKET=bedrock-db-prod` for Bedrock, and `GCS_DB_BUCKET=springfield-db-stage` or `GCS_DB_BUCKET=springfield-db-prod` for Springfield, e.g.:
 
 ```
-AWS_DB_S3_BUCKET=bedrock-db-stage make preflight
+GCS_DB_BUCKET=bedrock-db-stage make preflight
 python manage.py download_media_to_local --environment=stage
 ```
 
