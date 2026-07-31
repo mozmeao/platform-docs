@@ -31,9 +31,9 @@ These pages are specific to Firefox browsers, and only appear when a user update
 There may be extra logic in the app's `views.py` file to change the template based on locale or geographic location as well.
 
 !!! note
-    Pages supporting the Firefox product are intended to move to springfield in the long run. That migration is only partially complete leaving things in a bit of a mess currently. (2025-12-15)
+    Pages supporting the Firefox product are intended to move to springfield in the long run. That migration is only partially complete leaving in–product pages currently served from both projects, partly redirecting selectively (2025-12-15), followed with URL pattern changes landed in–tree (2026-05-18).
 
-### Firefox release, 145 and up for [some common languages](https://github.com/mozilla/bedrock/blob/e91c6f28e719a16672191600a362466c1eca26b9/bedrock/firefox/redirects.py#L81).
+### Firefox release, 145 and up for [some common languages](https://github.com/mozilla/bedrock/blob/e91c6f28e/bedrock/firefox/redirects.py#L81)
 
 Version number is major version only.
 
@@ -41,33 +41,42 @@ Version number is major version only.
 - Whatsnew URL: <https://www.firefox.com/en-US/whatsnew/145/>
 - Template path: <https://github.com/mozmeao/springfield/blob/main/springfield/cms/templates/cms/whats_new_page.html>
 
-### Firefox release, 144 and down, or [campaigns targeted at unmigrated locales](https://github.com/mozilla/bedrock/blob/e91c6f28e719a16672191600a362466c1eca26b9/bedrock/firefox/views.py#L475)
+### Firefox release, 144 and down, or [campaigns targeted at unmigrated locales](https://github.com/mozilla/bedrock/blob/e91c6f28e/bedrock/firefox/views.py#L475)
 
-Version number is digits only.
+Version number is digits+dots only.
 
 - Whatsnew URL: <https://www.mozilla.org/en-US/firefox/144.0/whatsnew/>
 - Template path: <https://github.com/mozilla/bedrock/tree/main/bedrock/firefox/templates/firefox/whatsnew>
 
-<!-- -->
+Currently unused: (only redirected)
 
 - Firstrun URL: <https://www.mozilla.org/en-US/firefox/144.0/firstrun/>
 - Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/firstrun/firstrun.html>
 
-### Firefox Nightly
+### Firefox Nightly, 152 and up for all locales
 
-Version number is digits and **a1**.
+Version number is digits+dots and **a1**.
 
-- Whatsnew URL: <https://www.mozilla.org/en-US/firefox/144.0a1/whatsnew/>
+- Whatsnew URL: <https://www.firefox.com/en-US/whatsnew/155.0a1/>
+- Template path: <https://github.com/mozmeao/springfield/blob/main/springfield/firefox/templates/firefox/whatsnew/nightly/evergreen.html>
+
+Firstrun pages served from the same location as older builds below:
+
+### Firefox Nightly, 151 and older
+
+Version number is digits+dots and **a1**.
+
+- Whatsnew URL: <https://www.mozilla.org/en-US/firefox/148.0a1/whatsnew/>
 - Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/nightly/whatsnew.html>
 
-<!-- -->
+Currently served for all version from bedrock:
 
 - Firstrun URL: <https://www.mozilla.org/en-US/firefox/nightly/firstrun/>
 - Template path: <https://github.com/mozilla/bedrock/tree/main/bedrock/firefox/templates/firefox/nightly>
 
 ### Firefox Developer
 
-Version number is digits and **a2**.
+Version number is digits+dots and **a2**.
 
 - Whatsnew URL: <https://www.mozilla.org/en-US/firefox/144.0a2/whatsnew/>
 - Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/developer/whatsnew.html>
