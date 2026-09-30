@@ -74,15 +74,30 @@ Currently served for all version from bedrock:
 - Firstrun URL: <https://www.mozilla.org/en-US/firefox/nightly/firstrun/>
 - Template path: <https://github.com/mozilla/bedrock/tree/main/bedrock/firefox/templates/firefox/nightly>
 
-### Firefox Developer
+### Firefox Developer, 152 and up for all locales
+
+Version number is digits+dots and **a2**.
+
+- Whatsnew URL: <https://www.firefox.com/en-US/whatsnew/155.0a2/>
+- Template path: <https://github.com/mozmeao/springfield/blob/main/springfield/firefox/templates/firefox/whatsnew/developer/evergreen.html>
+
+Firstrun pages served from the same location as older builds below:
+
+### Firefox Developer, 151 and older
 
 Version number is digits+dots and **a2**.
 
 - Whatsnew URL: <https://www.mozilla.org/en-US/firefox/144.0a2/whatsnew/>
 - Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/developer/whatsnew.html>
 
-<!-- -->
+Currently served for all version from bedrock:
 
 - Firstrun URL: <https://www.mozilla.org/en-US/firefox/144.0a2/firstrun/>
 - Template path: <https://github.com/mozilla/bedrock/blob/main/bedrock/firefox/templates/firefox/developer/firstrun.html>
 
+### Firefox Beta, for explicitly triggered rollouts
+
+Version number is digits+dots and **beta**.
+
+- Whatsnew URL: <https://www.mozilla.org/en-US/firefox/142.0beta/whatsnew/>
+- Template path: see <https://github.com/mozilla/bedrock/blob/0a470f2/bedrock/firefox/views.py#L666>
