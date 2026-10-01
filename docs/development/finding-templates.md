@@ -33,13 +33,18 @@ There may be extra logic in the app's `views.py` file to change the template bas
 !!! note
     Pages supporting the Firefox product are intended to move to springfield in the long run. That migration is only partially complete leaving in–product pages currently served from both projects, partly redirecting selectively (2025-12-15), followed with URL pattern changes landed in–tree (2026-05-18).
 
-### Firefox release, 145 and up for [some common languages](https://github.com/mozilla/bedrock/blob/e91c6f28e/bedrock/firefox/redirects.py#L81)
+### Firefox release, 145 and up for [some common languages](https://github.com/mozilla/bedrock/blob/e91c6f28e/bedrock/firefox/redirects.py#L81), 152 and up for all
 
 Version number is major version only.
 
-- Content is in the Wagtail CMS on springfield
-- Whatsnew URL: <https://www.firefox.com/en-US/whatsnew/145/>
-- Template path: <https://github.com/mozmeao/springfield/blob/main/springfield/cms/templates/cms/whats_new_page.html>
+Wagtail CMS on springfield is used for two sets of locales, one with current version pages and one with evergeen content:
+- Whatsnew URL: <https://www.firefox.com/en-US/whatsnew/155/>
+- General URL: <https://www.firefox.com/en-US/whatsnew/general/>
+- Template path: <https://github.com/mozmeao/springfield/blob/main/springfield/cms/templates/cms/whats_new_page2026.html>
+
+Static evergreen template on springfield is used for the rest of locales:
+- Whatsnew URL: <https://www.firefox.com/fy-NL/whatsnew/155/>
+- Template path: <https://github.com/mozmeao/springfield/blob/main/springfield/firefox/templates/firefox/whatsnew/evergreen.html>
 
 ### Firefox release, 144 and down, or [campaigns targeted at unmigrated locales](https://github.com/mozilla/bedrock/blob/e91c6f28e/bedrock/firefox/views.py#L475)
 
