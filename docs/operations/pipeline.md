@@ -175,7 +175,7 @@ You can look at the git log of the `main` branch to find the last commit with a 
 
 ## Updating Selenium
 
-There are several components for Selenium, which are independently versioned. The first is the Python client, and this can be updated via the test dependencies in `/requirements/dev.txt`. The other components are the Selenium versions used in both SauceLabs and the local Selenium grid. These versions are selected automatically based on the required OS / Browser configuration, so they should not need to be updated or specified independently.
+There are several components for Selenium, which are independently versioned. The first is the Python client, and this can be updated via the `dev` dependency group in `pyproject.toml`. The other components are the Selenium versions used in both SauceLabs and the local Selenium grid. These versions are selected automatically based on the required OS / Browser configuration, so they should not need to be updated or specified independently.
 
 ## Adding test runs
 

@@ -134,22 +134,18 @@ A suite of tests exists for redirects, which is intended as a reference of the r
 
 ### Installation
 
-First follow the [installation instructions](../getting-started/install.md), which will guide you through installing pip and setting up a virtual environment for the tests. The additional requirements can then be installed by using the following commands:
+First follow the [installation instructions](../getting-started/install.md), which will guide you through setting up the project's virtual environment.
 
-=== "Bedrock"
-
-    ``` bash
-    source venv/bin/activate bedrock
-    ```
-
-=== "Springfield"
-
-    ``` bash
-    source venv/bin/activate springfield
-    ```
+The redirect tests need the test dependencies from the `dev` dependency group. Install them (this is the same command as in the installation instructions, so you can skip it if you've just run it):
 
 ``` bash
-pip install -r requirements/dev.txt
+make install-local-python-deps
+```
+
+Then activate the environment:
+
+``` bash
+source .venv/bin/activate
 ```
 
 ### Running the tests

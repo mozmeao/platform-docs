@@ -1,6 +1,6 @@
-There are two primary methods of setting up Bedrock and Springfield for local development: **Docker** and **pyenv (direct install)**. 
+There are two primary methods of setting up Bedrock and Springfield for local development: **Docker** and **direct install with uv**.
 
-Docker is the easiest and recommended way. Installing with pyenv directly onto your machine is also possible and may be preferred, particularly if you're doing frontend work.
+Docker is the easiest and recommended way. Installing directly onto your machine with [uv](https://docs.astral.sh/uv/) is also possible and may be preferred, particularly if you're doing frontend work.
 
 Whichever you choose, you'll start by getting the source code.
 
@@ -46,7 +46,7 @@ Once the codebase is cloned, switch into it:
 
 After these basic steps you can choose your install method below.
 
-Docker is the easiest and recommended way, but installing with pyenv directly onto your machine is also possible and may be preferred, particularly if you're doing frontend work, which is currently slower when using Docker.
+Docker is the easiest and recommended way, but installing directly onto your machine with uv is also possible and may be preferred, particularly if you're doing frontend work, which is currently slower when using Docker.
 
 ## Pre-commit hooks
 
@@ -54,14 +54,14 @@ You should also install our git pre-commit hooks. These are checks that automati
 
 The projects uses the [pre-commit](https://pre-commit.com/) framework that makes managing git hooks easier across all contributors by ensuring everyone has the same ones set up.
 
-Install the framework by running `pip install pre-commit`, then - ensuring you are in your project directory -run `pre-commit install` in your terminal, followed by `pre-commit install-hooks`. This will set up the hooks that are specified in `.precommit.yaml`
+Install the framework by running `uv tool install pre-commit` (or `brew install pre-commit`). If uv warns that its tool directory isn't on your `PATH`, run `uv tool update-shell` and open a new terminal. Then - ensuring you are in your project directory - run `pre-commit install` in your terminal, followed by `pre-commit install-hooks`. This will set up the hooks that are specified in `.precommit.yaml`
 
 After that setup, whenever you try to make a commit, the 'hooks' will check/lint your Python, JS, and CSS files beforehand and report on problems that need to be fixed before the commit can be made. This will save you time waiting for the tests to run in our CI before noticing a linting error.
 
 ## Docker Installation
 
 !!! note
-    This method assumes you have [Docker installed for your platform](https://www.docker.com/). If not please do that now or skip to the [Pyenv Installation](#pyenv-direct-installation) section.
+    This method assumes you have [Docker installed for your platform](https://www.docker.com/). If not please do that now or skip to the [Direct Installation](#direct-installation-with-uv) section.
 
 This is the simplest way to get started developing. If you're on Linux or Mac (and possibly Windows 10 with the Linux subsystem) you can run a script that will pull our production and development docker images and start them:
 
@@ -111,142 +111,90 @@ If you make a change to `media/static-bundles.json`, you'll need to restart Dock
 !!! bug
     Sometimes stopping Docker doesn't actually kill the images. To be safe, after stopping docker, run `docker ps` to ensure the containers were actually stopped. If they have not been stopped, you can force them by running `docker compose kill` to stop all containers, or `docker kill <container_name>` to stop a single container, e.g. `docker kill bedrock_app_1`.
 
-## Pyenv (Direct) Installation
+## Direct Installation (with uv)
 
-This method installs Python, dependencies, and runs the application directly on your machine using [pyenv](https://github.com/pyenv/pyenv) to manage Python versions and [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv) to isolate dependencies.
+This method installs Python and the dependencies directly on your machine. [uv](https://docs.astral.sh/uv/) installs Python 3.13 if you don't have it, and keeps the project's dependencies in a virtual environment at `.venv` in the repo.
 
-These instructions assume you have pip and Node.js installed. If you don't have ``pip`` installed (you probably do) you can install it with the instructions in [the pip docs](https://pip.pypa.io/en/stable/installation/).
+These instructions assume you have [Node.js](https://nodejs.org/) installed. They also assume you are on macOS with [Homebrew](https://brew.sh/). For other platforms, see the [uv installation docs](https://docs.astral.sh/uv/getting-started/installation/).
 
-The following assumes you are on MacOS, using `zsh` as your shell and [Homebrew](https://brew.sh/) as your package manager. If you are not, there are installation instructions for a variety of platforms and shells in the READMEs for the two pyenv projects.
+### Install uv
 
-### Install Python 3.13.x with pyenv
+Install uv as a standalone tool, not into a project virtual environment:
 
-1. Install `pyenv` itself :
+```
+brew install uv
+```
 
-    ```
-    brew install pyenv
-    ```
+### Create and activate the virtual environment
 
-2. Configure your shell to init `pyenv` on start - this is noted in the project's [own docs](https://github.com/pyenv/pyenv), in more detail, but omits that setting ``PYENV_ROOT`` and adding it to the path is needed:
+From the root of your Bedrock or Springfield checkout:
 
-    ```
-    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-    echo 'eval "$(pyenv init -)"' >> ~/.zshrc
-    ```
+```
+uv venv --python 3.13
+source .venv/bin/activate
+```
 
-3. Restart your login session for the changes to profile files to take effect - if you're not using `zsh`, the `pyenv` docs have other routes :
+Activate `.venv` in every new shell before working on the project. Commands such as `./manage.py`, `npm start` and `pytest` use whichever `python` comes first on your `PATH`, so they only see the project's dependencies when `.venv` is active. To do this automatically, you can use [direnv](https://direnv.net/) with an `.envrc` containing `source .venv/bin/activate`, or let your editor activate it.
 
-    ```
-    zsh -l
-    ```
+### Install Python dependencies
 
-4.  Install the latest Python 3.13.x (e.g. 3.13.3), then test it's there:
+!!! springfield "Springfield Only"
+    Springfield uses the compiled version of the PostgreSQL driver (`psycopg[c]`), which is built from source during the install. That build needs PostgreSQL's client library (`libpq`) and its `pg_config` program on your `PATH`, even though the local database is SQLite. You don't need a PostgreSQL server. If `pg_config --version` already works in your terminal, you're set. Otherwise, install the client library and put it on your `PATH` (Homebrew doesn't add it automatically, because it would conflict with a PostgreSQL install):
 
     ```
-    pyenv install 3.13.3
+    brew install libpq
+    echo 'export PATH="$(brew --prefix libpq)/bin:$PATH"' >> ~/.zshrc
     ```
 
-    If you'd like to make Python 3.13 your default globally, you can do so with:
+    Then open a new terminal. On Linux, install your distro's `libpq-dev` package instead.
 
-    ```
-    pyenv global 3.13.3
-    ```
+```
+make install-local-python-deps
+```
 
-    If you only want to make Python 3.13 available in the current shell, while you set up the Python virtualenv (below), you can do so with:
+This installs exactly the versions pinned in `uv.lock`, including the development tools. If no virtual environment is active, it creates and fills `.venv` and tells you to activate it.
 
-    ```
-    pyenv shell 3.13.3
-    ```
-
-5.  Verify that you have the correct version of Python installed:
-
-    ```
-    python --version
-    Python 3.13.3
-    ```
-
-### Install pyenv and create a virtualenv
-
-1. Install `pyenv-virtualenv` :
-
-    ```
-    brew install pyenv-virtualenv
-    ```
-
-2. Configure your shell to init `pyenv-virtualenv` on start - again, this is noted in the `pyenv-virtualenv` project's [own documentation](https://github.com/pyenv/pyenv-virtualenv), in more detail. The following will slot in a command that will work as long as you have pyenv-virtualenv installed:
-
-    ```
-    echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
-    ```
-
-3.  Restart your login session for the changes to profile files to take effect :
-
-    ```
-    zsh -l
-    ```
-
-4.  Make a virtualenv we can use - the docs assume you call it `bedrock` or `springfield` but you can call it whatever you want :
-
-    === "Bedrock"
-        ```
-        pyenv virtualenv 3.13.3 bedrock
-        ```
-    === "Springfield"
-        ```
-        pyenv virtualenv 3.13.3 springfield
-        ```
-
-### Use the virtualenv
-
-1. Switch to the virtualenv - this is the command you will use any time you need this virtualenv :
-
-    === "Bedrock"
-        ```
-        pyenv activate bedrock
-        ```
-    === "Springfield"
-        ```
-        pyenv activate springfield
-        ```
-
-2. Tip! If you'd like to auto activate the virtualenv when you cd into the directory, and deactivate it when you exit the directory, you can do so with :
-
-    === "Bedrock"
-        ```
-        echo 'bedrock' > .python-version
-        ```
-    === "Springfield"
-        ```
-        echo 'springfield' > .python-version
-        ```
-
-3.  Securely upgrade pip :
-
-    ```
-    pip install --upgrade pip
-    ```
-
-4.  Install / update Python dependencies :
-
-    ```
-    make install-local-python-deps
-    ```
+!!! bedrock "Bedrock Only"
+    This also installs the docs tooling (`mkdocs-material`) from the `docs` dependency group. To install only the docs tooling, run `make docs-setup`.
 
 !!! bug
-    If you are on OSX and some of the compiled dependencies fails to compile, try explicitly setting the arch flags and try again. The following are relevant to Intel Macs only. If you're on Apple Silicon, 3.13.3 should 'just work':
-
-    ``` bash
-    $ export ARCHFLAGS="-arch i386 -arch x86_64"
-    ```
-
-    ``` bash
-    $ make install-local-python-deps
-    ```
-
     If you are on Linux, you may need at least the following packages or their equivalent for your distro:
 
         python3-dev libxslt-dev
+
+### Migrating from a pyenv virtualenv
+
+If you previously set up Bedrock or Springfield with pyenv and pyenv-virtualenv, switch to the setup above once, in each checkout:
+
+```
+pyenv deactivate                 # or open a new shell
+rm .python-version               # only if it names your pyenv virtualenv, e.g. `bedrock` or `springfield`
+uv venv --python 3.13
+source .venv/bin/activate
+make preflight -- --retain-db
+```
+
+Then:
+
+* If you installed `uv` inside an old pyenv virtualenv, run `pip uninstall uv` in that virtualenv, then `pyenv rehash`. Otherwise pyenv's `uv` shim can take precedence over the standalone `uv` and fail outside that virtualenv.
+* Point your editor's Python interpreter at `.venv/bin/python`.
+* Once everything works, you can delete the old virtualenv with `pyenv virtualenv-delete bedrock` (or `springfield`).
+* Optional: if you don't use pyenv for anything else, remove the lines the old setup added to your `~/.zshrc`:
+
+    ```
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+    ```
+
+    Then uninstall pyenv and open a new terminal:
+
+    ```
+    brew uninstall pyenv-virtualenv pyenv
+    ```
+
+A `.python-version` that names a pyenv virtualenv breaks uv, because uv reads that file as a Python version. In these repos the name also matches the package directory (`bedrock/` or `springfield/`), so uv fails with `No interpreter found in directory`.
 
 ### Download data and install node dependencies
 
@@ -259,7 +207,7 @@ The following assumes you are on MacOS, using `zsh` as your shell and [Homebrew]
     npm install
 
 !!! note
-    We ue npm to ensure that Node.js packages that get installed are the exact ones we meant (similar to pip hash checking mode for python). Refer to the [npm documentation](https://docs.npmjs.com/) for adding or upgrading Node.js dependencies.
+    We ue npm to ensure that Node.js packages that get installed are the exact ones we meant (similar to the hashes uv checks from `uv.lock` for Python). Refer to the [npm documentation](https://docs.npmjs.com/) for adding or upgrading Node.js dependencies.
 
 !!! note
     As a convenience, there is a `make preflight` command which calls some of the commands above to bring your installed Python and NPM dependencies up to date and also fetches the latest DB containing the latest site content. This is a good thing to run after pulling in latest changes from the `main` branch.
@@ -270,9 +218,9 @@ The following assumes you are on MacOS, using `zsh` as your shell and [Homebrew]
 
 ## Shortcut
 
-A shortcut for activating virtual envs in zsh or bash is ``. venv/bin/activate``. The dot is the same as ``source``.
+A shortcut for activating the virtual env in zsh or bash is ``. .venv/bin/activate``. The dot is the same as ``source``.
 
-There's a project called [pew](https://pypi.org/project/pew/) that provides a better interface for managing/activating virtual envs, so you can use that if you want. Also if you need help managing various versions of Python on your system, the [pyenv](https://github.com/pyenv/pyenv) project can help.
+You can also run a single command in the project's environment without activating it, by prefixing it with ``uv run``, e.g. ``uv run pytest``.
 
 ## Localization
 
