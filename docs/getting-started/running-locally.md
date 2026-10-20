@@ -5,7 +5,7 @@ This guide covers how to run a local development server after you've completed [
 ## Start the server
 
 !!! info
-    Regardless of whether you run the site via Docker or directly on your machine with pyenv, the URL of the site is `http://localhost:8000` - ``not`` `8080`
+    Regardless of whether you run the site via Docker or directly on your machine with uv, the URL of the site is `http://localhost:8000` - ``not`` `8080`
 
 ### Docker
 
@@ -13,9 +13,9 @@ You can run the `make run` script mentioned in the installation docs, or use doc
 
     docker compose up app assets
 
-### Pyenv
+### Direct (uv)
 
-To make the server run, make sure your virtualenv is activated, and then run the server:
+To make the server run, make sure the project's virtualenv is activated (`source .venv/bin/activate`), and then run the server:
 
     npm start
 
@@ -76,7 +76,7 @@ If you need to include the changes you've made to your local static files (image
 make build-prod run-prod
 ```
 
-### Pyenv
+### Direct (uv)
 
 If you have `DEBUG=False` you will have to run `./manage.py collectstatic --noinput` any time you make changes to any local static files (images, css, js, etc.). That includes the first time you start the server. This will  compile static files and bring the server up:
 

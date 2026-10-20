@@ -2,17 +2,30 @@
 
 ## Python Dependencies
 
-For Python we use [`uv`](https://github.com/astral-sh/uv) in `pip` mode to manage dependencies expressed in our [requirements files](https://github.com/mozilla/bedrock/tree/main/requirements). Requirements-file compilation is wrapped up in Makefile commands, to ensure we use it consistently.
+For Python we use [`uv`](https://docs.astral.sh/uv/). Dependencies are declared in `pyproject.toml`, and `uv.lock` pins the exact version and hashes of every package, including sub-dependencies:
 
-If you add a new Python dependency (eg to `requirements/prod.in` or `requirements/dev.in`) you can generate a pinned and hash-marked addition to our requirements files by running:
+- `[project] dependencies` lists the production dependencies.
+- `[dependency-groups]` lists the `dev` tools.
+- `[tool.uv]` sets `exclude-newer = "7 days"`, so uv won't pick packages uploaded in the last 7 days. The comment there explains how to exempt a single package for an urgent fix.
+
+!!! bedrock "Bedrock Only"
+    `[dependency-groups]` also has a `docs` group with the documentation tooling (`mkdocs-material`).
+
+To add or upgrade a dependency, edit its pin in `pyproject.toml`, then update the lockfile:
+
+``` shell
+uv lock
+```
+
+This only re-resolves what changed. To refresh every package, including sub-dependencies, run:
 
 ``` shell
 make compile-requirements
 ```
 
-and committing any changes that are made. Please re-build your docker image and test it with `make build test` to be sure the dependency does not cause a regression.
+Commit `pyproject.toml` and `uv.lock` together. Please re-build your docker image and test it with `make build test` to be sure the change does not cause a regression.
 
-Similarly, if you *upgrade* a pinned dependency in an `*.in` file, run `make compile-requirements` then rebuild, test and commit the results
+Dependabot opens monthly pull requests that update `pyproject.toml` and `uv.lock` together.
 
 To check for stale Python dependencies (basically `pip list -o` but in the Docker container):
 

@@ -210,6 +210,7 @@ nav:
       - 10. Move CI to Github Actions for Unit and Integration tests: architecture/decisions/0010-move-ci-cd-to-github-actions.md
       - 11. Use StatsD for metrics collection: architecture/decisions/0011-use-statsd-for-metrics-collection.md
       - 12. Use Wagtail CMS: architecture/decisions/0012-wagtail-for-cms.md
+      - 13. Use pyproject.toml and uv.lock for Python dependencies: architecture/decisions/0013-use-pyproject-and-uv-lock-for-python-dependencies.md
     - Contentful (deprecated): reference/contentful.md
     - External Content Cards (deprecated): reference/content-cards.md
 

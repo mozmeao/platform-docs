@@ -431,7 +431,7 @@ if (typeof window.Mozilla.Glean !== 'undefined') {
 Outside of the standard page load and click event metrics recorded by Glean, any additional metrics we send to the Glean pipeline is defined in YAML schema files in the `./glean/` project root directory. The `metrics.yaml` file defines all the different metrics types and events we record.
 
 !!! note
-    Before running any Glean commands locally, always make sure you have first activated your virtual environment by running `pyenv activate bedrock`.
+    Before running any Glean commands locally, always make sure you have first activated your virtual environment by running `source .venv/bin/activate`.
 
 
 When Bedrock starts, we automatically run `npm run glean` which parses these schema files and then generates some JavaScript library code in `./media/js/libs/glean/`. This library code is not committed to the repository on purpose, in order to avoid people altering it and becoming out of sync with the schema. This library code is then imported into our Glean analytics code in `./media/js/glean/`, which is where we initiate page views and capture click events.

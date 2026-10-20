@@ -12,19 +12,11 @@ Jasmine and its dependencies are installed via npm and are included when you run
 make preflight
 ```
 
-Next, make sure you activate your virtual env.
+Next, make sure you activate the project's virtual env.
 
-=== "Bedrock"
-
-    ``` bash
-    pyenv activate bedrock
-    ```
-
-=== "Springfield"
-
-    ``` bash
-    pyenv activate springfield
-    ```
+``` bash
+source .venv/bin/activate
+```
 
 
 You can then run the full suite of Jasmine tests with the following command:

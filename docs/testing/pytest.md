@@ -18,9 +18,9 @@ This example will run only the unit tests for the `legal` app in bedrock. You ca
 
     docker compose run test bash
 
-## Pyenv
+## Direct (uv)
 
-If you followed the pyenv installation instructions, make sure your virtualenv is activated. Then run the tests with:
+If you followed the direct installation instructions, make sure the project's virtualenv is activated (`source .venv/bin/activate`). Then run the tests with:
 
 === "Bedrock"
     ```
