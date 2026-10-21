@@ -117,6 +117,8 @@ This method installs Python and the dependencies directly on your machine. [uv](
 
 These instructions assume you have [Node.js](https://nodejs.org/) installed. They also assume you are on macOS with [Homebrew](https://brew.sh/). For other platforms, see the [uv installation docs](https://docs.astral.sh/uv/getting-started/installation/).
 
+If you set up Bedrock or Springfield with pyenv before, see [Migrating from a pyenv virtualenv](#migrating-from-a-pyenv-virtualenv).
+
 ### Install uv
 
 Install uv as a standalone tool, not into a project virtual environment:
@@ -162,6 +164,26 @@ This installs exactly the versions pinned in `uv.lock`, including the developmen
 
         python3-dev libxslt-dev
 
+### Download data and install node dependencies
+
+**Download a fresh copy of the sqlite database** This contains product-details, security-advisories, credits, release notes, localizations, legal-docs etc. We also download the latest translations of site content in many languages:
+
+    bin/bootstrap.sh
+
+**Install the node dependencies to run the site**. This will only work if you already have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed:
+
+    npm install
+
+!!! note
+    We ue npm to ensure that Node.js packages that get installed are the exact ones we meant (similar to the hashes uv checks from `uv.lock` for Python). Refer to the [npm documentation](https://docs.npmjs.com/) for adding or upgrading Node.js dependencies.
+
+!!! note
+    As a convenience, there is a `make preflight` command which calls some of the commands above to bring your installed Python and NPM dependencies up to date and also fetches the latest DB containing the latest site content. This is a good thing to run after pulling in latest changes from the `main` branch.
+
+    IMPORTANT: if you do not want to replace your local DB with a fresher one, use `make preflight -- --retain-db` instead.
+
+    We also have an optional git hook that will alert you if `make preflight` needs to be run. You can install that with `make install-custom-git-hooks`.
+
 ### Migrating from a pyenv virtualenv
 
 If you previously set up Bedrock or Springfield with pyenv and pyenv-virtualenv, switch to the setup above once, in each checkout:
@@ -195,26 +217,6 @@ Then:
     ```
 
 A `.python-version` that names a pyenv virtualenv breaks uv, because uv reads that file as a Python version. In these repos the name also matches the package directory (`bedrock/` or `springfield/`), so uv fails with `No interpreter found in directory`.
-
-### Download data and install node dependencies
-
-**Download a fresh copy of the sqlite database** This contains product-details, security-advisories, credits, release notes, localizations, legal-docs etc. We also download the latest translations of site content in many languages:
-
-    bin/bootstrap.sh
-
-**Install the node dependencies to run the site**. This will only work if you already have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed:
-
-    npm install
-
-!!! note
-    We ue npm to ensure that Node.js packages that get installed are the exact ones we meant (similar to the hashes uv checks from `uv.lock` for Python). Refer to the [npm documentation](https://docs.npmjs.com/) for adding or upgrading Node.js dependencies.
-
-!!! note
-    As a convenience, there is a `make preflight` command which calls some of the commands above to bring your installed Python and NPM dependencies up to date and also fetches the latest DB containing the latest site content. This is a good thing to run after pulling in latest changes from the `main` branch.
-
-    IMPORTANT: if you do not want to replace your local DB with a fresher one, use `make preflight -- --retain-db` instead.
-
-    We also have an optional git hook that will alert you if `make preflight` needs to be run. You can install that with `make install-custom-git-hooks`.
 
 ## Shortcut
 
