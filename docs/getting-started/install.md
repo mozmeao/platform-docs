@@ -113,7 +113,7 @@ If you make a change to `media/static-bundles.json`, you'll need to restart Dock
 
 ## Direct Installation (with uv)
 
-This method installs Python and the dependencies directly on your machine. [uv](https://docs.astral.sh/uv/) installs Python 3.13 if you don't have it, and keeps the project's dependencies in a virtual environment at `.venv` in the repo.
+This method installs Python and the dependencies directly on your machine. [uv](https://docs.astral.sh/uv/) installs its own copy of Python 3.13 if you don't have it yet, and keeps the project's dependencies in a virtual environment at `.venv` in the repo.
 
 These instructions assume you have [Node.js](https://nodejs.org/) installed. They also assume you are on macOS with [Homebrew](https://brew.sh/). For other platforms, see the [uv installation docs](https://docs.astral.sh/uv/getting-started/installation/).
 
@@ -132,11 +132,32 @@ brew install uv
 From the root of your Bedrock or Springfield checkout:
 
 ```
-uv venv --python 3.13
+uv venv --managed-python --python 3.13
 source .venv/bin/activate
 ```
 
-Activate `.venv` in every new shell before working on the project. Commands such as `./manage.py`, `npm start` and `pytest` use whichever `python` comes first on your `PATH`, so they only see the project's dependencies when `.venv` is active. To do this automatically, you can use [direnv](https://direnv.net/) with an `.envrc` containing `source .venv/bin/activate`, or let your editor activate it.
+Activate `.venv` in every new shell before working on the project. Commands such as `./manage.py`, `npm start` and `pytest` use whichever `python` comes first on your `PATH`, so they only see the project's dependencies when `.venv` is active. You can also let your editor activate it.
+
+To activate `.venv` automatically whenever you `cd` into the checkout, use [direnv](https://direnv.net/):
+
+```
+brew install direnv
+echo 'eval "$(direnv hook zsh)"' >> ~/.zshrc    # once, then open a new terminal
+echo 'source .venv/bin/activate' > .envrc       # in Bedrock and Springfield
+direnv allow                                    # again after every change to `.envrc`
+```
+
+direnv can't change your prompt, so the `(springfield)` or `(bedrock)` prefix doesn't appear. Check with `echo $VIRTUAL_ENV`.
+
+!!! tip "Optional: show the virtualenv in an oh-my-zsh prompt"
+    `activate` still exports `VIRTUAL_ENV_PROMPT`, so your prompt can show it. With oh-my-zsh, add this to `~/.zshrc` after `source $ZSH/oh-my-zsh.sh`:
+
+    ```
+    PROMPT='${VIRTUAL_ENV_PROMPT:+($VIRTUAL_ENV_PROMPT) }'$PROMPT
+    export VIRTUAL_ENV_DISABLE_PROMPT=1  # stops `source .venv/bin/activate` from adding a second prefix
+    ```
+
+    Prompt themes such as starship or powerlevel10k already show the active virtualenv.
 
 ### Install Python dependencies
 
@@ -168,6 +189,7 @@ This installs exactly the versions pinned in `uv.lock`, including the developmen
 
 **Download a fresh copy of the sqlite database** This contains product-details, security-advisories, credits, release notes, localizations, legal-docs etc. We also download the latest translations of site content in many languages:
 
+    # Runs Python, so activate `.venv` first or use `uv run bin/bootstrap.sh`
     bin/bootstrap.sh
 
 **Install the node dependencies to run the site**. This will only work if you already have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed:
@@ -189,18 +211,24 @@ This installs exactly the versions pinned in `uv.lock`, including the developmen
 If you previously set up Bedrock or Springfield with pyenv and pyenv-virtualenv, switch to the setup above once, in each checkout:
 
 ```
-pyenv deactivate                 # or open a new shell
-rm .python-version               # only if it names your pyenv virtualenv, e.g. `bedrock` or `springfield`
-uv venv --python 3.13
+rm .python-version                      # pyenv leftover, the uv setup doesn't use it
+pyenv deactivate                        # after the `rm`, or pyenv re-activates the virtualenv at the next prompt
+brew install uv                         # once, as a standalone tool, not into a project virtualenv
+uv venv --managed-python --python 3.13  # uv's own Python, so `.venv` keeps working once pyenv is gone
 source .venv/bin/activate
 make preflight -- --retain-db
 ```
 
 Then:
 
-* If you installed `uv` inside an old pyenv virtualenv, run `pip uninstall uv` in that virtualenv, then `pyenv rehash`. Otherwise pyenv's `uv` shim can take precedence over the standalone `uv` and fail outside that virtualenv.
 * Point your editor's Python interpreter at `.venv/bin/python`.
-* Once everything works, you can delete the old virtualenv with `pyenv virtualenv-delete bedrock` (or `springfield`).
+* Once everything works, delete the old virtualenv. Each one takes about 500 MB:
+
+    ```
+    pyenv virtualenvs                    # lists them, in case you named yours differently
+    pyenv virtualenv-delete springfield  # or `bedrock`
+    ```
+
 * Optional: if you don't use pyenv for anything else, remove the lines the old setup added to your `~/.zshrc`:
 
     ```
@@ -222,7 +250,7 @@ A `.python-version` that names a pyenv virtualenv breaks uv, because uv reads th
 
 A shortcut for activating the virtual env in zsh or bash is ``. .venv/bin/activate``. The dot is the same as ``source``.
 
-You can also run a single command in the project's environment without activating it, by prefixing it with ``uv run``, e.g. ``uv run pytest``.
+You can also run a single command in the project's environment without activating it, by prefixing it with ``uv run``, e.g. ``uv run pytest`` or ``uv run ./manage.py runserver``.
 
 ## Localization
 
