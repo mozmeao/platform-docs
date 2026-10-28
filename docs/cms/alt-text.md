@@ -30,15 +30,15 @@ Usually a few words to one short sentence is enough. 125 characters is a good ro
 Don't start with "image of" or "picture of." Screen readers already announce "image" or "graphic" before reading alt text.
 
 ❌ `Photo of a red panda sleeping on a tree branch.`<br>
-❌ `A cute red panda sleeping peacefully on a tree branch in the forest.`
-✅ `Red panda sleeping on a tree branch.`<br>
+❌ `A cute red panda sleeping peacefully on a tree branch in the forest.`<br>
+✅ `Red panda sleeping on a tree branch.`
 
 ### Be Specific
 
 Describe what's actually in the image, focusing on details relevant to the surrounding content.
 
-❌ `VPN screenshot.`
-✅ `Mozilla VPN dashboard showing connection status.`<br>
+❌ `VPN screenshot.`<br>
+✅ `Mozilla VPN dashboard showing connection status.`
 
 ### Don't Repeat Nearby Text
 
@@ -51,9 +51,9 @@ If a caption or nearby paragraph already describes the image, don't say the same
 - Don't guess someone's gender, age, race, or other identity
 - Don't describe how people look unless it is necessary for context
 
-❌ `Asian woman with her hair in a pony tail.` 
+❌ `Asian woman with her hair in a pony tail.` <br>
 ✅ `Person with a laptop bag and Mozilla lanyard.`<br>
-✅ `Contributor at a Mozilla hackathon.`<br>
+✅ `Contributor at a Mozilla hackathon.`
 
 ## Special Cases
 
@@ -61,40 +61,40 @@ If a caption or nearby paragraph already describes the image, don't say the same
 
 If an image contains text that isn't anywhere else on the page, include that text in the alt text.
 
-❌ `Stylized pull quote.`
-✅ `“Brevity is the soul of wit.” — William Shakespeare`<br>
+❌ `Stylized pull quote.`<br>
+✅ `“Brevity is the soul of wit.” — William Shakespeare`
 
 ### Charts and Infographics
 
 Give a short summary in the alt text and put the full information in the page text or a table.
 
-❌ `Bar chart.`
-✅ `Bar chart of Firefox downloads by year, details in the table below.`<br>
+❌ `Bar chart.`<br>
+✅ `Bar chart of Firefox downloads by year, details in the table below.`
 
 ## Examples
 
 ![A tab group of recipes.](../images/alt-text/recipes-group.png){ width="400" }
 
-❌ `Screenshot of Firefox.`
+❌ `Screenshot of Firefox.`<br>
 ✅ `A tab group of recipes.`<br>
-✅ `Tab groups appear next to your open tabs.`<br>
+✅ `Tab groups appear next to your open tabs.`
 
 ![Mark Surman, Mozilla President.](../images/alt-text/surman.png){ width="400" }
 
-❌ `Bald white man in a black jacket and red scarf.`
-✅ `Mark Surman, Mozilla President.`<br>
+❌ `Bald white man in a black jacket and red scarf.`<br>
+✅ `Mark Surman, Mozilla President.`
 
 ![People sitting in a circle on the floor sharing ideas.](../images/alt-text/floor.jpg){ width="400" }
 
-❌ `Nine people sitting on yellow pillows on the floor.`
-✅ `People sitting in a circle on the floor sharing ideas.`<br>
+❌ `Nine people sitting on yellow pillows on the floor.`<br>
+✅ `People sitting in a circle on the floor sharing ideas.`
 
 ![Nothing Personal logo.](../images/alt-text/np.jpg){ width="400" }
 
 ❌ `NP. NP. NP. NP. NP. NP. NP. NP. NP.`<br>
-❌ `NP repeated 42 times in different colors.`
+❌ `NP repeated 42 times in different colors.`<br>
 ✅ If the magazine's name is nearby - blank alt text. <br>
-✅ `Nothing Personal logo.`<br>
+✅ `Nothing Personal logo.`
 
 ## Additional Resources
 
