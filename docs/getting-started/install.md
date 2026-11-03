@@ -54,7 +54,9 @@ You should also install our git pre-commit hooks. These are checks that automati
 
 The projects uses the [pre-commit](https://pre-commit.com/) framework that makes managing git hooks easier across all contributors by ensuring everyone has the same ones set up.
 
-Install the framework by running `uv tool install pre-commit` (or `brew install pre-commit`). If uv warns that its tool directory isn't on your `PATH`, run `uv tool update-shell` and open a new terminal. Then - ensuring you are in your project directory - run `pre-commit install` in your terminal, followed by `pre-commit install-hooks`. This will set up the hooks that are specified in `.precommit.yaml`
+Install the framework once with `brew install pre-commit`. If you'd rather use uv, run `uv tool install pre-commit` instead, and if uv warns that its tool directory isn't on your `PATH`, run `uv tool update-shell` and open a new terminal. Then, in each project directory, run `pre-commit install`, followed by `pre-commit install-hooks`. This will set up the hooks that are specified in `.pre-commit-config.yaml`
+
+When you make a commit, have the project's `.venv` activated. Some hooks run `python manage.py …` with whichever `python` comes first on your `PATH`, so they fail if no environment or another project's environment is active.
 
 After that setup, whenever you try to make a commit, the 'hooks' will check/lint your Python, JS, and CSS files beforehand and report on problems that need to be fixed before the commit can be made. This will save you time waiting for the tests to run in our CI before noticing a linting error.
 
@@ -228,6 +230,7 @@ make preflight -- --retain-db
 Then:
 
 * Point your editor's Python interpreter at `.venv/bin/python`.
+* If `pre-commit` was installed in the old pyenv virtualenv, it goes away with it. Install it once with `brew install pre-commit`, then run `pre-commit install` again in each checkout. Otherwise the git hook still points at the old virtualenv's Python, and commits fail with "`pre-commit` not found".
 * Once everything works, delete the old virtualenv. Each one takes about 500 MB:
 
     ```
