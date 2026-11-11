@@ -2,6 +2,30 @@
 
 Before diving into code it might be worth reading through the [Development](../development/index.md) documentation, which contains useful information and links to our coding guidelines for Python, Django, JavaScript and CSS.
 
+## Before you start: find a `help wanted` issue
+
+First of all, thank you for your interest in contributing to Bedrock and Springfield. We truly appreciate every contribution, and we love seeing people care about these projects. 😊
+
+Our team is small and our time is limited. To make sure every contribution gets the attention it deserves, we currently accept code contributions **only for issues labelled `help wanted`** ([Bedrock](https://github.com/mozilla/bedrock/labels/help%20wanted) and [Springfield](https://github.com/mozmeao/springfield/labels/help%20wanted)). These are issues we have looked at, agreed are worth doing, and are ready for someone to pick up.
+
+### Why we do it this way
+
+We want to be able to review your work quickly and give it proper care. Reviewing takes real time, and a pull request for something outside our current goals is hard for us to fit in, even when the code is great. We would hate for you to spend your evenings on a change we can't merge.
+
+### What this means in practice
+
+* Browse the `help wanted` issues and pick one that interests you.
+* Leave a comment on the issue to say you'd like to work on it, so we can avoid duplicated effort and answer any questions.
+* Then follow the steps below to get your change ready.
+
+### Have an idea or found a bug?
+
+We'd love to hear about it! Please open an issue and describe what you found or what you have in mind. We'll take a look, and if it fits our goals we'll happily label it `help wanted` so you (or someone else) can work on it.
+
+### What about pull requests for other things?
+
+Pull requests that aren't linked to a `help wanted` issue may take us a lot longer to get back to, and we may not be able to get to them at all. This isn't a judgement on your work or your intentions. It simply helps us keep our focus and be fair to everyone waiting on a review. If this happens to you, please don't be discouraged. We'd be glad to see you back on one of the labelled issues.
+
 ## Git workflow
 
 When you want to start contributing, you should create a branch from main. This allows you to work on different project at the same time:
