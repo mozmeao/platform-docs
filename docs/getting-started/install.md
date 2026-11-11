@@ -121,6 +121,24 @@ These instructions assume you have [Node.js](https://nodejs.org/) installed. The
 
 If you set up Bedrock or Springfield with pyenv before, see [Migrating from a pyenv virtualenv](#migrating-from-a-pyenv-virtualenv).
 
+### Install system dependencies
+
+!!! springfield "Springfield Only"
+    Springfield uses the compiled version of the PostgreSQL driver (`psycopg[c]`), which is built from source during the install. That build needs PostgreSQL's client library (`libpq`) and its `pg_config` program on your `PATH`, even though the local database is SQLite. You don't need a PostgreSQL server.
+
+    If `pg_config --version` already works in your terminal, you're set. Otherwise, install the client library and put it on your `PATH`.
+
+    On Linux, install your distro's `libpq-dev` package.
+
+    On macOS, use the commands below. Homebrew doesn't add `libpq` to your `PATH` automatically, because it would conflict with a PostgreSQL install. The commands assume zsh. For another shell, add the `PATH` line to its startup file instead of `~/.zshrc`.
+
+    ```
+    brew install libpq
+    echo 'export PATH="$(brew --prefix libpq)/bin:$PATH"' >> ~/.zshrc
+    ```
+
+    Then open a new terminal.
+
 ### Install uv
 
 Install uv as a standalone tool, not into a project virtual environment:
@@ -162,22 +180,6 @@ direnv can't change your prompt, so the `(springfield)` or `(bedrock)` prefix do
     Prompt themes such as starship or powerlevel10k already show the active virtualenv.
 
 ### Install Python dependencies
-
-!!! springfield "Springfield Only"
-    Springfield uses the compiled version of the PostgreSQL driver (`psycopg[c]`), which is built from source during the install. That build needs PostgreSQL's client library (`libpq`) and its `pg_config` program on your `PATH`, even though the local database is SQLite. You don't need a PostgreSQL server.
-
-    If `pg_config --version` already works in your terminal, you're set. Otherwise, install the client library and put it on your `PATH`.
-
-    On Linux, install your distro's `libpq-dev` package.
-
-    On macOS, use the commands below. Homebrew doesn't add `libpq` to your `PATH` automatically, because it would conflict with a PostgreSQL install. The commands assume zsh. For another shell, add the `PATH` line to its startup file instead of `~/.zshrc`.
-
-    ```
-    brew install libpq
-    echo 'export PATH="$(brew --prefix libpq)/bin:$PATH"' >> ~/.zshrc
-    ```
-
-    Then open a new terminal.
 
 ```
 make install-local-python-deps
