@@ -41,3 +41,26 @@ To test a single app, specify the app by name in the command above. e.g.:
     ```
     pytest springfield/firefox
     ```
+
+## PostgreSQL in CI
+
+!!! bedrock "Bedrock Only"
+    Bedrock's `Unit tests` workflow runs the Python unit tests against SQLite and, when enabled, PostgreSQL.
+
+PostgreSQL runs automatically on `main` and in the merge queue. On a pull request it is opt-in: add `[ci:postgres]` to the pull request description and the PostgreSQL suite runs as well. Without the marker the PostgreSQL step is skipped and only the SQLite suite runs.
+
+| Event | PostgreSQL suite |
+|-------|------------------|
+| Push to `main` | Runs |
+| Merge queue (`merge_group`) | Runs |
+| Pull request with `[ci:postgres]` in the description | Runs |
+| Pull request without the marker | Skipped (SQLite still runs) |
+
+Each run prints the database backend it is actually using before migrating, and fails if it does not match:
+
+    Database backend check: expected=postgresql actual=postgresql host=db port=5432 name=postgres
+    Database backend check: OK
+
+Adding the marker to an existing description does not by itself start a new workflow run. The workflow uses the default `pull_request` activity types (`opened`, `synchronize`, `reopened`), and editing a description fires `edited`, which is not one of them. Push a commit after adding `[ci:postgres]` so the condition is evaluated again.
+
+This PostgreSQL CI setup was introduced in Bedrock [#17384](https://github.com/mozilla/bedrock/pull/17384).
